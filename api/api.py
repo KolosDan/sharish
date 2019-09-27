@@ -25,7 +25,7 @@ def create_challenge():
             raise Exception('ApiException', 'Invalid arguments are provided')
         
         
-        if data['group_publisher'] != '':
+        if data['group_publisher'] != 'My account':
             return {'result': {'challenge_id': User(data['user_id']).create_challenge(data['name'], data['description'], data['complete_message'], data['tasks'], data['max_participants'], data['challenge_hashtag'], data['winner'], group_publisher= int(data['group_publisher']))}}
         return {'result': {'challenge_id': User(data['user_id']).create_challenge(data['name'], data['description'], data['complete_message'], data['tasks'], data['max_participants'], data['challenge_hashtag'], data['winner'])}}
     except Exception as e:
