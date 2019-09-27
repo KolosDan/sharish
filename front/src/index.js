@@ -20,7 +20,6 @@ import * as connect from '@vkontakte/vkui-connect';
 import axios from 'axios';
 
 const osname = platform();
-
 connect.send("VKWebAppInit", {});
 
 class VKchallenge extends React.Component {
@@ -44,7 +43,8 @@ class VKchallenge extends React.Component {
         user_obj: {connected_groups : []},
         user_obj_vk: {},
         task_list : [],
-        token: ""
+        token: "",
+        groups_checked : false
       };
       this.onChange = this.onChange.bind(this);
       this.onStoryChange = this.onStoryChange.bind(this);
@@ -90,17 +90,17 @@ class VKchallenge extends React.Component {
     }
 
     componentDidUpdate() {
-      if (this.state.user_obj.connected_groups.length == 0) {
+      if (this.state.user_obj.connected_groups.length == 0 && !this.state.groups_checked) {
         this.getUser();
+        this.setState({groups_checked : true});
       }
     }
   
-    getUser() {
-      axios.get(`http://192.168.43.150:5000/get_user_info?user_id=67880703`)
+   getUser() {
+      axios.get(`https://cors-anywhere.herokuapp.com/http://3.0.16.7:5000/get_user_info?user_id=${this.state.user_obj_vk.id}`)
         .then((response) => {
-          alert(response)
           this.setState({user_obj : response.data.result});
-        })  
+        })
         .catch((error) => {
           console.log(error);
         });
@@ -295,4 +295,4 @@ class VKchallenge extends React.Component {
   }
 
   <VKchallenge />
-  ReactDOM.render(<VKchallenge />, document.getElementById('root'));  
+  ReactDOM.render(<VKchallenge />, document.getElementById('root')); 
