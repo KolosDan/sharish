@@ -1,8 +1,10 @@
 from flask import Flask, request
 from user import User
 from challenge import Challenge
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 #get args: user_id
 @app.route('/get_user_info')
