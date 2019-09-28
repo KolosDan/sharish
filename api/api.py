@@ -16,12 +16,13 @@ def get_user_info():
     except Exception as e:
         return {'error': str(e)}
 
-#post args: user_id (str), name (str), description (str), complete_message (str), requirements ([{type: ..., value: ...}, ... ]), tasks ([{validator: ..., value:...}, ...]), max_participants (str), challenge_hashtag (str), winner (None / int) group_publisher int / None
+#post args: user_id (str), name (str), description (str), complete_message (str), tasks ([{validator: ..., value:...}, ...]), max_participants (str), challenge_hashtag (str), winner (None / int) group_publisher int / None
 @app.route('/create_challenge', methods=['POST'])
 def create_challenge():
     try:
-        data = eval(request.data.decode())
-        if not({'user_id', 'name', 'description', 'complete_message', 'tasks', 'max_participants', 'challenge_hashtag'} == set(list(data.keys())) or {'user_id', 'name', 'description', 'complete_message', 'requirements', 'tasks', 'max_participants', 'challenge_hashtag', 'group_publisher'} == set(list(data.keys()))):
+        data = eval(request.data.decode('utf-8'))
+        print(data)
+        if {'user_id', 'name', 'description', 'complete_message', 'tasks', 'max_participants', 'challenge_hashtag', 'winner', 'group_publisher'} != set(list(data.keys())):
             raise Exception('ApiException', 'Invalid arguments are provided')
         
         

@@ -24,11 +24,13 @@ class User:
         return result
 
     def create_challenge(self, name, description, complete_message, tasks, max_participants, challenge_hashtag, winner, group_publisher=None):
+        print('GOT')
         if not isinstance(tasks, list):
             raise Exception('ApiException', 'Invalid format for tasks. It should be [{validator: ..., description: ..., value:...}, ... ]')
         for i in tasks:
-            if 'validator' not in list(i.keys()) or 'value' not in list(i.keys()) or 'description' not in list(i.keys()):
+            if 'type' not in list(i.keys()) or 'value' not in list(i.keys()) or 'description' not in list(i.keys()):
                 raise Exception('ApiException', 'Invalid format for tasks. It should be [{validator: ..., description: ..., value:...}, ... ]')  
+        print('CHECKED')
 
         challenge = {
             'name': name,
@@ -46,10 +48,7 @@ class User:
         if group_publisher == None:
             challenge['publisher'] = self._id
         else:
-            if group_publisher in self.db.users.find_one({'_id': self._id})['connected_groups']:
-                challenge['publisher'] = group_publisher
-            else:
-                raise Exception('ApiException', 'Group not verified by user account (therefore has no proven admin rights)')
+            challenge['publisher'] = group_publisher
 
         challenge_id = self.db.challenges.insert_one(challenge).inserted_id
 
