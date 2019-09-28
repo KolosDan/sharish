@@ -39,7 +39,9 @@ class ChallengeInfo extends React.Component {
     return (
       <React.Fragment>
         <PanelHeader left={<HeaderButton onClick={this.props.handler} >{<Icon24Back />}</HeaderButton>}> {this.props.name}</PanelHeader>
-        <img src={this.props.cover} />
+        <Div>
+          <img src={this.props.cover} />
+        </Div>
         <Group title="Описание">
           <Cell multiline>{this.props.desc}</Cell>
         </Group>
@@ -101,7 +103,7 @@ class VKchallenge extends React.Component {
       publ: "",
       community: "My account",
       winner: "",
-      challenge_photo : "",
+      challenge_photo: "",
 
       activeStory: 'feed',
       activeView: "view1",
@@ -570,7 +572,7 @@ class VKchallenge extends React.Component {
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
             <ChallengeInfo name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.desc}
-             cover={this.state.one_challenge_obj.cover}/>
+              cover={this.state.one_challenge_obj.cover} />
           </Panel>
         </View>
 
