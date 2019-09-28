@@ -331,7 +331,7 @@ class VKchallenge extends React.Component {
                           </CardContent>
                         </CardActionArea>
                         <CardActions>
-                          <Button size="xl" color="primary">
+                          <Button onClick={() => {this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="xl" color="primary">
                             Learn More
                          </Button>
                         </CardActions>
@@ -385,7 +385,7 @@ class VKchallenge extends React.Component {
                           </CardContent>
                         </CardActionArea>
                         <CardActions>
-                          <Button size="xl" color="primary">
+                          <Button onClick={() => {this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="xl" color="primary">
                             Learn More
                          </Button>
                         </CardActions>
