@@ -314,7 +314,7 @@ class VKchallenge extends React.Component {
       <CardActionArea>
         <CardMedia
           // className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg"
           title="Contemplative Reptile"
         />
         <CardContent>
