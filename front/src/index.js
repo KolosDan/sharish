@@ -70,12 +70,12 @@ class VKchallenge extends React.Component {
       activeStory: 'feed',
       activeView: "view1",
       activeTab6: "active",
-      activeTab5 : "popular",
+      activeTab5: "popular",
       challenge_obj: {},
       user_groups: [],
       challenges: {},
       user_obj: { connected_groups: [] },
-      one_challenge_obj : {},
+      one_challenge_obj: {},
       user_obj_vk: {},
       task_list: [],
       token: "",
@@ -290,29 +290,28 @@ class VKchallenge extends React.Component {
               </TabsItem>
             </Tabs>
 
-            <HeaderContext opened={false} onClose={this.toggleContext}>
-              <List>
-                <Cell
-                  before={<Icon24Back />}
-                  asideContent={this.state.mode === 'all' ? <Icon24Back fill="var(--accent)" /> : null}
-                  onClick={this.select}
-                  data-mode="all"
-                >
-                  Communities
-                </Cell>
-                <Cell
-                  before={<Icon24Back />}
-                  asideContent={this.state.mode === 'managed' ? <Icon24Back fill="var(--accent)" /> : null}
-                  onClick={this.select}
-                  data-mode="managed"
-                >
-                  Managed Communities
-                </Cell>
-              </List>
-            </HeaderContext>
-            <Group>
-              челленджи
-              </Group>
+            {this.state.activeTab5 === 'popular' ? <Group>
+              {this.state.challenge_obj.length > 0 &&
+                <List>
+                  hehe
+                  {/* {this.state.challenge_obj.map((item) => (
+                  
+                  )
+                  )} */}
+                </List>
+              } </Group> : ""}
+
+            {this.state.activeTab5 === 'community' ? <Group>
+              {this.state.challenge_obj.length > 0 &&
+                <List>
+                  pepe
+                  {/* {this.state.challenge_obj.map((item) => (
+                  
+                  )
+                  )} */}
+                </List>
+              } </Group> : ""}
+
           </Panel>
         </View>
 
@@ -345,7 +344,7 @@ class VKchallenge extends React.Component {
                 <List>
                   {this.state.challenge_obj.map((item) => (
                     item.status !== "STOPPED" &&
-                    <Cell onClick={() => {this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />}
+                    <Cell onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />}
                       description={item.name} asideContent={< Icon24Play fill="var(--accent)" />}> {item.description}</Cell>
                   )
                   )}
@@ -488,7 +487,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
-            <ChallengeInfo name={this.state.one_challenge_obj.name} desc=""/>
+            <ChallengeInfo name={this.state.one_challenge_obj.name} desc="" />
           </Panel>
         </View>
 
