@@ -357,7 +357,7 @@ class VKchallenge extends React.Component {
                       </Cell>
                       <Card>
                         <CardActionArea>
-                          <img src={item.cover} />
+                          <img style={{maxWidth:"370px"}} src={item.cover} />
                           <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
                               {item.name}
@@ -411,7 +411,7 @@ class VKchallenge extends React.Component {
                       </Cell>
                       <Card>
                         <CardActionArea>
-                          <img src={item.cover} />
+                          <img style={{maxWidth:"370px"}} src={item.cover} />
                           <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
                               {item.name}
