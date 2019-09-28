@@ -351,7 +351,9 @@ class VKchallenge extends React.Component {
             <PanelHeader>
               Челлендж дня
               </PanelHeader>
-              <Avatar src="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg" size={80}/>
+              <Cell>
+              <div style="margin: 0 auto;"><Avatar src="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg" size={80}/></div>
+              </Cell>
           </Panel>
         </View>
 
