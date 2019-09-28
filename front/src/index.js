@@ -58,7 +58,7 @@ class ChallengeInfo extends React.Component {
               this.props.tasks.map((task) => {
               <Cell
                 asideContent={<Icon24DoneOutline fill="var(--accent)" />}
-                description={task.description}
+                description='Pep'
               >
                 Задание 1
               </Cell>
