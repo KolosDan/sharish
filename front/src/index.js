@@ -117,7 +117,7 @@ class VKchallenge extends React.Component {
   }
 
   getChallenges() {
-    axios.get(`http://192.168.43.150:5000/get_user_challenges?user_id=67880703`)
+    instance.get(`http://192.168.43.150:5000/get_user_challenges?user_id=67880703`)
       .then((response) => {
         this.state.challenge_obj = response.data.result;
       })
