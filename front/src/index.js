@@ -7,7 +7,7 @@ import {
   View, Panel, PanelHeader, Group, List, Cell, Avatar, Footer,
   HeaderButton, CellButton, Root, PanelHeaderContent, Epic, platform,
   Tabbar, TabbarItem, Search, HeaderContext, Input, FormLayout, Button,
-  Select, IOS, Tabs ,TabsItem ,Icon24MoreHorizontal, Div, InfoRow , HorizontalScroll
+  Select, IOS, Tabs, TabsItem, Icon24MoreHorizontal, Div, InfoRow, HorizontalScroll
 } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
@@ -47,7 +47,7 @@ class VKchallenge extends React.Component {
 
       activeStory: 'feed',
       activeView: "view1",
-      activeTab6 : "active",
+      activeTab6: "active",
       challenge_obj: {},
       challenges: {},
       user_obj: { connected_groups: [] },
@@ -121,7 +121,7 @@ class VKchallenge extends React.Component {
   getChallenges() {
     instance.get(`http://192.168.43.150:5000/get_user_challenges?user_id=67880703`)
       .then((response) => {
-        this.setState({challenge_obj : response.data.result});
+        this.setState({ challenge_obj: response.data.result });
       })
       .catch((error) => {
         console.log(error);
@@ -244,28 +244,26 @@ class VKchallenge extends React.Component {
           <Panel id="new-user" theme="white">
             <PanelHeader > Мои челленджи</PanelHeader>
             <Tabs theme="header" type="buttons">
-                <HorizontalScroll>
-                  <TabsItem
-                    onClick={() => this.setState({ activeTab6: 'active' })}
-                    selected={this.state.activeTab6 === 'active'}>
-                    Активные
+                <TabsItem
+                  onClick={() => this.setState({ activeTab6: 'active' })}
+                  selected={this.state.activeTab6 === 'active'}>
+                  Активные
               </TabsItem>
-                  <TabsItem
-                    onClick={() => this.setState({ activeTab6: 'ended' })}
-                    selected={this.state.activeTab6 === 'ended'}>
-                    Завершенные
+                <TabsItem
+                  onClick={() => this.setState({ activeTab6: 'ended' })}
+                  selected={this.state.activeTab6 === 'ended'}>
+                  Завершенные
               </TabsItem>
-                </HorizontalScroll>
-              </Tabs>
-	
-              {this.state.activeTab6 === 'active' ? <Group>
-                {this.state.challenge_obj.length > 0 &&
-            <List>
-            {this.state.challenge_obj.map((item) => (
-               <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24MoreHorizontal fill="var(--accent)"/>}> {item.description}</Cell>
-            ))}
-            </List>
-            } </Group>: ""}
+            </Tabs>
+{/* 
+            {this.state.activeTab6 === 'active' ? <Group>
+              {this.state.challenge_obj.length > 0 &&
+                <List>
+                  {this.state.challenge_obj.map((item) => (
+                    <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24MoreHorizontal fill="var(--accent)" />}> {item.description}</Cell>
+                  ))}
+                </List>
+              } </Group> : ""} */}
 
             <Fab onClick={() => { this.setState({ activeStory: 'create' }) }} style={{ position: 'fixed', bottom: 0, right: 0, marginBottom: "65px", marginRight: "10px" }} color="primary" aria-label="add">
               <AddIcon />
