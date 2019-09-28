@@ -113,7 +113,7 @@ class VKchallenge extends React.Component {
   }
 
   getUser() {
-    instance.get(`http://192.168.43.150:5000/get_user_info?user_id=67880703`)
+    instance.get(`http://192.168.43.150:5000/get_user_info?user_id=${this.state.user_obj_vk.id}`)
       .then((response) => {
         this.setState({ user_obj: response.data.result });
       })
@@ -123,7 +123,7 @@ class VKchallenge extends React.Component {
   }
 
   getChallenges() {
-    instance.get(`http://192.168.43.150:5000/get_user_challenges?user_id=67880703`)
+    instance.get(`http://192.168.43.150:5000/get_user_challenges?user_id=${this.state.user_obj_vk.id}`)
       .then((response) => {
         this.setState({ challenge_obj: response.data.result });
       })
@@ -289,14 +289,6 @@ class VKchallenge extends React.Component {
           </Panel>
         </View>
 
-        <View activePanel="end" id="ended">
-          <Panel id="end">
-            <PanelHeader>
-              end
-              </PanelHeader>
-          </Panel>
-        </View>
-
         <View activePanel="pep" id="create">
           <Panel id="pep" theme="white">
             <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'view4' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>}>
@@ -376,6 +368,7 @@ class VKchallenge extends React.Component {
                 before={<Avatar size={40} src={this.state.user_obj_vk.photo_200} />}>
                 {this.state.user_obj_vk.first_name} {this.state.user_obj_vk.last_name}
               </PanelHeaderContent>
+
             </PanelHeader>
           </Panel>
         </View>
