@@ -62,7 +62,7 @@ class ChallengeInfo extends React.Component {
 class VKchallenge extends React.Component {
   constructor(props) {
     super(props);
-
+    const classes = useStyles();
     this.state = {
       name_task: "",
       desc_task: "",
@@ -314,10 +314,10 @@ class VKchallenge extends React.Component {
             {this.state.activeTab5 === 'popular' ? <Group>
               {this.state.all_challenges.length > 0 &&
                 <List>
-                  <Card className={classes.card}>
+                  <Card className={this.classes.card}>
                     <CardActionArea>
                       <CardMedia
-                        className={classes.media}
+                        className={this.classes.media}
                         image="/static/images/cards/contemplative-reptile.jpg"
                         title="Contemplative Reptile"
                       />
