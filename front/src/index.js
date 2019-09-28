@@ -244,7 +244,7 @@ class VKchallenge extends React.Component {
             <PanelHeader > Мои челленджи</PanelHeader>
             <Tabs theme="header" type="buttons">
                   <TabsItem
-                    onClick={() => this.setState({ activeView: 'view4' })}
+                    onClick={() => this.setState({ activeView: 'view1' })}
                     selected={this.state.activeView === 'view4'}
                   >
                     Активные
