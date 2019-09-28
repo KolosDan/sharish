@@ -101,8 +101,7 @@ class VKchallenge extends React.Component {
   }
 
   componentDidUpdate() {
-    alert(this.state.activeView )
-    if (this.state.activeView === "view4") {
+    if (this.state.activeStory === "view4") {
       this.getChallenges();
     }
     if (this.state.user_obj.connected_groups.length == 0 && !this.state.groups_checked) {
