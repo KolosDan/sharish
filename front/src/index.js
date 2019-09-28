@@ -432,8 +432,8 @@ class VKchallenge extends React.Component {
                     bottomContent={<Button onClick={() => { this.deleteGroup(item.id); this.getUser() }}>Удалить</Button>}
                   >
                     {item.name}
-                    {-parseInt(item.id)}
-                    {i.group_id}
+                    int {-parseInt(item.id)}
+                    i group {i.group_id}
                   </Cell> :
                   <Cell
                     size="l"
