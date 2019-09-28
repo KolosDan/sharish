@@ -393,7 +393,7 @@ class VKchallenge extends React.Component {
             </PanelHeader>
             {this.state.user_groups.length > 0 &&
               this.state.user_groups.map((item) => (
-                alert(item.name) &&
+                alert(JSON.stringify(item, null, 4)) &&
                   <Cell
                     size="l"
                     before={<Avatar src={item.photo_100} />}
