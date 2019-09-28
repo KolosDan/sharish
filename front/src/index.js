@@ -262,9 +262,8 @@ class VKchallenge extends React.Component {
               {this.state.challenge_obj.length > 0 &&
                 <List>
                   {this.state.challenge_obj.map((item) => {
-                    if (item.status !== "STOPPED") {
-                      {<Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24Add fill="var(--accent)" />}> {item.description}</Cell>}
-                    }
+                    {item.status !== "STOPPED" && 
+                      <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24Add fill="var(--accent)" />}> {item.description}</Cell>}
                   }
                   )}
                 </List>
@@ -274,9 +273,8 @@ class VKchallenge extends React.Component {
               {this.state.challenge_obj.length > 0 &&
                 <List>
                   {this.state.challenge_obj.map((item) => {
-                    if (item.status === "STOPPED") {
-                     {<Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24Add fill="var(--accent)" />}> {item.description}</Cell>}
-                    }
+                    {item.status === "STOPPED" &&
+                     <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24Add fill="var(--accent)" />}> {item.description}</Cell>}
                   }
                   )}
                 </List>
