@@ -328,7 +328,7 @@ class VKchallenge extends React.Component {
                 <List>
                   {this.state.challenge_obj.map((item) => (
                     item.status !== "STOPPED" &&
-                    <Cell onClick={() => {this.get_one_challenge(item.id); this.setState({ activeStory: 'challenge_info' }) }} before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />}
+                    <Cell onClick={() => {this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />}
                       description={item.name} asideContent={< Icon24Play fill="var(--accent)" />}> {item.description}</Cell>
                   )
                   )}
