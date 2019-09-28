@@ -127,7 +127,7 @@ class VKchallenge extends React.Component {
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
         this.setState({ user_groups: e.detail.data.response.items })
-        // { alert(JSON.stringify(this.state.user_groups, null, 4)) }
+        { alert(JSON.stringify(e.detail, null, 4)) }
       }
     });
     connect.send("VKWebAppGetUserInfo", {});
@@ -140,10 +140,6 @@ class VKchallenge extends React.Component {
       this.getChallenges();
       this.getAllChallenges();
     }
-    // if (this.state.user_obj.connected_groups.length == 0 && !this.state.groups_checked) {
-    //   this.getUser();
-    //   this.setState({ groups_checked: true });
-    // }
   }
 
   getUser() {
@@ -154,6 +150,20 @@ class VKchallenge extends React.Component {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  getUserById(id) {
+    connect.send("VKWebAppCallAPIMethod", {
+      "method": "users.get",
+      "params": {"user_ids": id, "v": "5.101", "access_token": this.state.token }
+    });
+  }
+
+  getGroupById(id) {
+    connect.send("VKWebAppCallAPIMethod", {
+      "method": "groups.getById",
+      "params": {"group_id": id, "v": "5.101", "access_token": this.state.token }
+    });
   }
 
   getAllChallenges() {
@@ -314,10 +324,11 @@ class VKchallenge extends React.Component {
               {this.state.all_challenges.length > 0 &&
                 <List>
                   {this.state.all_challenges.map((item) => (
+                    // item.publisher > 0 ? 
                     <Group>
                       <Cell
                         size="l"
-                        description="VKontakte"
+                        description={item.hashtag}
                         before={<Avatar src="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg" />}
                       >
                         Артур Стамбульцян
