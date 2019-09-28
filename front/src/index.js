@@ -12,6 +12,7 @@ import Icon24Add from '@vkontakte/icons/dist/24/add';
 import Icon24DoneOutline from '@vkontakte/icons/dist/24/done_outline';
 import Icon24Settings from '@vkontakte/icons/dist/24/settings';
 import Icon28Menu from '@vkontakte/icons/dist/28/menu';
+import Icon24Write from '@vkontakte/icons/dist/24/write';
 import Icon28AddOutline from '@vkontakte/icons/dist/28/add_outline';
 import Icon28User from '@vkontakte/icons/dist/28/user';
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
@@ -405,7 +406,7 @@ class VKchallenge extends React.Component {
                       <Cell
                         size="l"
                         description={"#" + item.hashtag}
-                        asideContent={<Icon24Add fill="var(--accent)" />}
+                        asideContent={<Icon24Write fill="var(--accent)" />}
                         before={<Avatar src={item.user_photo} />}
                       >
                         {item.first_name} {item.last_name}
