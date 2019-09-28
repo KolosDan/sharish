@@ -406,7 +406,7 @@ class VKchallenge extends React.Component {
                       <Cell
                         size="l"
                         description={"#" + item.hashtag}
-                        asideContent={<Icon28Write fill="var(--accent)" />}
+                        asideContent={<Icon28Write onClick={() => {this.setState({ activeStory: 'challenge_info' }) }} fill="var(--accent)" />}
                         before={<Avatar src={item.user_photo} />}
                       >
                         {item.first_name} {item.last_name}
