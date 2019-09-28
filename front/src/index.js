@@ -118,7 +118,7 @@ class VKchallenge extends React.Component {
       task_list: [],
       token: "",
       posted_community: "",
-      edit : false
+      edit: false
     };
     this.onChange = this.onChange.bind(this);
     this.onStoryChange = this.onStoryChange.bind(this);
@@ -258,6 +258,22 @@ class VKchallenge extends React.Component {
       });
   }
 
+
+  editChallenge(item) {
+    instance.post('http://192.168.43.150:5000/connect_group', {
+      challenge_id : item.id,
+      kwargs: item
+    })
+      .then(function (response) {
+        if (response.data.error) {
+          alert(response.data.error);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   addGroup(id, name) {
     instance.post('http://192.168.43.150:5000/connect_group', {
       user_id: this.state.user_obj_vk.id.toString(),
@@ -284,16 +300,16 @@ class VKchallenge extends React.Component {
       });
   }
 
-  restoreState(args){
-    alert(JSON.stringify(args, null, 4)) 
+  restoreState(args) {
+    alert(JSON.stringify(args, null, 4))
     this.setState({ name: args.name });
-    this.setState({ desc: args.description});
+    this.setState({ desc: args.description });
     this.setState({ complete: args.complete_message });
-    this.setState({ task_list:  args.tasks});
+    this.setState({ task_list: args.tasks });
     this.setState({ max: args.max_participants });
     this.setState({ hash: args.hashtag });
-    this.setState({ community: args.group_publisher});
-    this.setState({ winner: args.winner});
+    this.setState({ community: args.group_publisher });
+    this.setState({ winner: args.winner });
     this.setState({ cover: args.cover });
     this.setState({ hash: args.hashtag });
   }
@@ -421,7 +437,7 @@ class VKchallenge extends React.Component {
                       <Cell
                         size="l"
                         description={"#" + item.hashtag}
-                        asideContent={<Icon28Write onClick={() => { this.setState({ edit: true });  this.restoreState(item); this.setState({ activeStory: 'create' }) }} fill="var(--accent)" />}
+                        asideContent={<Icon28Write onClick={() => { this.setState({ edit: true }); this.restoreState(item); this.setState({ activeStory: 'create' }) }} fill="var(--accent)" />}
                         before={<Avatar src={item.user_photo} />}
                       >
                         {item.first_name} {item.last_name}
@@ -466,9 +482,10 @@ class VKchallenge extends React.Component {
 
         <View activePanel="pep" id="create">
           <Panel id="pep" theme="white">
-            <PanelHeader left={<HeaderButton onClick={() => {this.setState({ edit: false });  this.setState({ activeStory: 'more' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>}>
-              {this.state.edit ? "Создать" : "Изменить" }
-              </PanelHeader>
+            <PanelHeader left={<HeaderButton onClick={() => { this.setState({ edit: false }); this.setState({ activeStory: 'more' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>}>
+              {alert(this.state.edit)}
+              {this.state.edit ? "Создать" : "Изменить"}
+            </PanelHeader>
             <FormLayout>
               <Input value={this.state.name} top="Название" name="name" onChange={this.onChange} />
               <Input value={this.state.desc} top="Описание" name="desc" onChange={this.onChange} />
@@ -511,7 +528,7 @@ class VKchallenge extends React.Component {
                 }
                 <CellButton onClick={() => { this.setState({ activeStory: 'task' }) }} before={<Icon24Add />} >Добавить задание</CellButton>
               </Group>
-              <Button onClick={() => {this.setState({ edit: true });  this.getGroupById(this.state.community); this.setState({ activeStory: 'view1' }) }} size="xl">{this.state.edit ? "Создать" : "Изменить" }</Button>
+              <Button onClick={() => { this.setState({ edit: true }); this.getGroupById(this.state.community); this.setState({ activeStory: 'view1' }) }} size="xl">{this.state.edit ? "Создать" : "Изменить"}</Button>
             </FormLayout>
           </Panel>
         </View>
