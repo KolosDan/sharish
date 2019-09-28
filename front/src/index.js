@@ -311,7 +311,7 @@ class VKchallenge extends React.Component {
                   )
                   )}
                 </List>
-              } </Group> : ""}
+              } </Group> : ""}  
 
             {this.state.activeTab5 === 'community' ? <Group>
               {this.state.challenge_obj.length > 0 &&
