@@ -117,7 +117,7 @@ class VKchallenge extends React.Component {
   }
 
   getUser() {
-    instance.get(`http://192.168.43.150:5000/get_user_info?user_id=${this.state.user_obj_vk.id}`)
+    instance.get(`http://192.168.43.150:5000/get_user_info?user_id=${this.state.user_obj_vk.id.toString()}`)
       .then((response) => {
         this.setState({ user_obj: response.data.result });
       })
@@ -127,7 +127,7 @@ class VKchallenge extends React.Component {
   }
 
   getChallenges() {
-    instance.get(`http://192.168.43.150:5000/get_user_challenges?user_id=${this.state.user_obj_vk.id}`)
+    instance.get(`http://192.168.43.150:5000/get_user_challenges?user_id=${this.state.user_obj_vk.id.toString()}`)
       .then((response) => {
         this.setState({ challenge_obj: response.data.result });
       })
