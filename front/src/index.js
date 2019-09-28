@@ -54,7 +54,7 @@ class ChallengeInfo extends React.Component {
           <Group title="Placeholder">
             <List>
               <Cell
-                  after={<Avatar style={{ background: 'var(--accent)' }} size={28}><Icon16Add fill="var(--white)" /></Avatar>}
+                  asideContent={<Icon16Add fill="var(--white)" />}
                   description="Только от друзей друзей"
                 >
                   Заявки в друзья
