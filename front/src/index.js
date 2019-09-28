@@ -262,7 +262,7 @@ class VKchallenge extends React.Component {
 
 
   editChallenge() {
-    instance.post('http://192.168.43.150:5000/connect_group', {
+    instance.post('http://192.168.43.150:5000/edit_challenge', {
       challenge_id: this.state.edit_challenge_id,
       kwargs: {
         name: this.state.name,
