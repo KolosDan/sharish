@@ -24,24 +24,12 @@ import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import '@vkontakte/vkui/dist/vkui.css';
 import * as connect from '@vkontakte/vkui-connect';
 import axios from 'axios';
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-
-const useStyles = makeStyles({
-  card: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-});
-
-const classes = useStyles();
 
 const instance = axios.create({
   headers: { 'Access-Control-Allow-Origin': "*" }
@@ -324,7 +312,7 @@ class VKchallenge extends React.Component {
             <Card>
       <CardActionArea>
         <CardMedia
-          className={classes.media}
+          // className={classes.media}
           image="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg"
           title="Contemplative Reptile"
         />
