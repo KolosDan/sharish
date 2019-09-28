@@ -288,11 +288,11 @@ class VKchallenge extends React.Component {
     this.setState({ name: args.name });
     this.setState({ desc: args.description});
     this.setState({ complete: args.complete_message });
-    // this.setState({ task_list:  args.tasks});
-    // this.setState({ max: args.max_participants });
-    // this.setState({ hash: args.challenge_hashtag });
-    // this.setState({ community: args.group_publisher});
-    // this.setState({ winner: args.winner});
+    this.setState({ task_list:  args.tasks});
+    this.setState({ max: args.max_participants });
+    this.setState({ hash: args.challenge_hashtag });
+    this.setState({ community: args.group_publisher});
+    this.setState({ winner: args.winner});
   }
 
   onChange(e) {
