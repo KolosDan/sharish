@@ -72,6 +72,7 @@ class VKchallenge extends React.Component {
       activeTab6: "active",
       activeTab5: "popular",
       challenge_obj: {},
+      all_challenges : [],
       user_groups: [],
       challenges: {},
       user_obj: { connected_groups: [] },
@@ -130,11 +131,12 @@ class VKchallenge extends React.Component {
     if (previousState.activeStory !== this.state.activeStory) {
       this.getUser();
       this.getChallenges();
+      this.getAllChallenges();
     }
-    if (this.state.user_obj.connected_groups.length == 0 && !this.state.groups_checked) {
-      this.getUser();
-      this.setState({ groups_checked: true });
-    }
+    // if (this.state.user_obj.connected_groups.length == 0 && !this.state.groups_checked) {
+    //   this.getUser();
+    //   this.setState({ groups_checked: true });
+    // }
   }
 
   getUser() {
@@ -148,9 +150,19 @@ class VKchallenge extends React.Component {
   }
 
   getChallenges() {
-    instance.get(`http://192.168.43.150:5000/get_user_challenges?user_id=${this.state.user_obj_vk.id.toString()}`)
+    instance.get(`http://192.168.43.150:5000/get_challenge_list?status=ALL`)
       .then((response) => {
         this.setState({ challenge_obj: response.data.result });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  getAllChallenges() {
+    instance.get(`http://192.168.43.150:5000/get_user_challenges?user_id=${this.state.user_obj_vk.id.toString()}`)
+      .then((response) => {
+        this.setState({ all_challenges: response.data.result.sort((a, b) => (a.participants.length > b.participants.length) ? 1 : -1) });
       })
       .catch((error) => {
         console.log(error);
@@ -291,13 +303,13 @@ class VKchallenge extends React.Component {
             </Tabs>
 
             {this.state.activeTab5 === 'popular' ? <Group>
-              {this.state.challenge_obj.length > 0 &&
+              {this.state.getAllChallenges.length > 0 &&
                 <List>
-                  hehe
-                  {/* {this.state.challenge_obj.map((item) => (
-                  
+                  {this.state.getAllChallenges.map((item) => (
+                    <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />}
+                    description={item.name} asideContent={< Icon24Play fill="var(--accent)" />}> {item.description}</Cell>
                   )
-                  )} */}
+                  )}
                 </List>
               } </Group> : ""}
 
