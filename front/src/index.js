@@ -93,7 +93,7 @@ class VKchallenge extends React.Component {
         this.state.token = e.detail.data.access_token;
         connect.send("VKWebAppCallAPIMethod", {
           "method": "groups.get",
-          "params": { extended : 1, "user_id": this.state.user_obj_vk.id, "v": "5.101", filter: "admin", count: 1000, "access_token": this.state.token }
+          "params": { extended: 1, "user_id": this.state.user_obj_vk.id, "v": "5.101", filter: "admin", count: 1000, "access_token": this.state.token }
         });
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
@@ -391,15 +391,20 @@ class VKchallenge extends React.Component {
             <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'more' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>} >
               Группы
             </PanelHeader>
+            <Group>
+              <Div>
+                На данном экране Вы можете подключить в приложение сообщества, в которых являетесь администратором, чтобы иметь возможность создавать челленджи от их имени!
+             </Div>
+            </Group>
             {this.state.user_groups.length > 0 &&
               this.state.user_groups.map((item) => (
-                  <Cell
-                    size="l"
-                    before={<Avatar src={item.photo_100} />}
-                    bottomContent={<Button>Добавить</Button>}
-                  >
-                    {item.name}
-                  </Cell>
+                <Cell
+                  size="l"
+                  before={<Avatar src={item.photo_100} />}
+                  bottomContent={<Button>Добавить</Button>}
+                >
+                  {item.name}
+                </Cell>
               ))
             }
           </Panel>
