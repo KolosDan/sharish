@@ -98,7 +98,7 @@ class VKchallenge extends React.Component {
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
         this.setState({ user_groups: e.detail.data.response.items })
-        { alert(JSON.stringify(this.state.user_groups, null, 4)) }
+        // { alert(JSON.stringify(this.state.user_groups, null, 4)) }
       }
     });
     connect.send("VKWebAppGetUserInfo", {});
@@ -159,7 +159,7 @@ class VKchallenge extends React.Component {
     instance.post('http://192.168.43.150:5000/connect_group', {
       user_id: this.state.user_obj_vk.id,
       group_id: id,
-      group_name: name
+      group_name : name
     })
       .then(function (response) {
         alert(response.data.error);
@@ -423,33 +423,15 @@ class VKchallenge extends React.Component {
                 На данном экране Вы можете подключить в приложение сообщества, в которых являетесь администратором, чтобы иметь возможность создавать челленджи от их имени!
              </Div>
             </Group>
-            {this.state.user_obj.connected_groups.length > 0 ?
+            {this.state.user_groups.length > 0 &&
               this.state.user_groups.map((item) => (
-                this.state.user_obj.connected_groups.map(i => i.group_id === -parseInt(item.id) ?
                   <Cell
                     size="l"
                     before={<Avatar src={item.photo_100} />}
-                    bottomContent={<Button onClick={() => { this.deleteGroup(item.id); this.getUser() }}>Удалить</Button>}
-                  >
-                    {item.name}
-                  </Cell> :
-                  <Cell
-                    size="l"
-                    before={<Avatar src={item.photo_100} />}
-                    bottomContent={<Button onClick={() => { this.addGroup(item.id, item.name); this.getUser() }} >Добавить</Button>}
+                    bottomContent={<Button onClick={() => { this.addGroup(item.id,item.name); this.getUser() }} >Добавить</Button>}
                   >
                     {item.name}
                   </Cell>
-                )))
-              :
-              this.state.user_groups.map((item) => (
-                <Cell
-                  size="l"
-                  before={<Avatar src={item.photo_100} />}
-                  bottomContent={<Button onClick={() => { this.addGroup(item.id, item.name); this.getUser() }} >Добавить</Button>}
-                >
-                  {item.name}
-                </Cell>
               ))
             }
           </Panel>
