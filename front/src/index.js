@@ -425,7 +425,7 @@ class VKchallenge extends React.Component {
             </Group>
             {this.state.user_groups.length > 0 &&
               this.state.user_groups.map((item) => (
-                this.state.user_obj.connected_groups.includes(-parseInt(item.id)) ?
+                this.state.user_obj.connected_groups.includes({group_id: -parseInt(item.id), group_name: item.name}) ?
                   <Cell
                     size="l"
                     before={<Avatar src={item.photo_100} />}
