@@ -93,7 +93,7 @@ class VKchallenge extends React.Component {
         this.state.token = e.detail.data.access_token;
         connect.send("VKWebAppCallAPIMethod", {
           "method": "groups.get",
-          "params": { "user_id": this.state.user_obj_vk.id, "v": "5.101", filter: "admin", count: 1000, "access_token": this.state.token }
+          "params": { extended : 1, "user_id": this.state.user_obj_vk.id, "v": "5.101", filter: "admin", count: 1000, "access_token": this.state.token }
         });
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
