@@ -286,7 +286,7 @@ class VKchallenge extends React.Component {
               </PanelHeader>
               <Card>
                 <CardActionArea>
-                  <img src='https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg'/>
+                  <div style='background-image: url("https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg")'></div>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
                       Lizard
