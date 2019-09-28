@@ -39,6 +39,7 @@ class ChallengeInfo extends React.Component {
     return (
       <React.Fragment>
         <PanelHeader left={<HeaderButton onClick={this.props.handler} >{<Icon24Back />}</HeaderButton>}> {this.props.name}</PanelHeader>
+        <img src={this.props.cover} />
         <Group title="Описание">
           <Cell multiline>{this.props.desc}</Cell>
         </Group>
@@ -100,6 +101,7 @@ class VKchallenge extends React.Component {
       publ: "",
       community: "My account",
       winner: "",
+      challenge_photo : "",
 
       activeStory: 'feed',
       activeView: "view1",
@@ -274,7 +276,6 @@ class VKchallenge extends React.Component {
     instance.get(`http://192.168.43.150:5000/get_challenge_info?challenge_id=${id}`)
       .then((response) => {
         this.setState({ one_challenge_obj: response.data.result });
-        { alert(JSON.stringify(this.state.one_challenge_obj, null, 4)) }
       })
       .catch((error) => {
         console.log(error);
@@ -454,6 +455,7 @@ class VKchallenge extends React.Component {
             <FormLayout>
               <Input value={this.state.name} top="Название" name="name" onChange={this.onChange} />
               <Input value={this.state.desc} top="Описание" name="desc" onChange={this.onChange} />
+              <Input value={this.state.challenge_photo} top="Фото" name="challenge_photo" onChange={this.onChange} />
               <Input value={this.state.complete} top="Сообщение по завершении" name="complete" onChange={this.onChange} />
               <Input value={this.state.hash} top="Хештег челленджа" name="hash" onChange={this.onChange} />
               <Input value={this.state.max} top="Макс. участников" name="max" onChange={this.onChange} />
@@ -567,7 +569,8 @@ class VKchallenge extends React.Component {
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
-            <ChallengeInfo name={this.state.one_challenge_obj.name} desc="pizda" />
+            <ChallengeInfo name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.desc}
+             cover={this.state.one_challenge_obj.cover}/>
           </Panel>
         </View>
 
