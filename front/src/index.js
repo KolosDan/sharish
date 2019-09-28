@@ -122,19 +122,19 @@ class VKchallenge extends React.Component {
         this.state.token = e.detail.data.access_token;
         connect.send("VKWebAppCallAPIMethod", {
           "method": "groups.get",
-          "request_id": "groups.get", 
+          "request_id": "groups.get",
           "params": { extended: 1, "user_id": this.state.user_obj_vk.id, "v": "5.101", filter: "admin", count: 1000, "access_token": this.state.token }
         });
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
-        if (e.detail.data.request_id === "groups.get"){
+        if (e.detail.data.request_id === "groups.get") {
           this.setState({ user_groups: e.detail.data.response.items })
         }
-        else if (e.detail.data.request_id === "posted_community"){
+        else if (e.detail.data.request_id === "posted_community") {
           alert("commmmmm");
           this.setState({ posted_community: e.detail.data.response })
           this.postChallenge();
-        } 
+        }
         // { alert(JSON.stringify(e.detail, null, 4)) }
       }
     });
@@ -164,19 +164,19 @@ class VKchallenge extends React.Component {
     connect.send("VKWebAppCallAPIMethod", {
       "method": "users.get",
       "request_id": "users.get",
-      "params": {"user_ids": id, "v": "5.101", "access_token": this.state.token }
+      "params": { "user_ids": id, "v": "5.101", "access_token": this.state.token }
     });
   }
 
   getGroupById(id) {
-    if(this.state.community === "My account"){
+    if (this.state.community === "My account") {
       this.postChallenge();
       return;
     }
     connect.send("VKWebAppCallAPIMethod", {
       "method": "groups.getById",
       "request_id": "posted_community",
-      "params": {"group_id": parseInt(id)*-1, "v": "5.101", "access_token": this.state.token }
+      "params": { "group_id": parseInt(id) * -1, "v": "5.101", "access_token": this.state.token }
     });
   }
 
@@ -206,7 +206,7 @@ class VKchallenge extends React.Component {
     let l_name = this.state.user_obj_vk.last_name;
     let u_photo = this.state.user_obj_vk.photo_100;
 
-    if(this.state.community !== "My account"){
+    if (this.state.community !== "My account") {
       alert(JSON.stringify(this.state.posted_community, null, 4))
       f_name = this.state.posted_community[0].name;
       l_name = "";
@@ -224,9 +224,9 @@ class VKchallenge extends React.Component {
       group_publisher: this.state.community,
       winner: this.state.winner,
 
-      first_name : f_name,
-      last_name : l_name,
-      user_photo : u_photo
+      first_name: f_name,
+      last_name: l_name,
+      user_photo: u_photo
     })
       .then(function (response) {
         alert(response.data.error);
@@ -343,11 +343,11 @@ class VKchallenge extends React.Component {
                     <Group>
                       <Cell
                         size="l"
-                        description={"#"+item.hashtag}
+                        description={"#" + item.hashtag}
                         before={<Avatar src={item.user_photo} />}
                       >
                         {item.first_name} {item.last_name}
-                     </Cell>
+                      </Cell>
                       <Card>
                         <CardActionArea>
                           <img src={item.cover} />
@@ -371,18 +371,6 @@ class VKchallenge extends React.Component {
                   )}
                 </List>
               } </Group> : ""}
-
-            {this.state.activeTab5 === 'community' ? <Group>
-              {this.state.challenge_obj.length > 0 &&
-                <List>
-                  pepe
-                  {/* {this.state.challenge_obj.map((item) => (
-                  
-                  )
-                  )} */}
-                </List>
-              } </Group> : ""}
-
           </Panel>
         </View>
 
@@ -410,17 +398,38 @@ class VKchallenge extends React.Component {
               </TabsItem>
             </Tabs>
 
-            {this.state.activeTab6 === 'active' ? <Group>
-              {this.state.challenge_obj.length > 0 &&
-                <List>
-                  {this.state.challenge_obj.map((item) => (
-                    item.status !== "STOPPED" &&
-                    <Cell onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />}
-                      description={item.name} asideContent={< Icon24Play fill="var(--accent)" />}> {item.description}</Cell>
-                  )
-                  )}
-                </List>
-              } </Group> : ""}
+            {this.state.activeTab6 === 'active' ? <List>
+              {this.state.challenge_obj.map((item) => (
+                <Group>
+                  <Cell
+                    size="l"
+                    description={"#" + item.hashtag}
+                    before={<Avatar src={item.user_photo} />}
+                  >
+                    {item.first_name} {item.last_name}
+                  </Cell>
+                  <Card>
+                    <CardActionArea>
+                      <img src={item.cover} />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {item.name}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                          {item.description}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                      <Button size="xl" color="primary">
+                        Learn More
+                         </Button>
+                    </CardActions>
+                  </Card>
+                </Group>
+              )
+              )}
+            </List> : ""}
 
             {this.state.activeTab6 === 'ended' ? <Group>
               {this.state.challenge_obj.length > 0 &&
@@ -543,17 +552,17 @@ class VKchallenge extends React.Component {
              </Div>
             </Group>
             <Group>
-            {this.state.user_groups.length > 0 &&
-              this.state.user_groups.map((item) => (
-                <Cell
-                  size="l"
-                  before={<Avatar src={item.photo_100} />}
-                  bottomContent={<Button onClick={() => { this.addGroup(item.id, item.name); this.getUser() }} >Добавить</Button>}
-                >
-                  {item.name}
-                </Cell>
-              ))
-            }
+              {this.state.user_groups.length > 0 &&
+                this.state.user_groups.map((item) => (
+                  <Cell
+                    size="l"
+                    before={<Avatar src={item.photo_100} />}
+                    bottomContent={<Button onClick={() => { this.addGroup(item.id, item.name); this.getUser() }} >Добавить</Button>}
+                  >
+                    {item.name}
+                  </Cell>
+                ))
+              }
             </Group>
           </Panel>
         </View>
