@@ -55,14 +55,14 @@ class ChallengeInfo extends React.Component {
           </Div>
           <Group title="Placeholder">
             <List>
-              this.props.tasks.map((task) => {
-              <Cell
-                asideContent={<Icon24DoneOutline fill="var(--accent)" />}
-                description='Pep'
-              >
-                Задание 1
-              </Cell>
-              }
+              {this.props.tasks.map((task, index) => 
+                    <Cell
+                      asideContent={<Icon24DoneOutline fill="var(--accent)" />}
+                      description={task.description}
+                    >
+                      Задание {index} ({task.type})
+                    </Cell>
+        )}
             </List>
             <Group>
               <FormLayout>
