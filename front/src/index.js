@@ -405,6 +405,7 @@ class VKchallenge extends React.Component {
                       <Cell
                         size="l"
                         description={"#" + item.hashtag}
+                        asideContent={<Icon24Done fill="var(--accent)" />}
                         before={<Avatar src={item.user_photo} />}
                       >
                         {item.first_name} {item.last_name}
@@ -422,17 +423,9 @@ class VKchallenge extends React.Component {
                           </CardContent>
                         </CardActionArea>
                         <CardActions>
-                          <Group title="Растягивание по ширине">
-                            <Div>
-                              <Button size="l">No stretch</Button>
-                            </Div>
-                            <Div style={{ display: 'flex' }}>
-                              <Button stretched onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="l" color="primary">
-                                Learn More
-                             </Button>
-                              <Button size="l" stretched >Stretched</Button>
-                            </Div>
-                          </Group>
+                          <Button stretched onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="xl" color="primary">
+                            Learn More
+                         </Button>
                         </CardActions>
                       </Card>
                     </Group>
