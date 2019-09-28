@@ -60,7 +60,7 @@ class ChallengeInfo extends React.Component {
                 Заявки в друзья
               </Cell>
             </List>
-            <Group title="Счётчики в кнопках">
+            <Group>
               <FormLayout>
                 <Button size="xl">Участвую</Button>
               </FormLayout>
