@@ -131,6 +131,7 @@ class VKchallenge extends React.Component {
           this.setState({ user_groups: e.detail.data.response.items })
         }
         else if (e.detail.requset.id === "posted_community"){
+          alert("commmmmm");
           this.setState({ posted_community: e.detail.data.response })
           this.postChallenge();
         }
@@ -211,8 +212,6 @@ class VKchallenge extends React.Component {
       l_name = "";
       u_photo = this.state.posted_community.photo_100;
     }
-
-    alert(f_name, l_name, u_photo);
 
     instance.post('http://192.168.43.150:5000/create_challenge', {
       user_id: this.state.user_obj_vk.id.toString(),
