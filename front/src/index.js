@@ -87,7 +87,7 @@ class VKchallenge extends React.Component {
       user_obj_vk: {},
       task_list: [],
       token: "",
-      groups_checked: false
+      posted_community: ""
     };
     this.onChange = this.onChange.bind(this);
     this.onStoryChange = this.onStoryChange.bind(this);
@@ -130,11 +130,9 @@ class VKchallenge extends React.Component {
         if (e.detail.requset.id === "groups.get"){
           this.setState({ user_groups: e.detail.data.response.items })
         }
-        else if (e.detail.requset.id === "users.get"){
-          this.setState({ user_groups: e.detail.data.response.items })
-        }
-        else if (e.detail.requset.id === "groups.getById"){
-          this.setState({ user_groups: e.detail.data.response.items })
+        else if (e.detail.requset.id === "posted_community"){
+          this.setState({ posted_community: e.detail.data.response })
+          this.postChallenge();
         }
         // { alert(JSON.stringify(e.detail, null, 4)) }
       }
@@ -170,9 +168,13 @@ class VKchallenge extends React.Component {
   }
 
   getGroupById(id) {
+    if(this.state.community === "My account"){
+      this.postChallenge();
+      return;
+    }
     connect.send("VKWebAppCallAPIMethod", {
       "method": "groups.getById",
-      "request_idf=": "groups.getById",
+      "request_id": "posted_community",
       "params": {"group_id": id, "v": "5.101", "access_token": this.state.token }
     });
   }
@@ -182,7 +184,6 @@ class VKchallenge extends React.Component {
       .then((response) => {
         response.data.result.sort((a, b) => (a.participants.length > b.participants.length) ? 1 : -1)
         this.setState({ all_challenges: response.data.result });
-        this.state.all_challenges.map( (item) => {  } )
       })
       .catch((error) => {
         console.log(error);
@@ -200,6 +201,16 @@ class VKchallenge extends React.Component {
   }
 
   postChallenge() {
+    let f_name = this.state.user_obj_vk.first_name;
+    let l_name = this.state.user_obj_vk.last_name;
+    let u_photo = this.state.user_obj_vk.photo_100;
+
+    if(this.state.community !== "My account"){
+      f_name = this.state.posted_community.name;
+      l_name = "";
+      u_photo = this.state.posted_community.photo_100;
+    }
+
     instance.post('http://192.168.43.150:5000/create_challenge', {
       user_id: this.state.user_obj_vk.id.toString(),
       name: this.state.name,
@@ -211,9 +222,9 @@ class VKchallenge extends React.Component {
       group_publisher: this.state.community,
       winner: this.state.winner,
 
-      first_name : this.state.user_obj_vk.first_name,
-      last_name : this.state.user_obj_vk.last_name,
-      user_photo : this.state.user_obj_vk.photo_100
+      first_name : f_name,
+      last_name : l_name,
+      user_photo : u_photo
     })
       .then(function (response) {
         alert(response.data.error);
@@ -246,19 +257,6 @@ class VKchallenge extends React.Component {
         { alert(JSON.stringify(this.state.one_challenge_obj, null, 4)) }
       })
       .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  deleteGroup(id) {
-    instance.post('http://192.168.43.150:5000/disconnect_group', {
-      user_id: this.state.user_obj_vk.id,
-      group_id: id
-    })
-      .then(function (response) {
-        alert(response.data.error);
-      })
-      .catch(function (error) {
         console.log(error);
       });
   }
