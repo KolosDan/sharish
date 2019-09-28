@@ -303,11 +303,11 @@ class VKchallenge extends React.Component {
               </TabsItem>
             </Tabs>
 
-            {/* {this.state.activeTab5 === 'popular' ? <Group>
+            {this.state.activeTab5 === 'popular' ? <Group>
               {this.state.getAllChallenges.length > 0 &&
                 <List>keke
                   {this.state.getAllChallenges.map((item) => (
-                    
+                    item._id
                   )
                   )}
                 </List>
@@ -317,12 +317,12 @@ class VKchallenge extends React.Component {
               {this.state.challenge_obj.length > 0 &&
                 <List>
                   pepe
-                  {this.state.challenge_obj.map((item) => (
+                  {/* {this.state.challenge_obj.map((item) => (
                   
                   )
-                  )}
+                  )} */}
                 </List>
-              } </Group> : ""} */}
+              } </Group> : ""}
 
           </Panel>
         </View>
