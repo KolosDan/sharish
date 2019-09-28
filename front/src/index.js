@@ -283,6 +283,17 @@ class VKchallenge extends React.Component {
       });
   }
 
+  restoreState(args){
+    this.setState({ name: args.name });
+    this.setState({ desc: args.description});
+    this.setState({ complete: args.complete_message });
+    this.setState({ task_list:  args.tasks});
+    this.setState({ max: args.max_participants });
+    this.setState({ hash: args.challenge_hashtag });
+    this.setState({ community: args.group_publisher});
+    this.setState({ winner: args.winner});
+  }
+
   onChange(e) {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
@@ -406,7 +417,7 @@ class VKchallenge extends React.Component {
                       <Cell
                         size="l"
                         description={"#" + item.hashtag}
-                        asideContent={<Icon28Write onClick={() => {this.setState({ activeStory: 'challenge_info' }) }} fill="var(--accent)" />}
+                        asideContent={<Icon28Write onClick={() => {this.restoreState(item); this.setState({ activeStory: 'create' }) }} fill="var(--accent)" />}
                         before={<Avatar src={item.user_photo} />}
                       >
                         {item.first_name} {item.last_name}
