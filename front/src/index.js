@@ -60,11 +60,13 @@ class ChallengeInfo extends React.Component {
                 Заявки в друзья
               </Cell>
             </List>
-            <Button onClick={() => { }} size="xl" color="primary">
-              Участвую!
-          </Button>
+            <Group title="Счётчики в кнопках">
+              <FormLayout>
+                <Button size="xl">Участвую</Button>
+              </FormLayout>
+            </Group>
           </Group>
-           
+
         </Group>
       </React.Fragment>
     );
