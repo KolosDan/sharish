@@ -315,24 +315,29 @@ class VKchallenge extends React.Component {
                 <List>
                   {this.state.all_challenges.map((item) => (
                     <Group>
-                    <Card>
-                      <CardActionArea>
-                        <img src={item.cover} />
-                        <CardContent>
-                          <Typography gutterBottom variant="h5" component="h2">
-                            {item.name}
-                           </Typography>
-                          <Typography variant="body2" color="textSecondary" component="p">
-                            {item.description}
-                           </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                      <CardActions>
-                        <Button size="xl" color="primary">
-                          Learn More
+                      <UsersStack
+                        photos={[
+                          'https://sun9-5.userapi.com/c850332/v850332555/11502f/rVlRIjlWkWw.jpg?ava=1',
+                        ]}
+                      >Понравилось Муртолу Левзачеву</UsersStack>
+                      <Card>
+                        <CardActionArea>
+                          <img src={item.cover} />
+                          <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                              {item.name}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                              {item.description}
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                          <Button size="xl" color="primary">
+                            Learn More
                          </Button>
-                      </CardActions>
-                    </Card>
+                        </CardActions>
+                      </Card>
                     </Group>
                   )
                   )}
