@@ -59,6 +59,18 @@ class ChallengeInfo extends React.Component {
               >
                 Заявки в друзья
               </Cell>
+              <Cell
+                asideContent={<Icon24DoneOutline fill="var(--accent)" />}
+                description="Только от друзей друзей"
+              >
+                Заявки в друзья
+              </Cell>
+              <Cell
+                asideContent={<Icon24DoneOutline fill="var(--accent)" />}
+                description="Только от друзей друзей"
+              >
+                Заявки в друзья
+              </Cell>
             </List>
             <Group>
               <FormLayout>
