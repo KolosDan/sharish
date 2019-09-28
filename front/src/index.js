@@ -246,6 +246,7 @@ class VKchallenge extends React.Component {
       challenge_hashtag: this.state.hash,
       group_publisher: this.state.community,
       winner: this.state.winner,
+      cover : this.state.cover,
 
       first_name: f_name,
       last_name: l_name,
