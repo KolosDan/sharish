@@ -107,6 +107,7 @@ class VKchallenge extends React.Component {
 
   componentDidUpdate(previousProps, previousState) {
     if (previousState.activeStory !== this.state.activeStory) {
+      this.getUser();
       this.getChallenges();
     }
     if (this.state.user_obj.connected_groups.length == 0 && !this.state.groups_checked) {
