@@ -272,8 +272,7 @@ class VKchallenge extends React.Component {
         max_participants: this.state.max,
         challenge_hashtag: this.state.hash,
         winner: this.state.winner,
-        cover : this.state.cover,
-        hashtag : this.state.hash
+        cover : this.state.cover
       }
     })
       .then(function (response) {
