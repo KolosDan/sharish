@@ -196,6 +196,7 @@ class VKchallenge extends React.Component {
     instance.get(`http://192.168.43.150:5000/get_challenge_info?challenge_id=${id}`)
       .then((response) => {
         this.setState({ one_challenge_obj: response.data.result });
+        { alert(JSON.stringify(this.state.one_challenge_obj, null, 4)) }
       })
       .catch((error) => {
         console.log(error);
@@ -471,8 +472,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
-          { alert(JSON.stringify(this.state.one_challenge_obj, null, 4)) }
-            <ChallengeInfo name="" desc=""/>
+            <ChallengeInfo name={this.state.one_challenge_obj.name} desc=""/>
           </Panel>
         </View>
 
