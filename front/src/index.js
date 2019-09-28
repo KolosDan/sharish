@@ -528,7 +528,9 @@ class VKchallenge extends React.Component {
                 }
                 <CellButton onClick={() => { this.setState({ activeStory: 'task' }) }} before={<Icon24Add />} >Добавить задание</CellButton>
               </Group>
-              <Button onClick={() => { this.setState({ edit: false }); this.getGroupById(this.state.community); this.setState({ activeStory: 'view1' }) }} size="xl">{this.state.edit ? "Изменить" : "Создать"}</Button>
+              {this.state.edit && 
+              <Button onClick={() => { this.setState({ edit: false }); this.setState({ activeStory: 'view1' }) }} size="xl">Изменить</Button>}
+              <Button onClick={() => { this.getGroupById(this.state.community); this.setState({ activeStory: 'view1' }) }} size="xl">Создать</Button>
             </FormLayout>
           </Panel>
         </View>
