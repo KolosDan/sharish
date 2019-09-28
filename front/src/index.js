@@ -156,21 +156,15 @@ class VKchallenge extends React.Component {
   }
 
   addGroup(id, name) {
-    for (var i = 0; i < this.state.user_obj.connected_groups.length; i++){
-      alert(this.state.user_obj.connected_groups[i].group_id)
-      alert(-parseInt(id))
-      if (this.state.user_obj.connected_groups[i].group_id === -parseInt(id)){
-        alert("Гур")
-        return;
-      }
-    }
     instance.post('http://192.168.43.150:5000/connect_group', {
       user_id: this.state.user_obj_vk.id,
       group_id: id,
-      group_name : name
+      group_name: name
     })
       .then(function (response) {
-        alert(response.data.error);
+        if (response.data.error) {
+          alert(response.data.error);
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -433,13 +427,13 @@ class VKchallenge extends React.Component {
             </Group>
             {this.state.user_groups.length > 0 &&
               this.state.user_groups.map((item) => (
-                  <Cell
-                    size="l"
-                    before={<Avatar src={item.photo_100} />}
-                    bottomContent={<Button onClick={() => { this.addGroup(item.id,item.name); this.getUser() }} >Добавить</Button>}
-                  >
-                    {item.name}
-                  </Cell>
+                <Cell
+                  size="l"
+                  before={<Avatar src={item.photo_100} />}
+                  bottomContent={<Button onClick={() => { this.addGroup(item.id, item.name); this.getUser() }} >Добавить</Button>}
+                >
+                  {item.name}
+                </Cell>
               ))
             }
           </Panel>
