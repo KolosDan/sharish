@@ -342,7 +342,7 @@ class VKchallenge extends React.Component {
                   <option value="4">4</option>
                 </Select>
               </Group>
-              {this.state.user_obj.connected_groups.length}
+              { alert(JSON.stringify(this.state.user_obj, null, 4)) }
               {this.state.user_obj.connected_groups.length > 0 &&
                 <Group title="Автор">
                   <Select value={this.state.community} name="community" onChange={this.onChange} >
