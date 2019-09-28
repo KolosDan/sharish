@@ -127,12 +127,11 @@ class VKchallenge extends React.Component {
         });
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
-        alert(JSON.stringify(e.detail.data.request_id, null, 4)) 
         if (e.detail.data.requset_id === "groups.get"){
           alert("groups done")
           this.setState({ user_groups: e.detail.data.response.items })
         }
-        else if (e.detail.data.requset_id === "posted_community"){
+        else if (e.detail.data.request_id === "posted_community"){
           alert("commmmmm");
           this.setState({ posted_community: e.detail.data.response })
           this.postChallenge();
