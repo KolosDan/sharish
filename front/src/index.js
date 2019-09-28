@@ -316,7 +316,9 @@ class VKchallenge extends React.Component {
                   {this.state.all_challenges.map((item) => (
                     <Card>
                       <CardActionArea>
+                        <Div>
                         <img src={item.cover} />
+                        </Div>
                         <CardContent>
                           <Typography gutterBottom variant="h5" component="h2">
                             {item.name}
