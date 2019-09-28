@@ -1,4 +1,4 @@
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+//import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 
@@ -240,7 +240,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="new-user" id="view4">
           <Panel id="new-user" theme="white">
-            <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'view4' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>} > Мои челленджи</PanelHeader>
+            <PanelHeader > Мои челленджи</PanelHeader>
             <Fab onClick={() => {this.setState({ activeStory: 'create' }) }}  style={{ position: 'fixed', bottom: 0, right: 0, marginBottom: "65px", marginRight: "10px" }} color="primary" aria-label="add">
               <AddIcon />
             </Fab>
@@ -248,8 +248,8 @@ class VKchallenge extends React.Component {
         </View>
 
         <View activePanel="pep" id="create">
-          <Panel id="pep">
-            <PanelHeader>
+          <Panel id="pep" theme="white">
+            <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'view4' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>}>
               Создать
               </PanelHeader>
             <FormLayout>
@@ -312,9 +312,9 @@ class VKchallenge extends React.Component {
                 this.state.task_list.push({
                   type: this.state.name_task,
                   description: this.state.desc_task, value: this.state.value_task
-                }); this.setState({ activeStory: 'view4' })
+                }); this.setState({ activeStory: 'create' })
               }} size="xl" >Добавить</Button>
-            </FormLayout>
+           </FormLayout>
           </Panel>
         </View>
 
