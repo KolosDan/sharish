@@ -269,6 +269,8 @@ class VKchallenge extends React.Component {
         <View activePanel="list" id="index">
           <Panel id="list">
             <PanelHeader noShadow>
+              Поиск челленджей
+            </PanelHeader>
             <Tabs theme="header" type="buttons">
               <TabsItem
                 onClick={() => this.setState({ activeTab6: 'active' })}
@@ -286,7 +288,6 @@ class VKchallenge extends React.Component {
                 От друзей
               </TabsItem>
             </Tabs>
-            </PanelHeader>
 
             <HeaderContext opened={false} onClose={this.toggleContext}>
               <List>
