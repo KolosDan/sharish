@@ -399,9 +399,9 @@ class VKchallenge extends React.Component {
             </Tabs>
 
             {this.state.activeTab6 === 'active' ? <Group>
-              {this.state.all_challenges.length > 0 &&
+              {this.state.challenge_obj.length > 0 &&
                 <List>
-                  {this.state.all_challenges.map((item) => (
+                  {this.state.challenge_obj.map((item) => (
                     <Group>
                       <Cell
                         size="l"
