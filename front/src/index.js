@@ -287,12 +287,6 @@ class VKchallenge extends React.Component {
           ><Icon28Menu /></TabbarItem>
           <TabbarItem
             onClick={this.onStoryChange}
-            selected={this.state.activeStory === 'view4'}
-            data-story="view4"
-            text="Создать"
-          ><Icon28AddOutline /></TabbarItem>
-          <TabbarItem
-            onClick={this.onStoryChange}
             selected={this.state.activeStory === 'more'}
             data-story="more"
             text="Профиль"
