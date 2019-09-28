@@ -178,7 +178,7 @@ class VKchallenge extends React.Component {
     connect.send("VKWebAppCallAPIMethod", {
       "method": "groups.getById",
       "request_id": "posted_community",
-      "params": {"group_id": parseInt(id), "v": "5.101", "access_token": this.state.token }
+      "params": {"group_id": parseInt(id)*-1, "v": "5.101", "access_token": this.state.token }
     });
   }
 
