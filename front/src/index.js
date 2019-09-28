@@ -305,18 +305,18 @@ class VKchallenge extends React.Component {
             {this.state.activeTab5 === 'popular' ? <Group>
               {this.state.getAllChallenges.length > 0 &&
                 <List>
-                  {this.state.getAllChallenges.map((item) => (
+                  {/* {this.state.getAllChallenges.map((item) => (
                     <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />}
                     description={item.name} asideContent={< Icon24Play fill="var(--accent)" />}> {item.description}</Cell>
                   )
-                  )}
+                  )} */}
                 </List>
-              } </Group> : ""}  
+              } </Group> : ""}
 
             {this.state.activeTab5 === 'community' ? <Group>
               {this.state.challenge_obj.length > 0 &&
                 <List>
-                  pepess
+                  pepe
                   {/* {this.state.challenge_obj.map((item) => (
                   
                   )
