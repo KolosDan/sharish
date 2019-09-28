@@ -157,7 +157,7 @@ class VKchallenge extends React.Component {
 
   addGroup(id, name) {
     let user_groups = this.state.user_obj.connected_groups.map(i => i.group_id)
-    
+    alert(JSON.stringify(user_groups, null, 4)) 
     if (user_groups.includes(-parseInt(id))) {
       alert('Группа уже добавлена!')
     }
