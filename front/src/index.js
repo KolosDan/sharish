@@ -24,6 +24,7 @@ import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import '@vkontakte/vkui/dist/vkui.css';
 import * as connect from '@vkontakte/vkui-connect';
 import axios from 'axios';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -38,6 +39,14 @@ const instance = axios.create({
 const osname = platform();
 connect.send("VKWebAppInit", {});
 
+const useStyles = makeStyles({
+  card: {
+    maxWidth: 345,
+  },
+});
+
+export default function ImgMediaCard() {
+  const classes = useStyles();
 
 class ChallengeInfo extends React.Component {
   constructor(props) {
@@ -61,6 +70,7 @@ class ChallengeInfo extends React.Component {
 class VKchallenge extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       name_task: "",
       desc_task: "",
@@ -78,7 +88,7 @@ class VKchallenge extends React.Component {
       activeTab6: "active",
       activeTab5: "popular",
       challenge_obj: {},
-      all_challenges: [],
+      all_challenges : [],
       user_groups: [],
       challenges: {},
       user_obj: { connected_groups: [] },
@@ -283,6 +293,36 @@ class VKchallenge extends React.Component {
             <PanelHeader>
               feed
               </PanelHeader>
+              <Card className={classes.card}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      alt="Contemplative Reptile"
+                      height="140"
+                      image="/static/images/cards/contemplative-reptile.jpg"
+                      title="Contemplative Reptile"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        Lizard
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                        across all continents except Antarctica
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Button size="small" color="primary">
+                      Share
+                    </Button>
+                    <Button size="small" color="primary">
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </Card>
+              );
+            }
           </Panel>
         </View>
 
@@ -309,36 +349,9 @@ class VKchallenge extends React.Component {
               </TabsItem>
             </Tabs>
 
-            <Card>
-      <CardActionArea>
-        <CardMedia
-          // className={classes.media}
-          image="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
-
             {this.state.activeTab5 === 'popular' ? <Group>
               {this.state.all_challenges.length > 0 &&
-                <List>
+                <List> 
                   {/* {this.state.all_challenges.map((item) => (
                     
                   )
