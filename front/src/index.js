@@ -44,7 +44,7 @@ class VKchallenge extends React.Component {
       complete: "",
       hash: "",
       publ: "",
-      community: "",
+      community: "My account",
       winner: "",
 
       activeStory: 'feed',
@@ -309,16 +309,18 @@ class VKchallenge extends React.Component {
                   <option value="4">4</option>
                 </Select>
               </Group>
-              <Group title="Автор">
+              
                 {this.state.user_obj.connected_groups.length > 0 &&
+                <Group title="Автор">
                   <Select value={this.state.community} name="community" onChange={this.onChange} >
                     <option value="My account">Мой аккаунт</option>
                     {this.state.user_obj.connected_groups.map((item) => (
                       <option key={item.group_id} value={item.group_id}>{item.group_name}</option>
                     ))}
                   </Select>
+                  </Group>
                 }
-              </Group>
+              
               <Group title="Задания">
                 {this.state.task_list.length > 0 &&
                   <List>
