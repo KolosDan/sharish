@@ -7,7 +7,7 @@ import {
   View, Panel, PanelHeader, Group, List, Cell, Avatar, Footer,
   HeaderButton, CellButton, Root, PanelHeaderContent, Epic, platform,
   Tabbar, TabbarItem, Search, HeaderContext, Input, FormLayout, Button,
-  Select, IOS, Tabs, TabsItem, Icon24MoreHorizontal, Div, InfoRow, HorizontalScroll,UsersStack
+  Select, IOS, Tabs, TabsItem, Icon24MoreHorizontal, Div, InfoRow, HorizontalScroll, UsersStack
 } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
@@ -315,11 +315,14 @@ class VKchallenge extends React.Component {
                 <List>
                   {this.state.all_challenges.map((item) => (
                     <Group>
-                      <UsersStack
-                        photos={[
-                          'https://sun9-5.userapi.com/c850332/v850332555/11502f/rVlRIjlWkWw.jpg?ava=1',
-                        ]}
-                      >Понравилось Муртолу Левзачеву</UsersStack>
+                      <Cell
+                        size="l"
+                        description="VKontakte"
+                        before={<Avatar src="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg" />}
+                        bottomContent={<Button>Добавить</Button>}
+                      >
+                        Артур Стамбульцян
+                     </Cell>
                       <Card>
                         <CardActionArea>
                           <img src={item.cover} />
