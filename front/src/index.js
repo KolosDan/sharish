@@ -19,7 +19,6 @@ import Icon28AddOutline from '@vkontakte/icons/dist/28/add_outline';
 import Icon28User from '@vkontakte/icons/dist/28/user';
 import Icon24Play from '@vkontakte/icons/dist/24/play';
 import Icon24Pause from '@vkontakte/icons/dist/24/pause';
-import Icon24MoreHorizontal from '@vkontakte/icons/dist/24/more_horizontal';
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import '@vkontakte/vkui/dist/vkui.css';
 import * as connect from '@vkontakte/vkui-connect';
