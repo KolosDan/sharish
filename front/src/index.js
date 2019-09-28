@@ -168,6 +168,7 @@ class VKchallenge extends React.Component {
   }
 
   getGroupById(id) {
+    alert(this.state.community)
     if(this.state.community === "My account"){
       this.postChallenge();
       return;
