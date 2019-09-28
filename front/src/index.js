@@ -81,7 +81,6 @@ class VKchallenge extends React.Component {
       console.log(window.location.hash);
       if (e.detail.type === "VKWebAppGetUserInfoResult") {
         this.state.user_obj_vk = e.detail.data;
-        alert();
         this.getUser();
         this.getChallenges();
       }
@@ -103,6 +102,7 @@ class VKchallenge extends React.Component {
   componentDidUpdate() {
     if (this.state.user_obj.connected_groups.length == 0 && !this.state.groups_checked) {
       this.getUser();
+      this.getChallenges();
       this.setState({ groups_checked: true });
     }
   }
