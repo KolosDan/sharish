@@ -1,4 +1,3 @@
-//import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 
@@ -83,6 +82,7 @@ class VKchallenge extends React.Component {
       if (e.detail.type === "VKWebAppGetUserInfoResult") {
         this.state.user_obj_vk = e.detail.data;
         this.getUser();
+        this.getChallenges();
       }
       else if (e.detail.type === "VKWebAppAccessTokenReceived") {
         this.state.token = e.detail.data.access_token;
@@ -116,8 +116,8 @@ class VKchallenge extends React.Component {
       });
   }
 
-  getChallenge(usr_id) {
-    axios.get(`https://cors-anywhere.herokuapp.com/http://192.168.43.150:5000/get_challenge_info?challenge_id=${usr_id}`)
+  getChallenges() {
+    axios.get(`http://192.168.43.150:5000/get_user_challenges?user_id=67880703`)
       .then((response) => {
         this.state.challenge_obj = response.data.result;
       })
@@ -241,7 +241,12 @@ class VKchallenge extends React.Component {
         <View activePanel="new-user" id="view4">
           <Panel id="new-user" theme="white">
             <PanelHeader > Мои челленджи</PanelHeader>
-            <Fab onClick={() => {this.setState({ activeStory: 'create' }) }}  style={{ position: 'fixed', bottom: 0, right: 0, marginBottom: "65px", marginRight: "10px" }} color="primary" aria-label="add">
+            <List>
+            {this.state.challenge_obj.map((item) => (
+                 <Cell before={<Avatar />} description={item.name}>{item.description}</Cell>
+            ))}
+            </List>
+            <Fab onClick={() => { this.setState({ activeStory: 'create' }) }} style={{ position: 'fixed', bottom: 0, right: 0, marginBottom: "65px", marginRight: "10px" }} color="primary" aria-label="add">
               <AddIcon />
             </Fab>
           </Panel>
@@ -314,7 +319,7 @@ class VKchallenge extends React.Component {
                   description: this.state.desc_task, value: this.state.value_task
                 }); this.setState({ activeStory: 'create' })
               }} size="xl" >Добавить</Button>
-           </FormLayout>
+            </FormLayout>
           </Panel>
         </View>
 
