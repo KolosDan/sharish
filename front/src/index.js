@@ -241,11 +241,13 @@ class VKchallenge extends React.Component {
         <View activePanel="new-user" id="view4">
           <Panel id="new-user" theme="white">
             <PanelHeader > Мои челленджи</PanelHeader>
+            {this.state.challenge_obj.length > 0 &&
             <List>
             {this.state.challenge_obj.map((item) => (
                  <Cell before={<Avatar />} description={item.name}>{item.description}</Cell>
             ))}
             </List>
+            }
             <Fab onClick={() => { this.setState({ activeStory: 'create' }) }} style={{ position: 'fixed', bottom: 0, right: 0, marginBottom: "65px", marginRight: "10px" }} color="primary" aria-label="add">
               <AddIcon />
             </Fab>
