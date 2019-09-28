@@ -127,7 +127,7 @@ class VKchallenge extends React.Component {
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
         this.setState({ user_groups: e.detail.data.response.items })
-        { alert(JSON.stringify(e.detail, null, 4)) }
+        { alert(JSON.stringify(e, null, 4)) }
       }
     });
     connect.send("VKWebAppGetUserInfo", {});
