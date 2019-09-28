@@ -70,6 +70,7 @@ class VKchallenge extends React.Component {
       activeStory: 'feed',
       activeView: "view1",
       activeTab6: "active",
+      activeTab5 : "popular",
       challenge_obj: {},
       user_groups: [],
       challenges: {},
@@ -273,18 +274,18 @@ class VKchallenge extends React.Component {
             </PanelHeader>
             <Tabs theme="header" type="buttons">
               <TabsItem
-                onClick={() => this.setState({ activeTab6: 'active' })}
-                selected={this.state.activeTab6 === 'active'}>
+                onClick={() => this.setState({ activeTab6: 'popular' })}
+                selected={this.state.activeTab5 === 'popular'}>
                 Популярное
               </TabsItem>
               <TabsItem
-                onClick={() => this.setState({ activeTab6: 'ended' })}
-                selected={this.state.activeTab6 === 'ended'}>
+                onClick={() => this.setState({ activeTab6: 'community' })}
+                selected={this.state.activeTab5 === 'community'}>
                 От сообществ
               </TabsItem>
               <TabsItem
-                onClick={() => this.setState({ activeTab6: 'ended' })}
-                selected={this.state.activeTab6 === 'ended'}>
+                onClick={() => this.setState({ activeTab6: 'friends' })}
+                selected={this.state.activeTab5 === 'friends'}>
                 От друзей
               </TabsItem>
             </Tabs>
