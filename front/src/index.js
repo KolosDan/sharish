@@ -52,6 +52,7 @@ class VKchallenge extends React.Component {
       activeView: "view1",
       activeTab6: "active",
       challenge_obj: {},
+      user_groups : [],
       challenges: {},
       user_obj: { connected_groups: [] },
       user_obj_vk: {},
@@ -91,12 +92,13 @@ class VKchallenge extends React.Component {
       else if (e.detail.type === "VKWebAppAccessTokenReceived") {
         this.state.token = e.detail.data.access_token;
         connect.send("VKWebAppCallAPIMethod", {
-          "method": "groups.getById",
-          "params": { "group_id": "186902119", "v": "5.101", "access_token": this.state.token }
+          "method": "groups.get",
+          "params": { "user_id": this.state.user_obj_vk.id , "v": "5.101", filter: "admin", count : 1000 , "access_token": this.state.token }
         });
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
-        { alert(e.detail.data.response[0].is_admin) }
+        this.setState({user_groups : e.detail.data.response.items})
+        { alert("peps") }
       }
     });
     connect.send("VKWebAppGetUserInfo", {});
