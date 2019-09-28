@@ -542,6 +542,7 @@ class VKchallenge extends React.Component {
                 На данном экране Вы можете подключить в приложение сообщества, в которых являетесь администратором, чтобы иметь возможность создавать челленджи от их имени!
              </Div>
             </Group>
+            <Group>
             {this.state.user_groups.length > 0 &&
               this.state.user_groups.map((item) => (
                 <Cell
@@ -553,6 +554,7 @@ class VKchallenge extends React.Component {
                 </Cell>
               ))
             }
+            </Group>
           </Panel>
         </View>
 
