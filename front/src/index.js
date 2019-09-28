@@ -484,7 +484,7 @@ class VKchallenge extends React.Component {
           <Panel id="pep" theme="white">
             <PanelHeader left={<HeaderButton onClick={() => { this.setState({ edit: false }); this.setState({ activeStory: 'more' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>}>
               {alert(this.state.edit)}
-              {this.state.edit ? "Создать" : "Изменить"}
+              {this.state.edit ? "Изменить" : "Создать"}
             </PanelHeader>
             <FormLayout>
               <Input value={this.state.name} top="Название" name="name" onChange={this.onChange} />
@@ -528,7 +528,7 @@ class VKchallenge extends React.Component {
                 }
                 <CellButton onClick={() => { this.setState({ activeStory: 'task' }) }} before={<Icon24Add />} >Добавить задание</CellButton>
               </Group>
-              <Button onClick={() => { this.setState({ edit: true }); this.getGroupById(this.state.community); this.setState({ activeStory: 'view1' }) }} size="xl">{this.state.edit ? "Создать" : "Изменить"}</Button>
+              <Button onClick={() => { this.setState({ edit: false }); this.getGroupById(this.state.community); this.setState({ activeStory: 'view1' }) }} size="xl">{this.state.edit ? "Изменить" : "Создать"}</Button>
             </FormLayout>
           </Panel>
         </View>
