@@ -120,7 +120,7 @@ class VKchallenge extends React.Component {
   getChallenges() {
     instance.get(`http://192.168.43.150:5000/get_user_challenges?user_id=67880703`)
       .then((response) => {
-        this.state.challenge_obj = response.data.result;
+        this.setState({challenge_obj : response.data.result});
       })
       .catch((error) => {
         console.log(error);
@@ -245,7 +245,7 @@ class VKchallenge extends React.Component {
             {this.state.challenge_obj.length > 0 &&
             <List>
             {this.state.challenge_obj.map((item) => (
-                 <Cell before={<Avatar />} description={item.name}>{item.description}</Cell>
+               <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24MoreHorizontal fill="var(--accent)"/>}>{item.description}</Cell>
             ))}
             </List>
             }
