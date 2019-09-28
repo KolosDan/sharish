@@ -241,8 +241,8 @@ class VKchallenge extends React.Component {
 
         <View activePanel="new-user" id="view4">
           <Panel id="new-user" theme="white">
-            <PanelHeader noShadow > Мои челленджи
-            <Tabs  theme="light">
+            <PanelHeader > Мои челленджи</PanelHeader>
+            <Tabs noShadow>
                 <TabsItem
                   onClick={() => this.setState({ activeView: 'view4' })}
                   selected={this.state.activeView === 'view4'}
@@ -256,7 +256,6 @@ class VKchallenge extends React.Component {
                   Завершенные
                 </TabsItem>
               </Tabs>
-              </PanelHeader>
             {this.state.challenge_obj.length > 0 &&
             <List>
             {this.state.challenge_obj.map((item) => (
