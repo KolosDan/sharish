@@ -314,11 +314,10 @@ class VKchallenge extends React.Component {
               {this.state.all_challenges.length > 0 &&
                 <List>
                   {this.state.all_challenges.map((item) => (
+                    <Group>
                     <Card>
                       <CardActionArea>
-                        <Div>
                         <img src={item.cover} />
-                        </Div>
                         <CardContent>
                           <Typography gutterBottom variant="h5" component="h2">
                             {item.name}
@@ -334,6 +333,7 @@ class VKchallenge extends React.Component {
                          </Button>
                       </CardActions>
                     </Card>
+                    </Group>
                   )
                   )}
                 </List>
