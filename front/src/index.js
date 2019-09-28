@@ -9,6 +9,7 @@ import {
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Icon24Add from '@vkontakte/icons/dist/24/add';
+import Icon24DoneOutline from '@vkontakte/icons/dist/24/done_outline';
 import Icon24Settings from '@vkontakte/icons/dist/24/settings';
 import Icon28Menu from '@vkontakte/icons/dist/28/menu';
 import Icon28AddOutline from '@vkontakte/icons/dist/28/add_outline';
@@ -53,13 +54,16 @@ class ChallengeInfo extends React.Component {
           <Group title="Placeholder">
             <List>
               <Cell
-                  asideContent={<Icon24Add fill="var(--accent)"/>}
-                  description="Только от друзей друзей"
-                >
-                  Заявки в друзья
+                asideContent={<Icon24DoneOutline fill="var(--accent)" />}
+                description="Только от друзей друзей"
+              >
+                Заявки в друзья
               </Cell>
             </List>
           </Group>
+          <Button onClick={() => {  }} size="xl" color="primary">
+            Участвую!
+          </Button>
         </Group>
       </React.Fragment>
     );
