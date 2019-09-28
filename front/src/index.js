@@ -149,9 +149,10 @@ class VKchallenge extends React.Component {
       });
   }
 
-  getChallenges() {
+  getAllChallenges() {
     instance.get(`http://192.168.43.150:5000/get_challenge_list?status=ALL`)
       .then((response) => {
+        response.data.result.sort((a, b) => (a.participants.length > b.participants.length) ? 1 : -1)
         this.setState({ challenge_obj: response.data.result });
       })
       .catch((error) => {
@@ -159,10 +160,10 @@ class VKchallenge extends React.Component {
       });
   }
 
-  getAllChallenges() {
+  getChallenges() {
     instance.get(`http://192.168.43.150:5000/get_user_challenges?user_id=${this.state.user_obj_vk.id.toString()}`)
       .then((response) => {
-        // response.data.result.sort((a, b) => (a.participants.length > b.participants.length) ? 1 : -1)
+        // 
         this.setState({ all_challenges: response.data.result });
       })
       .catch((error) => {
