@@ -113,7 +113,6 @@ class VKchallenge extends React.Component {
     connect.send("VKWebAppSetLocation", { "location": "hash" });
     connect.subscribe((e) => {
       console.log(window.location.hash);
-      alert(JSON.stringify(e.detail, null, 4)) 
       if (e.detail.type === "VKWebAppGetUserInfoResult") {
         this.state.user_obj_vk = e.detail.data;
         this.getUser();
@@ -128,7 +127,7 @@ class VKchallenge extends React.Component {
         });
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
-
+        alert(JSON.stringify(e.detail.data.request_id, null, 4)) 
         if (e.detail.data.requset_id === "groups.get"){
           this.setState({ user_groups: e.detail.data.response.items })
         }
