@@ -471,6 +471,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
+          { alert(JSON.stringify(this.state.one_challenge_obj, null, 4)) }
             <ChallengeInfo name="" desc=""/>
           </Panel>
         </View>
