@@ -47,6 +47,7 @@ class VKchallenge extends React.Component {
 
       activeStory: 'feed',
       activeView: "view1",
+      activeTab6 : "active",
       challenge_obj: {},
       challenges: {},
       user_obj: { connected_groups: [] },
