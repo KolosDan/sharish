@@ -319,7 +319,6 @@ class VKchallenge extends React.Component {
                         size="l"
                         description="VKontakte"
                         before={<Avatar src="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg" />}
-                        bottomContent={<Button>Добавить</Button>}
                       >
                         Артур Стамбульцян
                      </Cell>
