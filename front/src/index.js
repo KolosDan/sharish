@@ -101,6 +101,7 @@ class VKchallenge extends React.Component {
   }
 
   componentDidUpdate() {
+    alert(this.state.activeView )
     if (this.state.activeView === "view4") {
       this.getChallenges();
     }
