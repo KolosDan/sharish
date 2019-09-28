@@ -343,7 +343,7 @@ class VKchallenge extends React.Component {
                     <Group>
                       <Cell
                         size="l"
-                        description={item.hashtag}
+                        description={"#"+item.hashtag}
                         before={<Avatar src={item.user_photo} />}
                       >
                         {item.first_name} {item.last_name}
