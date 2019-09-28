@@ -535,11 +535,10 @@ class VKchallenge extends React.Component {
             </PanelHeader>
             <Group>
               <List>
-                <Cell expandable before={<Icon24Settings />}>Статистика</Cell>
-                <Cell expandable before={<Icon24Settings />}>Достижения</Cell>
                 <Cell onClick={() => { this.setState({ activeStory: 'user_groups' }) }} expandable before={<Icon24Settings />}>Мои группы</Cell>
-                <Cell expandable before={<Icon24Settings />}>Понравившиеся</Cell>
-                <Cell expandable before={<Icon24Settings />}>Настройки</Cell>
+                <Cell onClick={() => { this.setState({ activeStory: 'view4' }) }} before={<Icon24Settings />}>Мои конкурсы</Cell>
+                <Cell onClick={() => { this.setState({ activeStory: 'user_groups' }) }} before={<Icon24Settings />}>Я участвую</Cell>
+                <Cell onClick={() => { this.setState({ activeStory: 'user_groups' }) }} before={<Icon28AddOutline />}>Создать конкурс</Cell>
               </List>
             </Group>
           </Panel>
