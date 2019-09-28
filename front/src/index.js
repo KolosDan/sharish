@@ -39,14 +39,6 @@ const instance = axios.create({
 const osname = platform();
 connect.send("VKWebAppInit", {});
 
-const useStyles = makeStyles({
-  card: {
-    maxWidth: 345,
-  },
-});
-
-const classes = useStyles();
-
 class ChallengeInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -294,13 +286,7 @@ class VKchallenge extends React.Component {
               </PanelHeader>
               <Card className={classes.card}>
                 <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    alt="Contemplative Reptile"
-                    height="140"
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    title="Contemplative Reptile"
-                  />
+                  <img src='https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg'/>
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
                       Lizard
