@@ -327,10 +327,7 @@ class VKchallenge extends React.Component {
                         </CardContent>
                       </CardActionArea>
                       <CardActions>
-                        <Button size="small" color="primary">
-                          Share
-                         </Button>
-                        <Button size="small" color="primary">
+                        <Button size="xl" color="primary">
                           Learn More
                          </Button>
                       </CardActions>
