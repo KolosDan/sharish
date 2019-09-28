@@ -244,25 +244,32 @@ class VKchallenge extends React.Component {
             <PanelHeader > Мои челленджи</PanelHeader>
             <Tabs theme="header" type="buttons">
                   <TabsItem
-                    onClick={() => this.setState({ activeView: 'view1' })}
-                    selected={this.state.activeView === 'view4'}
+                    onClick={() => this.setState({ activeTab6: 'active' })}
+                    selected={this.state.activeTab6 === 'active'}
                   >
                     Активные
                   </TabsItem>
                   <TabsItem
-                    onClick={() => this.setState({ activeView: 'ended' })}
-                    selected={this.state.activeView === 'ended'}
+                    onClick={() => this.setState({ activeTab6: 'ended' })}
+                    selected={this.state.activeTab6 === 'ended'}
                   >
                     Завершенные
                   </TabsItem>
               </Tabs>
-            {this.state.challenge_obj.length > 0 &&
-            <List>
-            {this.state.challenge_obj.map((item) => (
-               <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24Add fill="var(--accent)"/>}>{item.description}</Cell>
-            ))}
-            </List>
-            }
+
+              {this.state.activeTab6 === 'acitve' ?
+              this.state.challenge_obj.length > 0 &&
+                <List>
+                {this.state.challenge_obj.map((item) => (
+                   <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24Add fill="var(--accent)"/>}>{item.description}</Cell>
+                ))}
+                </List> : ""}
+
+                {this.state.activeTab6 === 'ended' ?
+                  jopa: ""}
+
+
+            
             <Fab onClick={() => { this.setState({ activeStory: 'create' }) }} style={{ position: 'fixed', bottom: 0, right: 0, marginBottom: "65px", marginRight: "10px" }} color="primary" aria-label="add">
               <AddIcon />
             </Fab>
