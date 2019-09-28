@@ -12,6 +12,7 @@ import {
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Icon24Add from '@vkontakte/icons/dist/24/add';
+import Icon24Settings from '@vkontakte/icons/dist/24/Settings';
 import Icon28Menu from '@vkontakte/icons/dist/28/menu';
 import Icon16Dropdown from '@vkontakte/icons/dist/16/dropdown';
 import Icon28DoneOutline from '@vkontakte/icons/dist/28/done_outline';
@@ -265,8 +266,8 @@ class VKchallenge extends React.Component {
                 <List>
                   {this.state.challenge_obj.map((item) => (
                     item.status !== "STOPPED" &&
-                      <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />}
-                        description={item.name} asideContent={< Icon24Play fill="var(--accent)" />}> {item.description}</Cell>
+                    <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />}
+                      description={item.name} asideContent={< Icon24Play fill="var(--accent)" />}> {item.description}</Cell>
                   )
                   )}
                 </List>
@@ -309,8 +310,8 @@ class VKchallenge extends React.Component {
                   <option value="4">4</option>
                 </Select>
               </Group>
-              
-                {this.state.user_obj.connected_groups.length > 0 &&
+
+              {this.state.user_obj.connected_groups.length > 0 &&
                 <Group title="Автор">
                   <Select value={this.state.community} name="community" onChange={this.onChange} >
                     <option value="My account">Мой аккаунт</option>
@@ -318,9 +319,9 @@ class VKchallenge extends React.Component {
                       <option key={item.group_id} value={item.group_id}>{item.group_name}</option>
                     ))}
                   </Select>
-                  </Group>
-                }
-              
+                </Group>
+              }
+
               <Group title="Задания">
                 {this.state.task_list.length > 0 &&
                   <List>
@@ -370,7 +371,15 @@ class VKchallenge extends React.Component {
                 before={<Avatar size={40} src={this.state.user_obj_vk.photo_200} />}>
                 {this.state.user_obj_vk.first_name} {this.state.user_obj_vk.last_name}
               </PanelHeaderContent>
-
+              <Group>
+                <List>
+                  <Cell expandable before={<Icon24Settings />}>Статистика</Cell>
+                  <Cell expandable before={<Icon24Settings />}>Достижения</Cell>
+                  <Cell expandable before={<Icon24Settings />}>Мои группы</Cell>
+                  <Cell expandable before={<Icon24Settings />}>Понравившиеся</Cell>
+                  <Cell expandable before={<Icon24Settings />}>Настройки</Cell>
+                </List>
+              </Group>
             </PanelHeader>
           </Panel>
         </View>
