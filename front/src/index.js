@@ -440,8 +440,6 @@ class VKchallenge extends React.Component {
                     bottomContent={<Button onClick={() => { this.addGroup(item.id, item.name); this.getUser() }} >Добавить</Button>}
                   >
                     {item.name}
-                    {-parseInt(item.id)}
-                    {i.group_id}
                   </Cell>
                 )))
               :
@@ -452,8 +450,6 @@ class VKchallenge extends React.Component {
                   bottomContent={<Button onClick={() => { this.addGroup(item.id, item.name); this.getUser() }} >Добавить</Button>}
                 >
                   {item.name}
-                  {-parseInt(item.id)}
-                  {i.group_id}
                 </Cell>
               ))
             }
