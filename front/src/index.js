@@ -1,35 +1,26 @@
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
   View, Panel, PanelHeader, Group, List, Cell, Avatar, Footer,
   HeaderButton, CellButton, Root, PanelHeaderContent, Epic, platform,
-  Tabbar, TabbarItem, Search, HeaderContext, Input, FormLayout, Button,
-  Select, IOS, Tabs, TabsItem, Icon24MoreHorizontal, Div, InfoRow, HorizontalScroll, UsersStack
+  Tabbar, TabbarItem, Search, Input, FormLayout, Button,
+  Select, IOS, Tabs, TabsItem, Div
 } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Icon24Add from '@vkontakte/icons/dist/24/add';
 import Icon24Settings from '@vkontakte/icons/dist/24/settings';
 import Icon28Menu from '@vkontakte/icons/dist/28/menu';
-import Icon16Dropdown from '@vkontakte/icons/dist/16/dropdown';
-import Icon28DoneOutline from '@vkontakte/icons/dist/28/done_outline';
 import Icon28AddOutline from '@vkontakte/icons/dist/28/add_outline';
 import Icon28User from '@vkontakte/icons/dist/28/user';
-import Icon24Play from '@vkontakte/icons/dist/24/play';
-import Icon24Pause from '@vkontakte/icons/dist/24/pause';
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import '@vkontakte/vkui/dist/vkui.css';
 import * as connect from '@vkontakte/vkui-connect';
 import axios from 'axios';
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
 const instance = axios.create({
