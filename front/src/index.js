@@ -102,7 +102,6 @@ class VKchallenge extends React.Component {
 
   componentDidUpdate() {
     if (this.state.activeView === "view4") {
-      alert(1234);
       this.getChallenges();
     }
     if (this.state.user_obj.connected_groups.length == 0 && !this.state.groups_checked) {
@@ -262,10 +261,10 @@ class VKchallenge extends React.Component {
             {this.state.activeTab6 === 'active' ? <Group>
               {this.state.challenge_obj.length > 0 &&
                 <List>
-                  {this.state.challenge_obj.map((item) => {
-                    // item.status !== "STOPPED" && 
+                  {this.state.challenge_obj.map((item) => (
+                    item.status !== "STOPPED" && 
                       <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24Add fill="var(--accent)" />}> {item.description}</Cell>
-                  }
+                  )
                   )}
                 </List>
               } </Group> : ""}
@@ -273,10 +272,10 @@ class VKchallenge extends React.Component {
             {this.state.activeTab6 === 'ended' ? <Group>
               {this.state.challenge_obj.length > 0 &&
                 <List>
-                  {this.state.challenge_obj.map((item) => {
-                    // item.status === "STOPPED" &&
+                  {this.state.challenge_obj.map((item) => (
+                    item.status === "STOPPED" &&
                      <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24Add fill="var(--accent)" />}> {item.description}</Cell>
-                  }
+                  )
                   )}
                 </List>
               } </Group> : ""}
