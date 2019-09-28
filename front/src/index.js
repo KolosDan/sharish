@@ -81,6 +81,7 @@ class VKchallenge extends React.Component {
       console.log(window.location.hash);
       if (e.detail.type === "VKWebAppGetUserInfoResult") {
         this.state.user_obj_vk = e.detail.data;
+        alert();
         this.getUser();
         this.getChallenges();
       }
