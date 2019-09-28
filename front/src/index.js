@@ -425,13 +425,15 @@ class VKchallenge extends React.Component {
             </Group>
             {this.state.user_groups.length > 0 &&
               this.state.user_groups.map((item) => (
-                this.state.user_obj.connected_groups.map(i => i.group_id === (parseInt(item.id) * -1) ?
+                this.state.user_obj.connected_groups.map(i => i.group_id === -parseInt(item.id) ?
                   <Cell
                     size="l"
                     before={<Avatar src={item.photo_100} />}
                     bottomContent={<Button onClick={() => { this.deleteGroup(item.id); this.getUser() }}>Удалить</Button>}
                   >
                     {item.name}
+                    {-parseInt(item.id)}
+                    {i.group_id}
                   </Cell> :
                   <Cell
                     size="l"
