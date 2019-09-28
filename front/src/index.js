@@ -156,6 +156,10 @@ class VKchallenge extends React.Component {
   }
 
   addGroup(id, name) {
+    if (this.state.user_obj.connected_groups.map(i => i.group_id).includes(id)){
+      alert('Группа уже добавлена!')
+    }
+    else {
     instance.post('http://192.168.43.150:5000/connect_group', {
       user_id: this.state.user_obj_vk.id,
       group_id: id,
@@ -167,6 +171,7 @@ class VKchallenge extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
+    }
   }
 
   deleteGroup(id) {
