@@ -32,16 +32,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
-  card: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-});
-
-
 const instance = axios.create({
   headers: { 'Access-Control-Allow-Origin': "*" }
 });
@@ -72,7 +62,6 @@ class ChallengeInfo extends React.Component {
 class VKchallenge extends React.Component {
   constructor(props) {
     super(props);
-    const classes = useStyles();
     this.state = {
       name_task: "",
       desc_task: "",
