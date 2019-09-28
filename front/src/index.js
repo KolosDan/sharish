@@ -50,13 +50,16 @@ class ChallengeInfo extends React.Component {
               <Progress value={40} />
             </InfoRow>
           </Div>
-          <FormLayout>
-            <Checkbox>чекбокс</Checkbox>
-            <Checkbox>чекбок2</Checkbox>
-            <Checkbox>чекбок3</Checkbox>
-            <Checkbox>чекбок4</Checkbox>
-            <Checkbox>чекбок5</Checkbox>
-          </FormLayout>
+          <Group title="Placeholder">
+            <List>
+              <Cell
+                  after={<Avatar style={{ background: 'var(--accent)' }} size={28}><Icon16Add fill="var(--white)" /></Avatar>}
+                  description="Только от друзей друзей"
+                >
+                  Заявки в друзья
+              </Cell>
+            </List>
+          </Group>
         </Group>
       </React.Fragment>
     );
