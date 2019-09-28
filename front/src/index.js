@@ -79,7 +79,7 @@ class VKchallenge extends React.Component {
       activeTab6: "active",
       activeTab5: "popular",
       challenge_obj: {},
-      all_challenges : [],
+      all_challenges: [],
       user_groups: [],
       challenges: {},
       user_obj: { connected_groups: [] },
@@ -284,28 +284,6 @@ class VKchallenge extends React.Component {
             <PanelHeader>
               feed
               </PanelHeader>
-              <Card>
-                <CardActionArea>
-                  <img src='https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg'/>
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Lizard
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                      Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                      across all continents except Antarctica
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    Share
-                  </Button>
-                  <Button size="small" color="primary">
-                    Learn More
-                  </Button>
-                </CardActions>
-              </Card>
           </Panel>
         </View>
 
@@ -334,11 +312,31 @@ class VKchallenge extends React.Component {
 
             {this.state.activeTab5 === 'popular' ? <Group>
               {this.state.all_challenges.length > 0 &&
-                <List> 
-                  {/* {this.state.all_challenges.map((item) => (
-                    
+                <List>
+                  {this.state.all_challenges.map((item) => (
+                    <Card>
+                      <CardActionArea>
+                        <img src={item.cover} />
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="h2">
+                            {item.name}
+                           </Typography>
+                          <Typography variant="body2" color="textSecondary" component="p">
+                            {item.description}
+                           </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                      <CardActions>
+                        <Button size="small" color="primary">
+                          Share
+                         </Button>
+                        <Button size="small" color="primary">
+                          Learn More
+                         </Button>
+                      </CardActions>
+                    </Card>
                   )
-                  )} */}
+                  )}
                 </List>
               } </Group> : ""}
 
