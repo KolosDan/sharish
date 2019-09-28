@@ -211,6 +211,8 @@ class VKchallenge extends React.Component {
       u_photo = this.state.posted_community.photo_100;
     }
 
+    alert(f_name, l_name, u_photo);
+
     instance.post('http://192.168.43.150:5000/create_challenge', {
       user_id: this.state.user_obj_vk.id.toString(),
       name: this.state.name,
@@ -482,7 +484,7 @@ class VKchallenge extends React.Component {
                 }
                 <CellButton onClick={() => { this.setState({ activeStory: 'task' }) }} before={<Icon24Add />} >Добавить задание</CellButton>
               </Group>
-              <Button onClick={() => { this.postChallenge(); this.setState({ activeStory: 'view1' }) }} size="xl">Создать</Button>
+              <Button onClick={() => { this.getGroupById(this.state.community); this.setState({ activeStory: 'view1' }) }} size="xl">Создать</Button>
             </FormLayout>
           </Panel>
         </View>
