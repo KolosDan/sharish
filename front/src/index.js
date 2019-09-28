@@ -371,7 +371,8 @@ class VKchallenge extends React.Component {
                 before={<Avatar size={40} src={this.state.user_obj_vk.photo_200} />}>
                 {this.state.user_obj_vk.first_name} {this.state.user_obj_vk.last_name}
               </PanelHeaderContent>
-              <Group>
+            </PanelHeader>
+            <Group>
                 <List>
                   <Cell expandable before={<Icon24Settings />}>Статистика</Cell>
                   <Cell expandable before={<Icon24Settings />}>Достижения</Cell>
@@ -380,7 +381,6 @@ class VKchallenge extends React.Component {
                   <Cell expandable before={<Icon24Settings />}>Настройки</Cell>
                 </List>
               </Group>
-            </PanelHeader>
           </Panel>
         </View>
       </Epic>
