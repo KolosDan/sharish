@@ -174,11 +174,13 @@ class VKchallenge extends React.Component {
       this.postChallenge();
       return;
     }
+    alert("got community id")
     connect.send("VKWebAppCallAPIMethod", {
       "method": "groups.getById",
       "request_id": "posted_community",
       "params": {"group_id": id, "v": "5.101", "access_token": this.state.token }
     });
+    alert("sent")
   }
 
   getAllChallenges() {
