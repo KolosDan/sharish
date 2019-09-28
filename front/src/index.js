@@ -284,7 +284,7 @@ class VKchallenge extends React.Component {
             <PanelHeader>
               feed
               </PanelHeader>
-              <Card className={classes.card}>
+              <Card>
                 <CardActionArea>
                   <img src='https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg'/>
                   <CardContent>
