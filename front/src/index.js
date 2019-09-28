@@ -244,27 +244,35 @@ class VKchallenge extends React.Component {
           <Panel id="new-user" theme="white">
             <PanelHeader > Мои челленджи</PanelHeader>
             <Tabs theme="header" type="buttons">
+                <HorizontalScroll>
                   <TabsItem
-                    onClick={() => this.setState({ activeTab6: 'active' })}
-                    selected={this.state.activeTab6 === 'active'}
-                  >
-                    Активные
-                  </TabsItem>
+                    onClick={() => this.setState({ activeTab6: 'all' })}
+                    selected={this.state.activeTab6 === 'all'}>
+                    Мои челленджи
+              </TabsItem>
                   <TabsItem
-                    onClick={() => this.setState({ activeTab6: 'ended' })}
-                    selected={this.state.activeTab6 === 'ended'}
-                  >
-                    Завершенные
-                  </TabsItem>
+                    onClick={() => this.setState({ activeTab6: 'users' })}
+                    selected={this.state.activeTab6 === 'users'}>
+                    Рекоммендации
+              </TabsItem>
+                  <TabsItem
+                    onlick={() => { this.setState({ activeTab6: 'groups' }); }}
+                    selected={this.state.activeTab6 === 'groups'}>
+                    Создать
+              </TabsItem>
+                </HorizontalScroll>
               </Tabs>
 
-              {this.state.activeTab6 === 'acitve' ?
-              this.state.challenge_obj.length > 0 &&
-                <List>
-                {this.state.challenge_obj.map((item) => (
-                   <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24Add fill="var(--accent)"/>}>{item.description}</Cell>
-                ))}
-                </List> : ""}
+              {this.state.activeTab6 === 'groups' ? <Group>
+                <Div>
+                  <InfoRow title="Просто текст">
+                    Читай меня
+                  </InfoRow>
+                  <Div>
+                    <Button onClick={() => { this.setState({ activeView: 'view4' }) }} stretched style={{ marginRight: 8 }} level="secondary">Добавить челлендж</Button>
+                  </Div>
+                </Div>
+              </Group> : ""}
 
 
             
