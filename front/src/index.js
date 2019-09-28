@@ -266,7 +266,7 @@ class VKchallenge extends React.Component {
                 </List> : ""}
 
                 {this.state.activeTab6 === 'ended' ?
-                  jopa: ""}
+                  jopa : ""}
 
 
             
