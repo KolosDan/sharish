@@ -284,6 +284,7 @@ class VKchallenge extends React.Component {
   }
 
   restoreState(args){
+    alert(JSON.stringify(e.detail, null, 4)) 
     this.setState({ name: args.name });
     this.setState({ desc: args.description});
     this.setState({ complete: args.complete_message });
