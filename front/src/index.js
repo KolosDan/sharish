@@ -113,6 +113,7 @@ class VKchallenge extends React.Component {
     connect.send("VKWebAppSetLocation", { "location": "hash" });
     connect.subscribe((e) => {
       console.log(window.location.hash);
+      alert(JSON.stringify(e.detail, null, 4)) 
       if (e.detail.type === "VKWebAppGetUserInfoResult") {
         this.state.user_obj_vk = e.detail.data;
         this.getUser();
@@ -127,6 +128,7 @@ class VKchallenge extends React.Component {
         });
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
+        
         if (e.detail.requset.id === "groups.get"){
           this.setState({ user_groups: e.detail.data.response.items })
         }
@@ -134,7 +136,7 @@ class VKchallenge extends React.Component {
           alert("commmmmm");
           this.setState({ posted_community: e.detail.data.response })
           this.postChallenge();
-        }
+        } 
         // { alert(JSON.stringify(e.detail, null, 4)) }
       }
     });
@@ -169,18 +171,15 @@ class VKchallenge extends React.Component {
   }
 
   getGroupById(id) {
-    alert(this.state.community)
     if(this.state.community === "My account"){
       this.postChallenge();
       return;
     }
-    alert("got community id")
     connect.send("VKWebAppCallAPIMethod", {
       "method": "groups.getById",
       "request_id": "posted_community",
       "params": {"group_id": id, "v": "5.101", "access_token": this.state.token }
     });
-    alert("sent")
   }
 
   getAllChallenges() {
