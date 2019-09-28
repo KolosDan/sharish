@@ -138,7 +138,7 @@ class VKchallenge extends React.Component {
 
   postChallenge() {
     instance.post('http://192.168.43.150:5000/create_challenge', {
-      user_id: this.state.user_obj_vk.id,
+      user_id: this.state.user_obj_vk.id.toString(),
       name: this.state.name,
       description: this.state.desc,
       complete_message: this.state.complete,
@@ -158,7 +158,7 @@ class VKchallenge extends React.Component {
 
   addGroup(id, name) {
     instance.post('http://192.168.43.150:5000/connect_group', {
-      user_id: this.state.user_obj_vk.id,
+      user_id: this.state.user_obj_vk.id.toString(),
       group_id: id,
       group_name: name
     })
