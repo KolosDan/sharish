@@ -372,7 +372,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="new-user" id="view4">
           <Panel id="new-user" theme="white">
-            <PanelHeader noShadow> Мои челленджи</PanelHeader>
+            <PanelHeader noShadow>Мои конкурсы</PanelHeader>
             <Tabs theme="header" type="buttons">
               <TabsItem
                 onClick={() => this.setState({ activeTab6: 'active' })}
@@ -438,7 +438,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="pep" id="create">
           <Panel id="pep" theme="white">
-            <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'view4' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>}>
+            <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'more' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>}>
               Создать
               </PanelHeader>
             <FormLayout>
