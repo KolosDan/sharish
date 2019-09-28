@@ -391,6 +391,7 @@ class VKchallenge extends React.Component {
             <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'more' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>} >
               Группы
             </PanelHeader>
+            {alert(this.state.user_groups[0].name)}
             {this.state.user_groups.length > 0 &&
               this.state.user_groups.map((item) => (
                   <Cell
