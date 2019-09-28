@@ -241,11 +241,11 @@ class VKchallenge extends React.Component {
 
         <View activePanel="new-user" id="view4">
           <Panel id="new-user" theme="white">
-            <PanelHeader > Мои челленджи</PanelHeader>
-            <Tabs noShadow theme="light">
+            <PanelHeader noShadow > Мои челленджи
+            <Tabs  theme="light">
                 <TabsItem
-                  onClick={() => this.setState({ activeView: 'active' })}
-                  selected={this.state.activeView === 'active'}
+                  onClick={() => this.setState({ activeView: 'view4' })}
+                  selected={this.state.activeView === 'view4'}
                 >
                   Активные
                 </TabsItem>
@@ -256,16 +256,25 @@ class VKchallenge extends React.Component {
                   Завершенные
                 </TabsItem>
               </Tabs>
+              </PanelHeader>
             {this.state.challenge_obj.length > 0 &&
             <List>
             {this.state.challenge_obj.map((item) => (
-               <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description="" asideContent={<Icon24Add fill="var(--accent)"/>}> asdas</Cell>
+               <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24Add fill="var(--accent)"/>}>{item.description}</Cell>
             ))}
             </List>
             }
             <Fab onClick={() => { this.setState({ activeStory: 'create' }) }} style={{ position: 'fixed', bottom: 0, right: 0, marginBottom: "65px", marginRight: "10px" }} color="primary" aria-label="add">
               <AddIcon />
             </Fab>
+          </Panel>
+        </View>
+
+        <View activePanel="end" id="ended">
+          <Panel id="end">
+            <PanelHeader>
+              end
+              </PanelHeader>
           </Panel>
         </View>
 
