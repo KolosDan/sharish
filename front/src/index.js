@@ -41,6 +41,7 @@ const useStyles = makeStyles({
   },
 });
 
+const classes = useStyles();
 
 const instance = axios.create({
   headers: { 'Access-Control-Allow-Origin': "*" }
@@ -323,7 +324,7 @@ class VKchallenge extends React.Component {
             <Card>
       <CardActionArea>
         <CardMedia
-          // className={classes.media}
+          className={classes.media}
           image="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg"
           title="Contemplative Reptile"
         />
