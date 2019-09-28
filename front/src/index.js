@@ -45,8 +45,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImgMediaCard() {
-  const classes = useStyles();
+const classes = useStyles();
 
 class ChallengeInfo extends React.Component {
   constructor(props) {
