@@ -306,10 +306,10 @@ class VKchallenge extends React.Component {
             {this.state.activeTab5 === 'popular' ? <Group>
               {this.state.all_challenges.length > 0 &&
                 <List>keke
-                  {/* {this.state.getAllChallenges.map((item) => (
+                  {this.state.all_challenges.map((item) => (
                     item._id
                   )
-                  )} */}
+                  )}
                 </List>
               } </Group> : ""}
 
