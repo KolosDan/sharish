@@ -100,7 +100,8 @@ class VKchallenge extends React.Component {
     connect.send("VKWebAppGetAuthToken", { "app_id": 7138408, "scope": "groups,friends" });
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(previousProps, previousState) {
+    alert(previousState)
     if (this.state.activeStory === "view4") {
       this.getChallenges();
     }
