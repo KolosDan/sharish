@@ -1,3 +1,7 @@
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
@@ -14,10 +18,14 @@ import Icon16Dropdown from '@vkontakte/icons/dist/16/dropdown';
 import Icon28DoneOutline from '@vkontakte/icons/dist/28/done_outline';
 import Icon28AddOutline from '@vkontakte/icons/dist/28/add_outline';
 import Icon28User from '@vkontakte/icons/dist/28/user';
-import Icon24Newsfeed from '@vkontakte/icons/dist/24/newsfeed';
+import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import '@vkontakte/vkui/dist/vkui.css';
 import * as connect from '@vkontakte/vkui-connect';
 import axios from 'axios';
+
+const instance = axios.create({
+  headers: {'Access-Control-Allow-Origin' : "*"}
+});
 
 const osname = platform();
 connect.send("VKWebAppInit", {});
@@ -25,7 +33,8 @@ connect.send("VKWebAppInit", {});
 class VKchallenge extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {
+
+     this.state = {
         name_task : "",
         desc_task : "",
         value_task : "",
@@ -35,6 +44,7 @@ class VKchallenge extends React.Component {
         hash : "",
         publ : "",
         community : "",
+	winner : "",
 
         activeStory: 'feed',
         activeView: "view1",
@@ -95,9 +105,9 @@ class VKchallenge extends React.Component {
         this.setState({groups_checked : true});
       }
     }
-  
+
    getUser() {
-      axios.get(`https://cors-anywhere.herokuapp.com/http://3.0.16.7:5000/get_user_info?user_id=${this.state.user_obj_vk.id}`)
+      instance.get(`http://192.168.43.150:5000/get_user_info?user_id=67880703`)
         .then((response) => {
           this.setState({user_obj : response.data.result});
         })
@@ -105,7 +115,7 @@ class VKchallenge extends React.Component {
           console.log(error);
         });
     }
-  
+
     getChallenge(usr_id) {
       axios.get(`https://cors-anywhere.herokuapp.com/http://192.168.43.150:5000/get_challenge_info?challenge_id=${usr_id}`)
         .then((response) => {
@@ -117,17 +127,19 @@ class VKchallenge extends React.Component {
     }
 
     postChallenge() {
-      axios.post('http://192.168.43.150:5000/create_challenge', {
+      instance.post('http://192.168.43.150:5000/create_challenge', {
         user_id: this.state.user_obj_vk.id,
         name: this.state.name,
         description: this.state.desc,
         complete_message: this.state.complete,
-        tasks: this.state.tasks,
+        tasks: this.state.task_list,
         max_participants: this.state.max,
-        group_publisher: this.state.publ
+	challenge_hashtag : this.state.hash,
+        group_publisher: this.state.community,
+	winner : this.state.winner
       })
         .then(function (response) {
-          console.log(response);
+          alert(response.data.error);
         })
         .catch(function (error) {
           console.log(error);
@@ -138,8 +150,9 @@ class VKchallenge extends React.Component {
       const { name, value } = e.currentTarget;
       this.setState({ [name]: value });
     }
-  
-    render() {
+
+    
+  render() {
       return (
         <Epic activeStory={this.state.activeStory} tabbar={
           <Tabbar>
@@ -148,7 +161,7 @@ class VKchallenge extends React.Component {
               selected={this.state.activeStory === 'feed'}
               data-story="feed"
               text="Лента"
-            ><Icon24Newsfeed /></TabbarItem>
+            ><Icon28Newsfeed /></TabbarItem>
             <TabbarItem
               onClick={this.onStoryChange}
               selected={this.state.activeStory === 'index'}
@@ -190,7 +203,7 @@ class VKchallenge extends React.Component {
                   Communities
                 </PanelHeaderContent>
               </PanelHeader>
-  
+
               <HeaderContext opened={false} onClose={this.toggleContext}>
                 <List>
                   <Cell
@@ -227,20 +240,35 @@ class VKchallenge extends React.Component {
   
           <View activePanel="new-user" id="view4">
             <Panel id="new-user" theme="white">
-              <PanelHeader > Новый челлендж</PanelHeader>
+              <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'view4' }) }}>{osname === IOS ? <Icon28ChevronBack />  : <Icon24Back />}</HeaderButton>} > Новый челлендж</PanelHeader>
+		 <Fab style={{position: 'fixed', bottom : 0, right: 0, marginBottom : "65px", marginRight : "10px"}} color="primary" aria-label="add">
+                  <AddIcon />
+                 </Fab>
                 <FormLayout>
                   <Input value={this.state.name} top="Название" name="name" onChange={this.onChange} />
                   <Input value={this.state.desc} top="Описание" name="desc" onChange={this.onChange} />
                   <Input value={this.state.complete} top="Сообщение по завершении" name="complete" onChange={this.onChange} />
                   <Input value={this.state.hash} top="Хештег челленджа" name="hash" onChange={this.onChange} />
-                  <Input top="Макс. участников" name="max" onChange={this.onChange} />
+                  <Input value={this.state.max} top="Макс. участников" name="max" onChange={this.onChange} />
+		  <Group title="Кол-во победителей">
+		      <Select value={this.state.winner} name="winner" onChange={this.onChange} >
+			<option value="0">Нет победителя</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+		      </Select>
+		  </Group>
+		  <Group title="Автор">
                   {this.state.user_obj.connected_groups.length > 0 &&
-                    <Select placeholder="От имени группы" name="community" onChange={this.onChange} >
-                      {this.state.user_obj.connected_groups.map((item) => (
+                    <Select value={this.state.community} name="community" onChange={this.onChange} >
+		      <option value="My account">Мой аккаунт</option>
+                     {this.state.user_obj.connected_groups.map((item) => (
                           <option key={item.group_id} value={item.group_id}>{item.group_name}</option>
                       ))}
                     </Select>
                   }
+		  </Group>
                   <Group title="Задания">
                   {this.state.task_list.length > 0 &&
                       <List>
@@ -249,13 +277,13 @@ class VKchallenge extends React.Component {
                             this.setState({
                               task_list: [...this.state.task_list.slice(0, index), ...this.state.task_list.slice(index + 1)]
                             })
-                          }}>Тип: {item.type} <br/> Описание: {item.desc}</Cell>
+                          }}>Тип: {item.type} <br/> Описание: {item.description}</Cell>
                         ))}
                       </List>
                   }
                <CellButton onClick={() => { this.setState({ activeStory: 'task' }) }}   before={<Icon24Add />} >Добавить задание</CellButton>
                   </Group>
-                  <Button size="xl">Создать</Button>
+                  <Button  onClick={() => { this.postChallenge(); this.setState({ activeStory: 'view1' }) }} size="xl">Создать</Button>
                 </FormLayout>
             </Panel>
           </View>
@@ -273,7 +301,7 @@ class VKchallenge extends React.Component {
                   <Input top="Описание" name="desc_task" onChange={this.onChange} />
                   <Input top="Значение" name="value_task" onChange={this.onChange} />
                   <Button onClick={() =>{this.state.task_list.push({type:this.state.name_task,
-                  desc: this.state.desc_task, value: this.state.value_task }); this.setState({ activeStory: 'view4' }) }} size="xl" >Добавить</Button>
+                  description: this.state.desc_task, value: this.state.value_task }); this.setState({ activeStory: 'view4' }) }} size="xl" >Добавить</Button>
                 </FormLayout>
             </Panel>
           </View>
