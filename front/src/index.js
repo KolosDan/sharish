@@ -1,3 +1,7 @@
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
@@ -29,7 +33,8 @@ connect.send("VKWebAppInit", {});
 class VKchallenge extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {
+
+     this.state = {
         name_task : "",
         desc_task : "",
         value_task : "",
@@ -145,8 +150,9 @@ class VKchallenge extends React.Component {
       const { name, value } = e.currentTarget;
       this.setState({ [name]: value });
     }
-  
-    render() {
+
+    
+  render() {
       return (
         <Epic activeStory={this.state.activeStory} tabbar={
           <Tabbar>
@@ -197,7 +203,7 @@ class VKchallenge extends React.Component {
                   Communities
                 </PanelHeaderContent>
               </PanelHeader>
-  
+
               <HeaderContext opened={false} onClose={this.toggleContext}>
                 <List>
                   <Cell
@@ -234,7 +240,10 @@ class VKchallenge extends React.Component {
   
           <View activePanel="new-user" id="view4">
             <Panel id="new-user" theme="white">
-              <PanelHeader > Новый челлендж</PanelHeader>
+              <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'view4' }) }}>{osname === IOS ? <Icon28ChevronBack />  : <Icon24Back />}</HeaderButton>} > Новый челлендж</PanelHeader>
+		 <Fab style={{position: 'fixed', bottom : 0, right: 0, marginBottom : "65px", marginRight : "10px"}} color="primary" aria-label="add">
+                  <AddIcon />
+                 </Fab>
                 <FormLayout>
                   <Input value={this.state.name} top="Название" name="name" onChange={this.onChange} />
                   <Input value={this.state.desc} top="Описание" name="desc" onChange={this.onChange} />
