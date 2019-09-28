@@ -60,7 +60,7 @@ class ChallengeInfo extends React.Component {
                       asideContent={<Icon24DoneOutline fill="var(--accent)" />}
                       description={task.description}
                     >
-                      Задание {index} ({task.type})
+                      Задание {index}
                     </Cell>
         )}
             </List>
