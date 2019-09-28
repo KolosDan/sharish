@@ -52,6 +52,10 @@ class ChallengeInfo extends React.Component {
           </Div>
           <FormLayout>
             <Checkbox>чекбокс</Checkbox>
+            <Checkbox>чекбок2</Checkbox>
+            <Checkbox>чекбок3</Checkbox>
+            <Checkbox>чекбок4</Checkbox>
+            <Checkbox>чекбок5</Checkbox>
           </FormLayout>
         </Group>
       </React.Fragment>
