@@ -32,6 +32,17 @@ def create_challenge():
     except Exception as e:
         return {'error': str(e)}
 
+#get args: challenge_id
+@app.route('/get_challenge_info')
+def get_challenge_info():
+    try:
+        data = eval(request.data.decode())
+        if {'challenge_id'} != set(list(data.keys())):
+            raise Exception('ApiException', 'Invalid arguments are provided')
+        return Challenge(data['challenge_id']).get_challenge_info()
+    except Exception as e:
+        return {'error': str(e)}
+
 #post args: challenge_id
 @app.route('/start_challenge', methods=['POST'])
 def start_challenge():
