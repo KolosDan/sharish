@@ -52,7 +52,7 @@ class VKchallenge extends React.Component {
       activeView: "view1",
       activeTab6: "active",
       challenge_obj: {},
-      user_groups : [],
+      user_groups: [],
       challenges: {},
       user_obj: { connected_groups: [] },
       user_obj_vk: {},
@@ -93,11 +93,11 @@ class VKchallenge extends React.Component {
         this.state.token = e.detail.data.access_token;
         connect.send("VKWebAppCallAPIMethod", {
           "method": "groups.get",
-          "params": { "user_id": this.state.user_obj_vk.id , "v": "5.101", filter: "admin", count : 1000 , "access_token": this.state.token }
+          "params": { "user_id": this.state.user_obj_vk.id, "v": "5.101", filter: "admin", count: 1000, "access_token": this.state.token }
         });
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
-        this.setState({user_groups : e.detail.data.response.items})
+        this.setState({ user_groups: e.detail.data.response.items })
         { alert("peps") }
       }
     });
@@ -375,22 +375,33 @@ class VKchallenge extends React.Component {
               </PanelHeaderContent>
             </PanelHeader>
             <Group>
-                <List>
-                  <Cell expandable before={<Icon24Settings />}>Статистика</Cell>
-                  <Cell expandable before={<Icon24Settings />}>Достижения</Cell>
-                  <Cell onClick={() => { this.setState({ activeStory: 'user_groups' }) }} expandable before={<Icon24Settings />}>Мои группы</Cell>
-                  <Cell expandable before={<Icon24Settings />}>Понравившиеся</Cell>
-                  <Cell expandable before={<Icon24Settings />}>Настройки</Cell>
-                </List>
-              </Group>
+              <List>
+                <Cell expandable before={<Icon24Settings />}>Статистика</Cell>
+                <Cell expandable before={<Icon24Settings />}>Достижения</Cell>
+                <Cell onClick={() => { this.setState({ activeStory: 'user_groups' }) }} expandable before={<Icon24Settings />}>Мои группы</Cell>
+                <Cell expandable before={<Icon24Settings />}>Понравившиеся</Cell>
+                <Cell expandable before={<Icon24Settings />}>Настройки</Cell>
+              </List>
+            </Group>
           </Panel>
         </View>
 
         <View activePanel="usr_groups" id="user_groups">
           <Panel id="usr_groups">
-            <PanelHeader>
+            <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'more' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>} >
               Группы
             </PanelHeader>
+            {this.state.user_groups.length > 0 &&
+              this.state.user_groups.map((item) => (
+                  <Cell
+                    size="l"
+                    before={<Avatar src={item.photo_100} />}
+                    bottomContent={<Button>Добавить</Button>}
+                  >
+                    {item.name}
+                  </Cell>
+              ))
+            }
           </Panel>
         </View>
       </Epic>
