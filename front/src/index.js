@@ -101,7 +101,7 @@ class VKchallenge extends React.Component {
       publ: "",
       community: "My account",
       winner: "",
-      challenge_photo: "",
+      cover: "",
 
       activeStory: 'feed',
       activeView: "view1",
@@ -422,12 +422,17 @@ class VKchallenge extends React.Component {
                           </CardContent>
                         </CardActionArea>
                         <CardActions>
-                          <Div style={{ display: 'flex' }}>
-                            <Button size="l" stretched style={{ marginRight: 8 }}>Stretched</Button>
-                            <Button stretched onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="l" color="primary">
-                              Learn More
-                         </Button>
-                          </Div>
+                          <Group title="Растягивание по ширине">
+                            <Div>
+                              <Button size="l">No stretch</Button>
+                            </Div>
+                            <Div style={{ display: 'flex' }}>
+                              <Button stretched onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="l" color="primary">
+                                Learn More
+                             </Button>
+                              <Button size="l" stretched >Stretched</Button>
+                            </Div>
+                          </Group>
                         </CardActions>
                       </Card>
                     </Group>
@@ -458,7 +463,7 @@ class VKchallenge extends React.Component {
             <FormLayout>
               <Input value={this.state.name} top="Название" name="name" onChange={this.onChange} />
               <Input value={this.state.desc} top="Описание" name="desc" onChange={this.onChange} />
-              <Input value={this.state.challenge_photo} top="Фото" name="challenge_photo" onChange={this.onChange} />
+              <Input value={this.state.cover} top="Фото" name="cover" onChange={this.onChange} />
               <Input value={this.state.complete} top="Сообщение по завершении" name="complete" onChange={this.onChange} />
               <Input value={this.state.hash} top="Хештег челленджа" name="hash" onChange={this.onChange} />
               <Input value={this.state.max} top="Макс. участников" name="max" onChange={this.onChange} />
