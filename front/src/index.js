@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import {
   View, Panel, PanelHeader, Group, List, Cell, Avatar, Footer,
   HeaderButton, CellButton, Root, PanelHeaderContent, Epic, platform,
-  Tabbar, TabbarItem, Search, Input, FormLayout, Button,
-  Select, IOS, Tabs, TabsItem, Div
+  Tabbar, TabbarItem, Search, Input, FormLayout, Button, InfoRow,
+  Select, IOS, Tabs, TabsItem, Div, Progress
 } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
@@ -43,6 +43,16 @@ class ChallengeInfo extends React.Component {
         </Group>
         <Group title="Кол-во участников">
           <Cell multiline>{this.props.max}</Cell>
+        </Group>
+        <Group>
+          <Div>
+            <InfoRow title="3/5">
+              <Progress value={40} />
+            </InfoRow>
+          </Div>
+          <FormLayout>
+            <Checkbox>чекбокс</Checkbox>
+          </FormLayout>
         </Group>
       </React.Fragment>
     );
@@ -331,7 +341,7 @@ class VKchallenge extends React.Component {
                           </CardContent>
                         </CardActionArea>
                         <CardActions>
-                          <Button onClick={() => {this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="xl" color="primary">
+                          <Button onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="xl" color="primary">
                             Learn More
                          </Button>
                         </CardActions>
@@ -385,7 +395,7 @@ class VKchallenge extends React.Component {
                           </CardContent>
                         </CardActionArea>
                         <CardActions>
-                          <Button onClick={() => {this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="xl" color="primary">
+                          <Button onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="xl" color="primary">
                             Learn More
                          </Button>
                         </CardActions>
