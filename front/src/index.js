@@ -39,7 +39,7 @@ class ChallengeInfo extends React.Component {
     return (
       <React.Fragment>
         <PanelHeader left={<HeaderButton onClick={this.props.handler} >{<Icon24Back />}</HeaderButton>}> {this.props.name}</PanelHeader>
-        <img style={{maxWidth:"200px"}} src={this.props.cover} />
+        <img style={{maxWidth:"500px"}} src={this.props.cover} />
         <Group title="Описание">
           <Cell multiline>{this.props.desc}</Cell>
         </Group>
