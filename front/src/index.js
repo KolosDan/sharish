@@ -208,9 +208,9 @@ class VKchallenge extends React.Component {
 
     if(this.state.community !== "My account"){
       alert(JSON.stringify(this.state.posted_community, null, 4))
-      f_name = this.state.posted_community.name;
+      f_name = this.state.posted_community[0].name;
       l_name = "";
-      u_photo = this.state.posted_community.photo_100;
+      u_photo = this.state.posted_community[0].photo_100;
     }
 
     instance.post('http://192.168.43.150:5000/create_challenge', {
