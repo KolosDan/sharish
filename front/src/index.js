@@ -269,9 +269,23 @@ class VKchallenge extends React.Component {
         <View activePanel="list" id="index">
           <Panel id="list">
             <PanelHeader noShadow>
-              <PanelHeaderContent aside={<Icon16Dropdown />} onClick={this.toggleContext}>
-                Communities
-                </PanelHeaderContent>
+            <Tabs theme="header" type="buttons">
+              <TabsItem
+                onClick={() => this.setState({ activeTab6: 'active' })}
+                selected={this.state.activeTab6 === 'active'}>
+                Популярное
+              </TabsItem>
+              <TabsItem
+                onClick={() => this.setState({ activeTab6: 'ended' })}
+                selected={this.state.activeTab6 === 'ended'}>
+                От сообществ
+              </TabsItem>
+              <TabsItem
+                onClick={() => this.setState({ activeTab6: 'ended' })}
+                selected={this.state.activeTab6 === 'ended'}>
+                От друзей
+              </TabsItem>
+            </Tabs>
             </PanelHeader>
 
             <HeaderContext opened={false} onClose={this.toggleContext}>
@@ -310,7 +324,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="new-user" id="view4">
           <Panel id="new-user" theme="white">
-            <PanelHeader > Мои челленджи</PanelHeader>
+            <PanelHeader noShadow> Мои челленджи</PanelHeader>
             <Tabs theme="header" type="buttons">
               <TabsItem
                 onClick={() => this.setState({ activeTab6: 'active' })}
