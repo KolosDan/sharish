@@ -378,11 +378,19 @@ class VKchallenge extends React.Component {
                 <List>
                   <Cell expandable before={<Icon24Settings />}>Статистика</Cell>
                   <Cell expandable before={<Icon24Settings />}>Достижения</Cell>
-                  <Cell expandable before={<Icon24Settings />}>Мои группы</Cell>
+                  <Cell onClick={() => { this.setState({ activeStory: 'user_groups' }) }} expandable before={<Icon24Settings />}>Мои группы</Cell>
                   <Cell expandable before={<Icon24Settings />}>Понравившиеся</Cell>
                   <Cell expandable before={<Icon24Settings />}>Настройки</Cell>
                 </List>
               </Group>
+          </Panel>
+        </View>
+
+        <View activePanel="usr_groups" id="user_groups">
+          <Panel id="usr_groups">
+            <PanelHeader>
+              Группы
+            </PanelHeader>
           </Panel>
         </View>
       </Epic>
