@@ -398,38 +398,17 @@ class VKchallenge extends React.Component {
               </TabsItem>
             </Tabs>
 
-            {this.state.activeTab6 === 'active' ? <List>
-              {this.state.challenge_obj.map((item) => (
-                <Group>
-                  <Cell
-                    size="l"
-                    description={"#" + item.hashtag}
-                    before={<Avatar src={item.user_photo} />}
-                  >
-                    {item.first_name} {item.last_name}
-                  </Cell>
-                  <Card>
-                    <CardActionArea>
-                      <img src={item.cover} />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {item.name}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                          {item.description}
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button size="xl" color="primary">
-                        Learn More
-                         </Button>
-                    </CardActions>
-                  </Card>
-                </Group>
-              )
-              )}
-            </List> : ""}
+            {this.state.activeTab6 === 'active' ? <Group>
+              {this.state.challenge_obj.length > 0 &&
+                <List>
+                  {this.state.challenge_obj.map((item) => (
+                    item.status !== "STOPPED" &&
+                    <Cell onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />}
+                      description={item.name} asideContent={< Icon24Play fill="var(--accent)" />}> {item.description}</Cell>
+                  )
+                  )}
+                </List>
+              } </Group> : ""}
 
             {this.state.activeTab6 === 'ended' ? <Group>
               {this.state.challenge_obj.length > 0 &&
