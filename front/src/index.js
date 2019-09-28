@@ -131,7 +131,6 @@ class VKchallenge extends React.Component {
           this.setState({ user_groups: e.detail.data.response.items })
         }
         else if (e.detail.data.request_id === "posted_community") {
-          alert("commmmmm");
           this.setState({ posted_community: e.detail.data.response })
           this.postChallenge();
         }
@@ -158,14 +157,6 @@ class VKchallenge extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-  }
-
-  getUserById(id) {
-    connect.send("VKWebAppCallAPIMethod", {
-      "method": "users.get",
-      "request_id": "users.get",
-      "params": { "user_ids": id, "v": "5.101", "access_token": this.state.token }
-    });
   }
 
   getGroupById(id) {
@@ -362,17 +353,9 @@ class VKchallenge extends React.Component {
           </Panel>
         </View>
 
-        <View activePanel="brand" id="view2">
-          <Panel id="brand">
-            <PanelHeader>
-              Таб
-              </PanelHeader>
-          </Panel>
-        </View>
-
         <View activePanel="new-user" id="view4">
           <Panel id="new-user" theme="white">
-            <PanelHeader noShadow>Мои конкурсы</PanelHeader>
+            <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'more' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>} noShadow>Мои конкурсы</PanelHeader>
             <Tabs theme="header" type="buttons">
               <TabsItem
                 onClick={() => this.setState({ activeTab6: 'active' })}
@@ -454,6 +437,7 @@ class VKchallenge extends React.Component {
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
+                  <option value="5">5</option>
                 </Select>
               </Group>
               {this.state.user_obj.connected_groups.length > 0 &&
