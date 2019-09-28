@@ -398,43 +398,42 @@ class VKchallenge extends React.Component {
               </TabsItem>
             </Tabs>
 
-            {this.state.activeTab6 === 'active' ?
-
-
-              <Group>
-                {this.state.challenge_obj.length > 0 &&
-                  <List>
-                    <Cell
-                      size="l"
-                      description={"#" + item.hashtag}
-                      before={<Avatar src={item.user_photo} />}
-                    >
-                      {item.first_name} {item.last_name}
-                    </Cell>
-                    <Card>
-                      <CardActionArea>
-                        <img src={item.cover} />
-                        <CardContent>
-                          <Typography gutterBottom variant="h5" component="h2">
-                            {item.name}
-                          </Typography>
-                          <Typography variant="body2" color="textSecondary" component="p">
-                            {item.description}
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                      <CardActions>
-                        <Button size="xl" color="primary">
-                          Learn More
+            {this.state.activeTab6 === 'active' ? <Group>
+              {this.state.all_challenges.length > 0 &&
+                <List>
+                  {this.state.all_challenges.map((item) => (
+                    <Group>
+                      <Cell
+                        size="l"
+                        description={"#" + item.hashtag}
+                        before={<Avatar src={item.user_photo} />}
+                      >
+                        {item.first_name} {item.last_name}
+                      </Cell>
+                      <Card>
+                        <CardActionArea>
+                          <img src={item.cover} />
+                          <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                              {item.name}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                              {item.description}
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                          <Button size="xl" color="primary">
+                            Learn More
                          </Button>
-                      </CardActions>
-                    </Card>
-                  </List>
-                } </Group>
+                        </CardActions>
+                      </Card>
+                    </Group>
+                  )
+                  )}
+                </List>
+              } </Group> : ""}
 
-
-
-              : ""}
 
             {this.state.activeTab6 === 'ended' ? <Group>
               {this.state.challenge_obj.length > 0 &&
