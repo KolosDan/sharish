@@ -122,12 +122,21 @@ class VKchallenge extends React.Component {
         this.state.token = e.detail.data.access_token;
         connect.send("VKWebAppCallAPIMethod", {
           "method": "groups.get",
+          "request_id": "groups.get", 
           "params": { extended: 1, "user_id": this.state.user_obj_vk.id, "v": "5.101", filter: "admin", count: 1000, "access_token": this.state.token }
         });
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
-        this.setState({ user_groups: e.detail.data.response.items })
-        { alert(JSON.stringify(e, null, 4)) }
+        if (e.detail.requset.id === "groups.get"){
+          this.setState({ user_groups: e.detail.data.response.items })
+        }
+        else if (e.detail.requset.id === "users.get"){
+          this.setState({ user_groups: e.detail.data.response.items })
+        }
+        else if (e.detail.requset.id === "groups.getById"){
+          this.setState({ user_groups: e.detail.data.response.items })
+        }
+        // { alert(JSON.stringify(e.detail, null, 4)) }
       }
     });
     connect.send("VKWebAppGetUserInfo", {});
@@ -155,6 +164,7 @@ class VKchallenge extends React.Component {
   getUserById(id) {
     connect.send("VKWebAppCallAPIMethod", {
       "method": "users.get",
+      "request_id": "users.get",
       "params": {"user_ids": id, "v": "5.101", "access_token": this.state.token }
     });
   }
@@ -162,6 +172,7 @@ class VKchallenge extends React.Component {
   getGroupById(id) {
     connect.send("VKWebAppCallAPIMethod", {
       "method": "groups.getById",
+      "request_idf=": "groups.getById",
       "params": {"group_id": id, "v": "5.101", "access_token": this.state.token }
     });
   }
@@ -171,6 +182,7 @@ class VKchallenge extends React.Component {
       .then((response) => {
         response.data.result.sort((a, b) => (a.participants.length > b.participants.length) ? 1 : -1)
         this.setState({ all_challenges: response.data.result });
+        this.state.all_challenges.map( (item) => {  } )
       })
       .catch((error) => {
         console.log(error);
@@ -197,7 +209,11 @@ class VKchallenge extends React.Component {
       max_participants: this.state.max,
       challenge_hashtag: this.state.hash,
       group_publisher: this.state.community,
-      winner: this.state.winner
+      winner: this.state.winner,
+
+      first_name : this.state.user_obj_vk.first_name,
+      last_name : this.state.user_obj_vk.last_name,
+      user_photo : this.state.user_obj_vk.photo_100
     })
       .then(function (response) {
         alert(response.data.error);
@@ -324,7 +340,6 @@ class VKchallenge extends React.Component {
               {this.state.all_challenges.length > 0 &&
                 <List>
                   {this.state.all_challenges.map((item) => (
-                    // item.publisher > 0 ? 
                     <Group>
                       <Cell
                         size="l"
