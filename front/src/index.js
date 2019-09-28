@@ -433,10 +433,6 @@ class VKchallenge extends React.Component {
                   )}
                 </List>
               } </Group> : ""}
-
-            <Fab onClick={() => { this.setState({ activeStory: 'create' }) }} style={{ position: 'fixed', bottom: 0, right: 0, marginBottom: "65px", marginRight: "10px" }} color="primary" aria-label="add">
-              <AddIcon />
-            </Fab>
           </Panel>
         </View>
 
