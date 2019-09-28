@@ -39,7 +39,7 @@ class ChallengeInfo extends React.Component {
     return (
       <React.Fragment>
         <PanelHeader left={<HeaderButton onClick={this.props.handler} >{<Icon24Back />}</HeaderButton>}> {this.props.name}</PanelHeader>
-        <img style={{maxWidth:"370px"}} src={this.props.cover} />
+        <img style={{ maxWidth: "370px" }} src={this.props.cover} />
         <Group title="Описание">
           <Cell multiline>{this.props.desc}</Cell>
         </Group>
@@ -101,7 +101,7 @@ class VKchallenge extends React.Component {
       publ: "",
       community: "My account",
       winner: "",
-      challenge_photo : "",
+      challenge_photo: "",
 
       activeStory: 'feed',
       activeView: "view1",
@@ -357,7 +357,7 @@ class VKchallenge extends React.Component {
                       </Cell>
                       <Card>
                         <CardActionArea>
-                          <img style={{maxWidth:"370px"}} src={item.cover} />
+                          <img style={{ maxWidth: "370px" }} src={item.cover} />
                           <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
                               {item.name}
@@ -411,7 +411,7 @@ class VKchallenge extends React.Component {
                       </Cell>
                       <Card>
                         <CardActionArea>
-                          <img style={{maxWidth:"370px"}} src={item.cover} />
+                          <img style={{ maxWidth: "370px" }} src={item.cover} />
                           <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
                               {item.name}
@@ -422,9 +422,12 @@ class VKchallenge extends React.Component {
                           </CardContent>
                         </CardActionArea>
                         <CardActions>
-                          <Button onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="xl" color="primary">
-                            Learn More
+                          <Div style={{ display: 'flex' }}>
+                            <Button size="l" stretched style={{ marginRight: 8 }}>Stretched</Button>
+                            <Button stretched onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="l" color="primary">
+                              Learn More
                          </Button>
+                          </Div>
                         </CardActions>
                       </Card>
                     </Group>
@@ -570,7 +573,7 @@ class VKchallenge extends React.Component {
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
             <ChallengeInfo name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
-             cover={this.state.one_challenge_obj.cover}/>
+              cover={this.state.one_challenge_obj.cover} />
           </Panel>
         </View>
 
