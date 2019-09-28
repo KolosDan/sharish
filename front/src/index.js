@@ -12,7 +12,7 @@ import {
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Icon24Add from '@vkontakte/icons/dist/24/add';
-import Icon24Settings from '@vkontakte/icons/dist/24/Settings';
+import Icon24Settings from '@vkontakte/icons/dist/24/settings';
 import Icon28Menu from '@vkontakte/icons/dist/28/menu';
 import Icon16Dropdown from '@vkontakte/icons/dist/16/dropdown';
 import Icon28DoneOutline from '@vkontakte/icons/dist/28/done_outline';
