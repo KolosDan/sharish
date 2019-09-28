@@ -324,11 +324,6 @@ class VKchallenge extends React.Component {
             {this.state.activeTab5 === 'popular' ? <Group>
               {this.state.all_challenges.length > 0 &&
                 <List>
-                  <Card className={this.classes.card}>
-
-                  </Card>
-
-
                   {/* {this.state.all_challenges.map((item) => (
                     
                   )
