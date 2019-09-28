@@ -98,7 +98,7 @@ class VKchallenge extends React.Component {
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
         this.setState({ user_groups: e.detail.data.response.items })
-        { alert(JSON.stringify(this.state.user_groups, null, 4)) }
+        // { alert(JSON.stringify(this.state.user_groups, null, 4)) }
       }
     });
     connect.send("VKWebAppGetUserInfo", {});
@@ -146,6 +146,33 @@ class VKchallenge extends React.Component {
       challenge_hashtag: this.state.hash,
       group_publisher: this.state.community,
       winner: this.state.winner
+    })
+      .then(function (response) {
+        alert(response.data.error);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  addGroup(id, name) {
+    instance.post('http://192.168.43.150:5000/connect_group', {
+      user_id: this.state.user_obj_vk.id,
+      group_id: id,
+      group_name : name
+    })
+      .then(function (response) {
+        alert(response.data.error);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  deleteGroup(id) {
+    instance.post('http://192.168.43.150:5000/disconnect_group', {
+      user_id: this.state.user_obj_vk.id,
+      group_id: id
     })
       .then(function (response) {
         alert(response.data.error);
@@ -398,13 +425,21 @@ class VKchallenge extends React.Component {
             </Group>
             {this.state.user_groups.length > 0 &&
               this.state.user_groups.map((item) => (
-                <Cell
-                  size="l"
-                  before={<Avatar src={item.photo_100} />}
-                  bottomContent={<Button>Добавить</Button>}
-                >
-                  {item.name}
-                </Cell>
+                this.state.user_obj.connected_groups.includes(-parseInt(item.id)) ?
+                  <Cell
+                    size="l"
+                    before={<Avatar src={item.photo_100} />}
+                    bottomContent={<Button onClick={() => { this.deleteGroup(item.id); this.getUser() }}>Удалить</Button>}
+                  >
+                    {item.name}
+                  </Cell> :
+                  <Cell
+                    size="l"
+                    before={<Avatar src={item.photo_100} />}
+                    bottomContent={<Button onClick={() => { this.addGroup(item.id,item.name); this.getUser() }} >Добавить</Button>}
+                  >
+                    {item.name}
+                  </Cell>
               ))
             }
           </Panel>
