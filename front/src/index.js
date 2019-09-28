@@ -17,6 +17,9 @@ import Icon16Dropdown from '@vkontakte/icons/dist/16/dropdown';
 import Icon28DoneOutline from '@vkontakte/icons/dist/28/done_outline';
 import Icon28AddOutline from '@vkontakte/icons/dist/28/add_outline';
 import Icon28User from '@vkontakte/icons/dist/28/user';
+import Icon24Play from '@vkontakte/icons/dist/24/play';
+import Icon24Pause from '@vkontakte/icons/dist/24/pause';
+import Icon24MoreHorizontal from '@vkontakte/icons/dist/24/more_horizontal';
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
 import '@vkontakte/vkui/dist/vkui.css';
 import * as connect from '@vkontakte/vkui-connect';
@@ -262,8 +265,14 @@ class VKchallenge extends React.Component {
               {this.state.challenge_obj.length > 0 &&
                 <List>
                   {this.state.challenge_obj.map((item) => (
-                    item.status !== "STOPPED" && 
-                      <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24Add fill="var(--accent)" />}> {item.description}</Cell>
+                    (item.status === "STARTED" &&
+                      <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />}
+                        description={item.name} asideContent={< Icon24Play fill="var(--accent)" />}> {item.description}</Cell>)
+
+                    (item.status === "PAUSED" &&
+                      <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />}
+                        description={item.name} asideContent={< Icon24Pause fill="var(--accent)" />}> {item.description}</Cell>)
+
                   )
                   )}
                 </List>
@@ -274,7 +283,7 @@ class VKchallenge extends React.Component {
                 <List>
                   {this.state.challenge_obj.map((item) => (
                     item.status === "STOPPED" &&
-                     <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24Add fill="var(--accent)" />}> {item.description}</Cell>
+                    <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />} description={item.name} asideContent={<Icon24Add fill="var(--accent)" />}> {item.description}</Cell>
                   )
                   )}
                 </List>
