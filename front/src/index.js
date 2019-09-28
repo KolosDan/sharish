@@ -127,10 +127,7 @@ class VKchallenge extends React.Component {
         });
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
-        alert(e.detail.data.request_id === "groups.get")
-        alert(e.detail.data.request_id)
         if (e.detail.data.request_id === "groups.get"){
-          alert("groups done")
           this.setState({ user_groups: e.detail.data.response.items })
         }
         else if (e.detail.data.request_id === "posted_community"){
@@ -210,6 +207,7 @@ class VKchallenge extends React.Component {
     let u_photo = this.state.user_obj_vk.photo_100;
 
     if(this.state.community !== "My account"){
+      alert(JSON.stringify(this.state.posted_community, null, 4))
       f_name = this.state.posted_community.name;
       l_name = "";
       u_photo = this.state.posted_community.photo_100;
