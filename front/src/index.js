@@ -162,7 +162,8 @@ class VKchallenge extends React.Component {
   getAllChallenges() {
     instance.get(`http://192.168.43.150:5000/get_user_challenges?user_id=${this.state.user_obj_vk.id.toString()}`)
       .then((response) => {
-        this.setState({ all_challenges: response.data.result.sort((a, b) => (a.participants.length > b.participants.length) ? 1 : -1) });
+        // response.data.result.sort((a, b) => (a.participants.length > b.participants.length) ? 1 : -1)
+        this.setState({ all_challenges: response.data.result });
       })
       .catch((error) => {
         console.log(error);
@@ -304,10 +305,9 @@ class VKchallenge extends React.Component {
 
             {this.state.activeTab5 === 'popular' ? <Group>
               {this.state.getAllChallenges.length > 0 &&
-                <List>
+                <List>keke
                   {/* {this.state.getAllChallenges.map((item) => (
-                    <Cell before={<Avatar type="image" src="https://pp.userapi.com/c841025/v841025503/617f7/bkN1Def0s14.jpg" />}
-                    description={item.name} asideContent={< Icon24Play fill="var(--accent)" />}> {item.description}</Cell>
+                    
                   )
                   )} */}
                 </List>
