@@ -423,11 +423,9 @@ class VKchallenge extends React.Component {
                 На данном экране Вы можете подключить в приложение сообщества, в которых являетесь администратором, чтобы иметь возможность создавать челленджи от их имени!
              </Div>
             </Group>
-            {alert(this.state.user_obj.connected_groups.map(i => i.group_id))}
             {this.state.user_groups.length > 0 &&
               this.state.user_groups.map((item) => (
-                
-                this.state.user_obj.connected_groups.map(i => i.group_id).includes(-parseInt(item.id)) ?
+                this.state.user_obj.connected_groups.map(i => i.group_id === -parseInt(item.id) ?
                   <Cell
                     size="l"
                     before={<Avatar src={item.photo_100} />}
@@ -442,7 +440,7 @@ class VKchallenge extends React.Component {
                   >
                     {item.name}
                   </Cell>
-              ))
+              )))
             }
           </Panel>
         </View>
