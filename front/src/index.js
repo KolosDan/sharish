@@ -85,14 +85,14 @@ class ChallengeInfo extends React.Component {
       connect.send("VKWebAppCallAPIMethod", {
         "method": "wall.get",
         "request_id": "hashtag",
-        "params": { "count": 10 , "v": "5.101", "access_token": this.state.token }
+        "params": { "count": 10 , "v": "5.101", "access_token": this.props.token }
       });
     }
     else if (type === "Подиска"){
       connect.send("VKWebAppCallAPIMethod", {
         "method": "group.getById",
         "request_id": "sub",
-        "params": { "group_id": value.split("/")[-1], "v": "5.101", "access_token": this.state.token }
+        "params": { "group_id": value.split("/")[-1], "v": "5.101", "access_token": this.props.token }
       });
     }
     else if (type === "Лайк"){
@@ -100,7 +100,7 @@ class ChallengeInfo extends React.Component {
         "method": "likes.isLiked",
         "request_id": "like",
         "params": { "user_id": this.props.user_id, "type" : "wall", "owner_id" : value.split("w=wall")[-1].split("_")[0] ,
-        "item_id" : value.split("w=wall")[-1].split("_")[1]  ,"v": "5.101", "access_token": this.state.token }
+        "item_id" : value.split("w=wall")[-1].split("_")[1]  ,"v": "5.101", "access_token": this.props.token }
       });
     }
   }
@@ -837,7 +837,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
-            <ChallengeInfo  challenge={this.state.one_challenge_obj} user_id={this.state.user_obj_vk.id}  tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
+            <ChallengeInfo token={this.state.token} challenge={this.state.one_challenge_obj} user_id={this.state.user_obj_vk.id}  tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
               cover={this.state.one_challenge_obj.cover} />
           </Panel>
         </View>
