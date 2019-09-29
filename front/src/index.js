@@ -707,7 +707,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="new_task" id="task">
           <Panel id="new_task" theme="white">
-            <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'view4' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>} >Добавить задание</PanelHeader>
+            <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'create' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>} >Добавить задание</PanelHeader>
             <FormLayout>
               <Select placeholder="Тип" name="name_task" onChange={this.onChange} >
                 <option value="Хештег">Хештег</option>
