@@ -62,7 +62,6 @@ class ChallengeInfo extends React.Component {
           </Div>
           <Group title="Placeholder">
             <List>
-              {/* {alert(this.state.one_challenge_obj.tasks)} */}
               pep
             </List>
             <Group>
@@ -670,7 +669,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
-          <ChallengeInfo name={this.state.one_challenge_obj.name} tasks={this.state.one_challenge_obj.tasks} desc={this.state.one_challenge_obj.description}
+          <ChallengeInfo name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
               cover={this.state.one_challenge_obj.cover}/>
           </Panel>
         </View>
