@@ -339,7 +339,7 @@ class VKchallenge extends React.Component {
   get_one_challenge(id) {
     instance.get(`http://192.168.43.150:5000/get_challenge_info?challenge_id=${id}`)
       .then((response) => {
-        alert(JSON.stringify(response.data))
+        // alert(JSON.stringify(response.data))
         this.setState({ one_challenge_obj: response.data.result });
         this.setState({ activeStory: 'challenge_info' })
       })
@@ -564,7 +564,7 @@ class VKchallenge extends React.Component {
                           </CardContent>
                         </CardActionArea>
                         <CardActions>
-                          <Button stretched onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="xl" color="primary">
+                          <Button stretched onClick={() => { this.get_one_challenge(item._id) }} size="xl" color="primary">
                             Подробно
                          </Button>
                         </CardActions>
@@ -740,7 +740,7 @@ class VKchallenge extends React.Component {
                           </CardContent>
                         </CardActionArea>
                         <CardActions>
-                          <Button stretched onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="xl" color="primary">
+                          <Button stretched onClick={() => { this.get_one_challenge(item._id)}} size="xl" color="primary">
                             Подробно
                          </Button>
                         </CardActions>
