@@ -61,7 +61,7 @@ class ChallengeInfo extends React.Component {
               <Progress value={40} />
             </InfoRow>
           </Div>
-          <Group title="Placeholder">
+          <Group title="=Задания">
             <List>
             {this.props.tasks.map((task, index) => 
                     <Cell
