@@ -163,8 +163,7 @@ class VKchallenge extends React.Component {
       community: "My account",
       winner: "",
       cover: "",
-      category: "",
-      main: "",
+      category : "",
 
       activeStory: 'feed',
       activeView: "view1",
@@ -209,7 +208,6 @@ class VKchallenge extends React.Component {
 
   componentDidMount() {
     connect.send("VKWebAppSetLocation", { "location": "hash" });
-    this.getMain();
     connect.subscribe((e) => {
       console.log(window.location.hash);
       if (e.detail.type === "VKWebAppGetUserInfoResult") {
@@ -338,7 +336,7 @@ class VKchallenge extends React.Component {
       group_publisher: this.state.community,
       winner: this.state.winner,
       cover: this.state.cover,
-      category: this.state.category,
+      category : this.state.category,
 
       first_name: f_name,
       last_name: l_name,
@@ -405,6 +403,8 @@ class VKchallenge extends React.Component {
       });
   }
 
+  
+
   startChallenge(id) {
     instance.post('http://192.168.43.150:5000/start_challenge', {
       challenge_id: id
@@ -431,33 +431,6 @@ class VKchallenge extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
-  }
-
-  getApiData(type, value) {
-    if (type === "Хештег" || type === "Репост" || type === "Хештег и фото" || type === "Отметка пользователя") {
-      connect.send("VKWebAppCallAPIMethod", {
-        "method": "wall.get",
-        "request_id": "hashtag",
-        "params": { "count": 10, "v": "5.101", "access_token": this.state.token }
-      });
-    }
-    else if (type === "Подписка") {
-      connect.send("VKWebAppCallAPIMethod", {
-        "method": "groups.getById",
-        "request_id": "sub",
-        "params": { "group_id": value.split("/")[value.split("/").length - 1], "v": "5.101", "access_token": this.state.token }
-      });
-    }
-    else if (type === "Лайк") {
-      connect.send("VKWebAppCallAPIMethod", {
-        "method": "likes.isLiked",
-        "request_id": "like",
-        "params": {
-          "user_id": this.state.user_id, "type": "post", "owner_id": value.split("w=wall")[value.split("w=wall").length - 1].split("_")[0],
-          "item_id": value.split("w=wall")[value.split("w=wall").length - 1].split("_")[1], "v": "5.101", "access_token": this.state.token
-        }
-      });
-    }
   }
 
   restoreState(args) {
@@ -533,8 +506,8 @@ class VKchallenge extends React.Component {
                 VK_Hackathon
                 </Cell>
               <Div>
-
-              </Div>
+                
+                </Div>
             </Group>
             <Group title='Вступительное видео'>
               <YouTube videoId='qwz3IOBIGgA' opts={youtube_opts} />
@@ -546,30 +519,26 @@ class VKchallenge extends React.Component {
                     <Progress value={40} />
                   </InfoRow>
                 </Div> */}
-                {/* dummy-data */}
-                {/* <Group title="Задания">
+                <Group title="Задания">
                   <List>
                     <Cell
-                      multiline
-                      asideContent={<Button onClick={() => alert('Задание выполнено!')} before={<Icon16Done />}>Я сделал</Button>}
-                      description="Не спать 24 часа!"
+                      asideContent={<Button before={<Icon16Done />}>Я выполнил</Button>}
+                      description='Не спать 24 часа'
                     >
                       Задание 1
-                    </Cell>
+                            </Cell>
                     <Cell
-                      multiline
-                      asideContent={<Button onClick={() => alert('Задание выполнено!')} before={<Icon16Done />}>Я сделал</Button>}
-                      description="Подписаться на VK_Hackathon 2019"
+                      asideContent={<Button before={<Icon16Done />}>Я выполнил</Button>}
+                      description='Подписаться на VK_Hackathon 2019'
                     >
                       Задание 2
-                    </Cell>
+                            </Cell>
                     <Cell
-                      multiline
-                      asideContent={<Button onClick={() => alert('Задание выполнено!')} before={<Icon16Done />}>Я сделал</Button>}
-                      description="Выложить фото из фотозоны с хэштегом #кодим24на7"
+                      asideContent={<Button before={<Icon16Done />}>Я выполнил</Button>}
+                      description='Выложить фото из фотозоны с хэштегом #кодим24на7'
                     >
                       Задание 3
-                    </Cell>
+                            </Cell>
                   </List>
                   <Group>
                     <Div style={{ display: 'flex' }}>
@@ -577,7 +546,7 @@ class VKchallenge extends React.Component {
                       <Button size="l" stretched level="secondary">Я понял!</Button>
                     </Div>
                   </Group>
-                </Group> */}
+                </Group>
               </Group>
             </Group>
           </Panel>
@@ -657,8 +626,8 @@ class VKchallenge extends React.Component {
                         {item.first_name} {item.last_name}
                       </Cell>
                       <Div style={{ display: 'flex' }}>
-                        <Button onClick={() => { this.startChallenge(item._id) }} size="l" level="commerce" stretched style={{ marginRight: 8 }}>Старт</Button>
-                        <Button onClick={() => { this.stopChallenge(item._id) }} size="l" level="destructive" stretched >Стоп</Button>
+                        <Button onClick={ () => {this.startChallenge(item._id)} } size="l" level="commerce" stretched style={{ marginRight: 8 }}>Старт</Button>
+                        <Button onClick={ () => {this.stopChallenge(item._id)} } size="l" level="destructive" stretched >Стоп</Button>
                       </Div>
                       <Card>
                         <CardActionArea>
@@ -758,7 +727,7 @@ class VKchallenge extends React.Component {
               {this.state.edit &&
                 <Button onClick={() => { this.editChallenge(); this.setState({ edit: false }); this.setState({ activeStory: 'view1' }) }} size="xl">Изменить</Button>}
               {!this.state.edit &&
-                <Button onClick={() => { this.resetState(); this.getGroupById(this.state.community); this.setState({ activeStory: 'view1' }) }} size="xl">Создать</Button>}
+                <Button onClick={() => {this.resetState(); this.getGroupById(this.state.community); this.setState({ activeStory: 'view1' }) }} size="xl">Создать</Button>}
             </FormLayout>
           </Panel>
         </View>
