@@ -235,42 +235,12 @@ class VKchallenge extends React.Component {
           this.setState({ posted_community: e.detail.data.response })
           this.postChallenge();
         }
-        else if (e.detail.data.request_id === "hashtag") {
+        else if (e.detail.data.request_id === "hashtag" || e.detail.data.request_id === "sub" || e.detail.data.request_id === "like" ) {
           instance.post('http://192.168.43.150:5000/check_task', {
             user_id: this.state.user_obj_vk.id.toString(),
             challenge_id: api_data.id,
             api_data: e.detail.data.response,
             task_index : api_data.index
-          })
-            .then(function (response) {
-              if (response.data.error) {
-                alert(response.data.error);
-              }
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        }
-        else if (e.detail.data.request_id === "sub") {
-          instance.post('http://192.168.43.150:5000/check_task', {
-            user_id: this.state.user_obj_vk.id.toString(),
-            challenge_id: api_data.id,
-            api_data: e.detail.data.response
-          })
-            .then(function (response) {
-              if (response.data.error) {
-                alert(response.data.error);
-              }
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        }
-        else if (e.detail.data.request_id === "like") {
-          instance.post('http://192.168.43.150:5000/check_task', {
-            user_id: this.state.user_obj_vk.id.toString(),
-            challenge_id: api_data.id,
-            api_data: e.detail.data.response
           })
             .then(function (response) {
               if (response.data.error) {
