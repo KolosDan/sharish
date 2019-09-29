@@ -46,6 +46,7 @@ class ChallengeInfo extends React.Component {
   render() {
     return (
       <React.Fragment>
+        {this.props.tasks.map((item) => (item))}
         <PanelHeader left={<HeaderButton onClick={this.props.handler} >{<Icon24Back />}</HeaderButton>}> {this.props.name}</PanelHeader>
         <img style={{ maxWidth: "370px" }} src={this.props.cover} />
         <Group title="Описание">
@@ -62,7 +63,7 @@ class ChallengeInfo extends React.Component {
           </Div>
           <Group title="Placeholder">
             <List>
-            {this.props.tasks.map((item) => (item))}
+            
             </List>
             <Group>
               <FormLayout>
