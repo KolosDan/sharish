@@ -149,6 +149,7 @@ class ChallengeInfo extends React.Component {
 
 class VKchallenge extends React.Component {
   constructor(props) {
+    this.getMain();
     super(props);
 
     this.state = {
@@ -558,14 +559,13 @@ class VKchallenge extends React.Component {
                 <Group title="Задания">
                   <List>
                     {this.state.main.tasks.map((task, index) =>
-                    {task}
-                      // <Cell
-                      //   multiline
-                      //   asideContent={<Button onClick={() => { }} before={<Icon16Done />}>Я сделал</Button>}
-                      //   description={task.description}
-                      // >
-                      //   Задание {index}
-                      // </Cell>
+                      <Cell
+                        multiline
+                        asideContent={<Button onClick={() => { }} before={<Icon16Done />}>Я сделал</Button>}
+                        description={task.description}
+                      >
+                        Задание {index}
+                      </Cell>
                     )}
                   </List>
                   <Group>
