@@ -32,6 +32,10 @@ const instance = axios.create({
   headers: { 'Access-Control-Allow-Origin': "*" }
 });
 
+const youtube_opts = {
+  height: '390',
+  width: '640'};
+
 const osname = platform();
 connect.send("VKWebAppInit", {});
 
@@ -368,7 +372,7 @@ class VKchallenge extends React.Component {
                 </Div>
               </Group>
               <Div>
-              <YouTube videoId='P0e5B2zF0HA'/>
+              <YouTube videoId='P0e5B2zF0HA' opts={youtube_opts}/>
               </Div>
               <Group title="Чеклист">
               <Group>
