@@ -547,7 +547,7 @@ class VKchallenge extends React.Component {
                   </InfoRow>
                 </Div> */}
                 {/* dummy-data */}
-                <Group title="Задания">
+                {/* <Group title="Задания">
                   <List>
                     <Cell
                       multiline
@@ -577,7 +577,7 @@ class VKchallenge extends React.Component {
                       <Button size="l" stretched level="secondary">Я понял!</Button>
                     </Div>
                   </Group>
-                </Group>
+                </Group> */}
               </Group>
             </Group>
           </Panel>
