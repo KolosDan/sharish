@@ -30,7 +30,6 @@ import Icon16Done from '@vkontakte/icons/dist/16/done';
 import YouTube from 'react-youtube';
 
 let api_data = {}
-let main = {}
 
 const instance = axios.create({
   headers: { 'Access-Control-Allow-Origin': "*" }
@@ -40,17 +39,6 @@ const youtube_opts = {
   height: '210',
   width: '390'
 };
-
-function getMain() {
-  instance.get(`http://192.168.43.150:5000/get_main_challenge`)
-    .then((response) => {
-      main = response.data.result;
-      alert(main)
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
 
 const osname = platform();
 connect.send("VKWebAppInit", {});
@@ -162,7 +150,6 @@ class ChallengeInfo extends React.Component {
 class VKchallenge extends React.Component {
   constructor(props) {
     super(props);
-    this.getMain();
 
     this.state = {
       name_task: "",
@@ -222,6 +209,7 @@ class VKchallenge extends React.Component {
 
   componentDidMount() {
     connect.send("VKWebAppSetLocation", { "location": "hash" });
+    this.getMain();
     connect.subscribe((e) => {
       console.log(window.location.hash);
       if (e.detail.type === "VKWebAppGetUserInfoResult") {
@@ -465,7 +453,7 @@ class VKchallenge extends React.Component {
         "method": "likes.isLiked",
         "request_id": "like",
         "params": {
-          "user_id": this.state.user_obj_vk.id, "type": "post", "owner_id": value.split("w=wall")[value.split("w=wall").length - 1].split("_")[0],
+          "user_id": this.state.user_id, "type": "post", "owner_id": value.split("w=wall")[value.split("w=wall").length - 1].split("_")[0],
           "item_id": value.split("w=wall")[value.split("w=wall").length - 1].split("_")[1], "v": "5.101", "access_token": this.state.token
         }
       });
@@ -558,17 +546,30 @@ class VKchallenge extends React.Component {
                     <Progress value={40} />
                   </InfoRow>
                 </Div> */}
+                {/* dummy-data */}
                 <Group title="Задания">
                   <List>
-                    {main.tasks.map((task, index) =>
-                      <Cell
-                        multiline
-                        asideContent={<Button onClick={() => { }} before={<Icon16Done />}>Я сделал</Button>}
-                        description={task.description}
-                      >
-                        Задание {index}
-                      </Cell>
-                    )}
+                    <Cell
+                      multiline
+                      asideContent={<Button onClick={alert('Задание выполнено!')} before={<Icon16Done />}>Я сделал</Button>}
+                      description="Не спать 24 часа!"
+                    >
+                      Задание 1
+                    </Cell>
+                    <Cell
+                      multiline
+                      asideContent={<Button onClick={alert('Задание выполнено!')} before={<Icon16Done />}>Я сделал</Button>}
+                      description="Подписаться на VK_Hackathon 2019"
+                    >
+                      Задание 2
+                    </Cell>
+                    <Cell
+                      multiline
+                      asideContent={<Button onClick={alert('Задание выполнено!')} before={<Icon16Done />}>Я сделал</Button>}
+                      description="Выложить фото из фотозоны с хэштегом #кодим24на7"
+                    >
+                      Задание 3
+                    </Cell>
                   </List>
                   <Group>
                     <Div style={{ display: 'flex' }}>
