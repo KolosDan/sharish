@@ -74,6 +74,15 @@ class ChallengeInfo extends React.Component {
         console.log(error);
       });
   }
+  componentDidMount(){
+    connect.subscribe((e) => {
+      alert("heh")
+    })
+  }
+
+  getApiData(type){
+
+  }
 
 
   render() {
@@ -98,7 +107,7 @@ class ChallengeInfo extends React.Component {
               {this.props.tasks.map((task, index) =>
                 <Cell
                   multiline
-                  asideContent={<Button before={<Icon16Done />}>Я сделал</Button>}
+                  asideContent={<Button onClick={() => { this.getApiData(task.type) }} before={<Icon16Done />}>Я сделал</Button>}
                   description={task.description}
                 >
                   Задание {index}
