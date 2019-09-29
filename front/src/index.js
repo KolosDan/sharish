@@ -405,9 +405,9 @@ class VKchallenge extends React.Component {
       });
   }
 
-  startChallenge() {
+  startChallenge(id) {
     instance.post('http://192.168.43.150:5000/start_challenge', {
-      challenge_id: this.state.one_challenge_obj._id
+      challenge_id: id
     })
       .then(function (response) {
         if (response.data.error) {
@@ -419,9 +419,9 @@ class VKchallenge extends React.Component {
       });
   }
 
-  stopChallenge() {
+  stopChallenge(id) {
     instance.post('http://192.168.43.150:5000/stop_challenge', {
-      challenge_id: this.state.one_challenge_obj._id
+      challenge_id: id
     })
       .then(function (response) {
         if (response.data.error) {
@@ -651,8 +651,8 @@ class VKchallenge extends React.Component {
                         {item.first_name} {item.last_name}
                       </Cell>
                       <Div style={{ display: 'flex' }}>
-                        <Button onClick={ () => {this.startChallenge()} } size="l" level="commerce" stretched style={{ marginRight: 8 }}>Старт</Button>
-                        <Button onClick={ () => {this.stopChallenge()} } size="l" level="destructive" stretched >Стоп</Button>
+                        <Button onClick={ () => {this.startChallenge(item._id)} } size="l" level="commerce" stretched style={{ marginRight: 8 }}>Старт</Button>
+                        <Button onClick={ () => {this.stopChallenge(item._id)} } size="l" level="destructive" stretched >Стоп</Button>
                       </Div>
                       <Card>
                         <CardActionArea>
