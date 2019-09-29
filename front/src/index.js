@@ -361,7 +361,31 @@ class VKchallenge extends React.Component {
                 >
                   Автор Постерович  
                 </Cell>
-            </Group>
+                <Div>
+                  <InfoRow title="Общий бюджет">
+                    3000 р.
+                  </InfoRow>
+                </Div>
+                    </Group>
+                    <Group title="Информация о пользователе">
+                <List>
+                  <Cell>
+                    <InfoRow title="Дата рождения">
+                      30 января 1993
+                    </InfoRow>
+                  </Cell>
+                  <Cell>
+                    <InfoRow title="Родной город">
+                      Ереван
+                    </InfoRow>
+                  </Cell>
+                  <Cell>
+                    <InfoRow title="Место работы">
+                      Команда ВКонтакте
+                    </InfoRow>
+                  </Cell>
+                </List>
+              </Group>
           </Panel>
         </View>
 
