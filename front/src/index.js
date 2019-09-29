@@ -60,6 +60,21 @@ class ChallengeInfo extends React.Component {
       });
   }
 
+  removeChallenge(id, ch_id) {
+    instance.post('http://192.168.43.150:5000/remove_challenge', {
+      user_id: id,
+      challenge_id: ch_id
+    })
+      .then(function (response) {
+        if (response.data.error) {
+          alert(response.data.error);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
 
   render() {
     return (
@@ -92,7 +107,9 @@ class ChallengeInfo extends React.Component {
             </List>
             <Group>
               <FormLayout>
-                <Button onClick={() => { this.joinChallenge(this.props.user_id,this.props.challenge_id) }}  size="xl">Участвую</Button>
+                {this.props.challenge.participants.includes(this.props.user_id) ? 
+                <Button onClick={() => { this.removeChallenge(this.props.user_id,this.props.challenge.id) }}  size="xl">Выйти</Button> : 
+                <Button onClick={() => { this.joinChallenge(this.props.user_id,this.props.challenge.id) }}  size="xl">Участвую</Button> }
               </FormLayout>
             </Group>
           </Group>
@@ -699,7 +716,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
-            <ChallengeInfo challenge_id={this.state.one_challenge_obj._id} user_id={this.state.user_obj_vk.id}  tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
+            <ChallengeInfo  challenge={this.state.one_challenge_obj} user_id={this.state.user_obj_vk.id}  tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
               cover={this.state.one_challenge_obj.cover} />
           </Panel>
         </View>
