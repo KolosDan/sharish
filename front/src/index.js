@@ -355,36 +355,45 @@ class VKchallenge extends React.Component {
                 <Cell
                   photo="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg"
                   description="VKontakte"
-                  bottomContent={<Button>Подписаться</Button>}
                   before={<Avatar src="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg" size={80}/>}
                   size="l"
                 >
                   Автор Постерович  
                 </Cell>
                 <Div>
-                  <InfoRow title="Общий бюджет">
-                    3000 р.
-                  </InfoRow>
+                  Ку, жрешь? Сегодняшнее задание: блаблаблаблабла
                 </Div>
+              </Group>
+              
+              <Group title="Информация о пользователе">
+              <Group>
+                  <Div>
+                    <InfoRow title="3/5">
+                      <Progress value={40} />
+                    </InfoRow>
+                  </Div>
+                  <Group title="Placeholder">
+                    <List>
+                            <Cell
+                              asideContent={<Icon24DoneOutline fill="var(--accent)" />}
+                              description='Описание 1'
+                            >
+                              Задание 1
+                            </Cell>
+                            <Cell
+                              asideContent={<Icon24DoneOutline fill="var(--accent)" />}
+                              description='Описание 2'
+                            >
+                              Задание 2
+                            </Cell>
+                    </List>
+                    <Group>
+                      <FormLayout>
+                        <Button size="xl">Участвую</Button>
+                      </FormLayout>
                     </Group>
-                    <Group title="Информация о пользователе">
-                <List>
-                  <Cell>
-                    <InfoRow title="Дата рождения">
-                      30 января 1993
-                    </InfoRow>
-                  </Cell>
-                  <Cell>
-                    <InfoRow title="Родной город">
-                      Ереван
-                    </InfoRow>
-                  </Cell>
-                  <Cell>
-                    <InfoRow title="Место работы">
-                      Команда ВКонтакте
-                    </InfoRow>
-                  </Cell>
-                </List>
+                  </Group>
+                </Group>
               </Group>
           </Panel>
         </View>
