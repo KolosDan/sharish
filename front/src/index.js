@@ -33,8 +33,8 @@ const instance = axios.create({
 });
 
 const youtube_opts = {
-  height: '240',
-  width: '416'};
+  height: '210',
+  width: '390'};
 
 const osname = platform();
 connect.send("VKWebAppInit", {});
