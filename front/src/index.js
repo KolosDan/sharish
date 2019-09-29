@@ -117,7 +117,7 @@ class ChallengeInfo extends React.Component {
           <Cell multiline>{this.props.desc}</Cell>
         </Group>
         <Group title="Кол-во участников">
-          <Cell multiline>{this.props.max}</Cell>
+          <Cell multiline>{this.props.challenge.participants.length}</Cell>
         </Group>
         <Group>
           {/* <Div>
@@ -136,7 +136,6 @@ class ChallengeInfo extends React.Component {
                   Задание {index}
                 </Cell>
               )}
-              <Cell >{this.props.challenge.participants.length}</Cell>
             </List>
             <Group>
               <FormLayout>
