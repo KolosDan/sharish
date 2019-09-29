@@ -63,7 +63,7 @@ class ChallengeInfo extends React.Component {
           </Div>
           <Group title="Placeholder">
             <List>
-              {this.props.tasks.map( (item) => {item.type} ) }
+              {this.props.tasks.map( (item) => {item} ) }
             <Cell >{this.props.max}</Cell>
             </List>
             <Group>
