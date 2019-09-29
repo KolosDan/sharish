@@ -109,7 +109,7 @@ class ChallengeInfo extends React.Component {
               <FormLayout>
                 {this.props.challenge.participants.includes(this.props.user_id) ? 
                 <Button onClick={() => { this.removeChallenge(this.props.user_id,this.props.challenge._id) }}  size="xl">Выйти</Button> : 
-                <Button onClick={() => { this.joinChallenge(this.props.user_id,this.props.challenge._id); this.props.challenge.participants.push(user_id) }}  size="xl">Участвую</Button> }
+                <Button onClick={() => { this.joinChallenge(this.props.user_id,this.props.challenge._id); this.props.challenge.participants.push(this.props.user_id) }}  size="xl">Участвую</Button> }
               </FormLayout>
             </Group>
           </Group>
