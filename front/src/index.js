@@ -46,7 +46,7 @@ class ChallengeInfo extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {this.props.tasks.map((item) => (item))}
+        {alert(this.props)}
         <PanelHeader left={<HeaderButton onClick={this.props.handler} >{<Icon24Back />}</HeaderButton>}> {this.props.name}</PanelHeader>
         <img style={{ maxWidth: "370px" }} src={this.props.cover} />
         <Group title="Описание">
@@ -387,7 +387,6 @@ class VKchallenge extends React.Component {
               <Group>
                   <Div>
                     <InfoRow title="3/5">
-                    {this.state.one_challenge_obj.tasks}
                       <Progress value={40} />
                     </InfoRow>
                   </Div>
