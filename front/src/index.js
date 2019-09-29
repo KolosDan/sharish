@@ -522,19 +522,19 @@ class VKchallenge extends React.Component {
                 <Group title="Задания">
                   <List>
                     <Cell
-                      asideContent={<Button before={<Icon16Done />}>Я выполнил</Button>}
+                      asideContent={<Button onClick={ () => {alert("Задание выполнено!")} }  before={<Icon16Done />}>Я выполнил</Button>}
                       description='Не спать 24 часа'
                     >
                       Задание 1
                             </Cell>
                     <Cell
-                      asideContent={<Button before={<Icon16Done />}>Я выполнил</Button>}
+                      asideContent={<Button onClick={ () => {alert("Задание выполнено!")} }  before={<Icon16Done />}>Я выполнил</Button>}
                       description='Подписаться на VK_Hackathon 2019'
                     >
                       Задание 2
                             </Cell>
                     <Cell
-                      asideContent={<Button before={<Icon16Done />}>Я выполнил</Button>}
+                      asideContent={<Button onClick={ () => {alert("Задание выполнено!")} } before={<Icon16Done />}>Я выполнил</Button>}
                       description='Выложить фото из фотозоны с хэштегом #кодим24на7'
                     >
                       Задание 3
