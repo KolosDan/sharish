@@ -553,25 +553,8 @@ class VKchallenge extends React.Component {
             <PanelHeader noShadow>
               Поиск челленджей
             </PanelHeader>
-            <Tabs theme="header" type="buttons">
-              <TabsItem
-                onClick={() => this.setState({ activeTab5: 'popular' })}
-                selected={this.state.activeTab5 === 'popular'}>
-                Популярное
-              </TabsItem>
-              <TabsItem
-                onClick={() => this.setState({ activeTab5: 'community' })}
-                selected={this.state.activeTab5 === 'community'}>
-                От сообществ
-              </TabsItem>
-              <TabsItem
-                onClick={() => this.setState({ activeTab5: 'friends' })}
-                selected={this.state.activeTab5 === 'friends'}>
-                От друзей
-              </TabsItem>
-            </Tabs>
 
-            {this.state.activeTab5 === 'popular' ? <Group>
+            <Group>
               {this.state.all_challenges.length > 0 &&
                 <List>
                   {this.state.all_challenges.map((item) => (
@@ -605,7 +588,7 @@ class VKchallenge extends React.Component {
                   )
                   )}
                 </List>
-              } </Group> : ""}
+              } </Group>
           </Panel>
         </View>
 
