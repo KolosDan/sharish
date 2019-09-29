@@ -44,16 +44,14 @@ connect.send("VKWebAppInit", {});
 class ChallengeInfo extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+
+    }
   }
 
   getProgress(){
-    let progress = 0;
-    alert(JSON.stringify( this.props.user, null, 4)) 
-    this.props.user.challenges.map( (item) => {
-      alert(item.challenge_id )
-    })
-    alert(progress);
-    return progress;
+
   }
 
   joinChallenge(id, ch_id) {
@@ -95,7 +93,6 @@ class ChallengeInfo extends React.Component {
       });
     }
     else if (type === "Подписка") {
-      alert(value.split("/")[0])
       connect.send("VKWebAppCallAPIMethod", {
         "method": "groups.getById",
         "request_id": "sub",
@@ -330,7 +327,6 @@ class VKchallenge extends React.Component {
     let u_photo = this.state.user_obj_vk.photo_100;
 
     if (this.state.community !== "My account") {
-      alert(JSON.stringify(this.state.posted_community, null, 4))
       f_name = this.state.posted_community[0].name;
       l_name = "";
       u_photo = this.state.posted_community[0].photo_100;
