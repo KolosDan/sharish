@@ -122,6 +122,7 @@ class ChallengeInfo extends React.Component {
   render() {
     return (
       <React.Fragment>
+        {this.getProgress()}
         <PanelHeader left={<HeaderButton >{<Icon24Back />}</HeaderButton>}> {this.props.name}</PanelHeader>
         <img style={{ maxWidth: "370px" }} src={this.props.cover} />
         <Group title="Описание">
@@ -133,7 +134,7 @@ class ChallengeInfo extends React.Component {
         <Group>
           <Div>
             <InfoRow title="Прогресс">
-              <Progress value={this.state.getProgress} />
+              <Progress value={this.state.progress} />
             </InfoRow>
           </Div>
           <Group title="Задания">
