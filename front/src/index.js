@@ -163,6 +163,8 @@ class VKchallenge extends React.Component {
       community: "My account",
       winner: "",
       cover: "",
+      category: "",
+      main: "",
 
       activeStory: 'feed',
       activeView: "view1",
@@ -207,6 +209,7 @@ class VKchallenge extends React.Component {
 
   componentDidMount() {
     connect.send("VKWebAppSetLocation", { "location": "hash" });
+    this.getMain();
     connect.subscribe((e) => {
       console.log(window.location.hash);
       if (e.detail.type === "VKWebAppGetUserInfoResult") {
@@ -335,6 +338,7 @@ class VKchallenge extends React.Component {
       group_publisher: this.state.community,
       winner: this.state.winner,
       cover: this.state.cover,
+      category: this.state.category,
 
       first_name: f_name,
       last_name: l_name,
@@ -401,6 +405,16 @@ class VKchallenge extends React.Component {
       });
   }
 
+  getMain() {
+    instance.get(`http://192.168.43.150:5000/get_main_challenge`)
+      .then((response) => {
+        this.setState({ main: response.data.result });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   startChallenge(id) {
     instance.post('http://192.168.43.150:5000/start_challenge', {
       challenge_id: id
@@ -427,6 +441,33 @@ class VKchallenge extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
+  }
+
+  getApiData(type, value) {
+    if (type === "Хештег" || type === "Репост" || type === "Хештег и фото" || type === "Отметка пользователя") {
+      connect.send("VKWebAppCallAPIMethod", {
+        "method": "wall.get",
+        "request_id": "hashtag",
+        "params": { "count": 10, "v": "5.101", "access_token": this.props.token }
+      });
+    }
+    else if (type === "Подписка") {
+      connect.send("VKWebAppCallAPIMethod", {
+        "method": "groups.getById",
+        "request_id": "sub",
+        "params": { "group_id": value.split("/")[value.split("/").length - 1], "v": "5.101", "access_token": this.props.token }
+      });
+    }
+    else if (type === "Лайк") {
+      connect.send("VKWebAppCallAPIMethod", {
+        "method": "likes.isLiked",
+        "request_id": "like",
+        "params": {
+          "user_id": this.props.user_id, "type": "post", "owner_id": value.split("w=wall")[value.split("w=wall").length - 1].split("_")[0],
+          "item_id": value.split("w=wall")[value.split("w=wall").length - 1].split("_")[1], "v": "5.101", "access_token": this.props.token
+        }
+      });
+    }
   }
 
   restoreState(args) {
@@ -494,16 +535,16 @@ class VKchallenge extends React.Component {
               </PanelHeader>
             <Group>
               <Cell
-                photo="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg"
+                // photo="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg"
                 description="VKontakte"
-                before={<Avatar src="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg" size={80} />}
+                before={<Avatar src="https://sun9-27.userapi.com/c850420/v850420541/1d0816/iWd-ZryQSW8.jpg" size={80} />}
                 size="l"
               >
-                Future Friendly
+                VK_Hackathon
                 </Cell>
               <Div>
-                
-                </Div>
+
+              </Div>
             </Group>
             <Group title='Вступительное видео'>
               <YouTube videoId='qwz3IOBIGgA' opts={youtube_opts} />
@@ -517,24 +558,15 @@ class VKchallenge extends React.Component {
                 </Div> */}
                 <Group title="Задания">
                   <List>
-                    <Cell
-                      asideContent={<Button before={<Icon16Done />}>Я выполнил</Button>}
-                      description='Не спать 24 часа'
-                    >
-                      Задание 1
-                            </Cell>
-                    <Cell
-                      asideContent={<Button before={<Icon16Done />}>Я выполнил</Button>}
-                      description='Подписаться на VK_Hackathon 2019'
-                    >
-                      Задание 2
-                            </Cell>
-                    <Cell
-                      asideContent={<Button before={<Icon16Done />}>Я выполнил</Button>}
-                      description='Выложить фото из фотозоны с хэштегом #кодим24на7'
-                    >
-                      Задание 3
-                            </Cell>
+                    {this.state.main.tasks.map((task, index) =>
+                      <Cell
+                        multiline
+                        asideContent={<Button onClick={() => { this.getApiData(task.type, task.value); api_data.index = index; api_data.id = this.props.challenge._id }} before={<Icon16Done />}>Я сделал</Button>}
+                        description={task.description}
+                      >
+                        Задание {index}
+                      </Cell>
+                    )}
                   </List>
                   <Group>
                     <Div style={{ display: 'flex' }}>
@@ -622,8 +654,8 @@ class VKchallenge extends React.Component {
                         {item.first_name} {item.last_name}
                       </Cell>
                       <Div style={{ display: 'flex' }}>
-                        <Button onClick={ () => {this.startChallenge(item._id)} } size="l" level="commerce" stretched style={{ marginRight: 8 }}>Старт</Button>
-                        <Button onClick={ () => {this.stopChallenge(item._id)} } size="l" level="destructive" stretched >Стоп</Button>
+                        <Button onClick={() => { this.startChallenge(item._id) }} size="l" level="commerce" stretched style={{ marginRight: 8 }}>Старт</Button>
+                        <Button onClick={() => { this.stopChallenge(item._id) }} size="l" level="destructive" stretched >Стоп</Button>
                       </Div>
                       <Card>
                         <CardActionArea>
@@ -695,6 +727,16 @@ class VKchallenge extends React.Component {
                   </Select>
                 </Group>
               }
+              <Group title="Категория">
+                <Select value={this.state.category} name="category" onChange={this.onChange} >
+                  <option value="0">Нет победителя</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </Select>
+              </Group>
 
               <Group title="Задания">
                 {this.state.task_list.length > 0 &&
@@ -713,7 +755,7 @@ class VKchallenge extends React.Component {
               {this.state.edit &&
                 <Button onClick={() => { this.editChallenge(); this.setState({ edit: false }); this.setState({ activeStory: 'view1' }) }} size="xl">Изменить</Button>}
               {!this.state.edit &&
-                <Button onClick={() => {this.resetState(); this.getGroupById(this.state.community); this.setState({ activeStory: 'view1' }) }} size="xl">Создать</Button>}
+                <Button onClick={() => { this.resetState(); this.getGroupById(this.state.community); this.setState({ activeStory: 'view1' }) }} size="xl">Создать</Button>}
             </FormLayout>
           </Panel>
         </View>
