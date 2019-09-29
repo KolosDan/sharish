@@ -51,7 +51,7 @@ class ChallengeInfo extends React.Component {
     this.props.user.challenges.map( (item) => {
       item.map( (task) => {
         if(task.completed){
-          this.progress++;
+          progress++;
         }
       })
     })
