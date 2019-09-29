@@ -209,7 +209,6 @@ class VKchallenge extends React.Component {
 
   componentDidMount() {
     connect.send("VKWebAppSetLocation", { "location": "hash" });
-    this.getMain();
     connect.subscribe((e) => {
       console.log(window.location.hash);
       if (e.detail.type === "VKWebAppGetUserInfoResult") {
@@ -559,13 +558,14 @@ class VKchallenge extends React.Component {
                 <Group title="Задания">
                   <List>
                     {this.state.main.tasks.map((task, index) =>
-                      <Cell
-                        multiline
-                        asideContent={<Button onClick={() => { }} before={<Icon16Done />}>Я сделал</Button>}
-                        description={task.description}
-                      >
-                        Задание {index}
-                      </Cell>
+                    {task}
+                      // <Cell
+                      //   multiline
+                      //   asideContent={<Button onClick={() => { }} before={<Icon16Done />}>Я сделал</Button>}
+                      //   description={task.description}
+                      // >
+                      //   Задание {index}
+                      // </Cell>
                     )}
                   </List>
                   <Group>
