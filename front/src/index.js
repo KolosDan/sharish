@@ -551,21 +551,21 @@ class VKchallenge extends React.Component {
                   <List>
                     <Cell
                       multiline
-                      asideContent={<Button onClick={alert('Задание выполнено!')} before={<Icon16Done />}>Я сделал</Button>}
+                      asideContent={<Button onClick={() => alert('Задание выполнено!')} before={<Icon16Done />}>Я сделал</Button>}
                       description="Не спать 24 часа!"
                     >
                       Задание 1
                     </Cell>
                     <Cell
                       multiline
-                      asideContent={<Button onClick={alert('Задание выполнено!')} before={<Icon16Done />}>Я сделал</Button>}
+                      asideContent={<Button onClick={() => alert('Задание выполнено!')} before={<Icon16Done />}>Я сделал</Button>}
                       description="Подписаться на VK_Hackathon 2019"
                     >
                       Задание 2
                     </Cell>
                     <Cell
                       multiline
-                      asideContent={<Button onClick={alert('Задание выполнено!')} before={<Icon16Done />}>Я сделал</Button>}
+                      asideContent={<Button onClick={() => alert('Задание выполнено!')} before={<Icon16Done />}>Я сделал</Button>}
                       description="Выложить фото из фотозоны с хэштегом #кодим24на7"
                     >
                       Задание 3
