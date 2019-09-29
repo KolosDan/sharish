@@ -679,7 +679,7 @@ class VKchallenge extends React.Component {
               <List>
                 <Cell onClick={() => { this.setState({ activeStory: 'user_groups' }) }} expandable before={<Icon24Settings />}>Мои группы</Cell>
                 <Cell onClick={() => { this.setState({ activeStory: 'view4' }) }} before={<Icon24Settings />}>Мои конкурсы</Cell>
-                <Cell onClick={() => { this.setState({ activeStory: 'user_groups' }) }} before={<Icon24Settings />}>Я участвую</Cell>
+                <Cell onClick={() => { this.setState({ activeStory: 'joined' }) }} before={<Icon24Settings />}>Я участвую</Cell>
                 <Cell onClick={() => { this.setState({ activeStory: 'create' }) }} before={<Icon28AddOutline />}>Создать конкурс</Cell>
               </List>
             </Group>
