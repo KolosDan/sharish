@@ -78,6 +78,7 @@ class ChallengeInfo extends React.Component {
     connect.subscribe((e) => {
       alert("heh")
     })
+    connect.send("VKWebAppGetUserInfo", {});
   }
 
   getApiData(type){
