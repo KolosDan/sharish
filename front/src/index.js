@@ -62,6 +62,7 @@ class ChallengeInfo extends React.Component {
           </Div>
           <Group title="Placeholder">
             <List>
+              {alert(this.state.one_challenge_obj.tasks)}
               {this.props.tasks.map((item, index) => (
                   <Div>zhop</Div>
                   // <Cell
