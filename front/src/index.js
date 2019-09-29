@@ -243,6 +243,12 @@ class VKchallenge extends React.Component {
             task_index : api_data.index
           })
             .then(function (response) {
+              if (response.data.result){
+                alert("Задание пройдено")
+              }
+              else{
+                alert("Попробуйте еще раз")
+              }
               if (response.data.error) {
                 alert(response.data.error);
               }
