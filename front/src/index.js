@@ -560,7 +560,7 @@ class VKchallenge extends React.Component {
                 </Div> */}
                 <Group title="Задания">
                   <List>
-                    {this.state.main.tasks.map((task, index) =>
+                    {main.tasks.map((task, index) =>
                       <Cell
                         multiline
                         asideContent={<Button onClick={() => { }} before={<Icon16Done />}>Я сделал</Button>}
