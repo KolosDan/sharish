@@ -12,7 +12,9 @@ import Icon24Add from '@vkontakte/icons/dist/24/add';
 import Icon24DoneOutline from '@vkontakte/icons/dist/24/done_outline';
 import Icon24Settings from '@vkontakte/icons/dist/24/settings';
 import Icon28Menu from '@vkontakte/icons/dist/28/menu';
+import Icon24Poll from '@vkontakte/icons/dist/24/poll';
 import Icon28Write from '@vkontakte/icons/dist/28/write';
+import Icon24Users from '@vkontakte/icons/dist/24/users';
 import Icon28AddOutline from '@vkontakte/icons/dist/28/add_outline';
 import Icon28User from '@vkontakte/icons/dist/28/user';
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';
@@ -120,11 +122,6 @@ class ChallengeInfo extends React.Component {
           <Cell multiline>{this.props.challenge.participants.length}</Cell>
         </Group>
         <Group>
-          {/* <Div>
-            <InfoRow title="Прогресс">
-              <Progress value={this.state.progress} />
-            </InfoRow>
-          </Div> */}
           <Group title="Задания">
             <List>
               {this.props.tasks.map((task, index) =>
@@ -502,35 +499,41 @@ class VKchallenge extends React.Component {
                 before={<Avatar src="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg" size={80} />}
                 size="l"
               >
-                Автор Постерович
+                Future Friendly
                 </Cell>
               <Div>
-                Ку, жрешь? Сегодняшнее задание: блаблаблаблабла
+                
                 </Div>
             </Group>
             <Group title='Вступительное видео'>
-              <YouTube videoId='P0e5B2zF0HA' opts={youtube_opts} />
+              <YouTube videoId='qwz3IOBIGgA' opts={youtube_opts} />
             </Group>
             <Group title="Чеклист">
               <Group>
-                <Div>
+                {/* <Div>
                   <InfoRow title="3/5">
                     <Progress value={40} />
                   </InfoRow>
-                </Div>
-                <Group title="Placeholder">
+                </Div> */}
+                <Group title="Задания">
                   <List>
                     <Cell
-                      asideContent={<Button before={<Icon16Done />}>Add item</Button>}
-                      description='Описание 1'
+                      asideContent={<Button before={<Icon16Done />}>Я выполнил</Button>}
+                      description='Не спать 24 часа'
                     >
                       Задание 1
                             </Cell>
                     <Cell
-                      asideContent={<Button before={<Icon16Done />}>Add item</Button>}
-                      description='Описание 2'
+                      asideContent={<Button before={<Icon16Done />}>Я выполнил</Button>}
+                      description='Подписаться на VK_Hackathon 2019'
                     >
                       Задание 2
+                            </Cell>
+                    <Cell
+                      asideContent={<Button before={<Icon16Done />}>Я выполнил</Button>}
+                      description='Выложить фото из фотозоны с хэштегом #кодим24на7'
+                    >
+                      Задание 3
                             </Cell>
                   </List>
                   <Group>
@@ -767,9 +770,9 @@ class VKchallenge extends React.Component {
             </PanelHeader>
             <Group>
               <List>
-                <Cell onClick={() => { this.setState({ activeStory: 'user_groups' }) }} expandable before={<Icon24Settings />}>Мои группы</Cell>
-                <Cell onClick={() => { this.setState({ activeStory: 'view4' }) }} before={<Icon24Settings />}>Мои конкурсы</Cell>
-                <Cell onClick={() => { this.setState({ activeStory: 'joined' }) }} before={<Icon24Settings />}>Я участвую</Cell>
+                <Cell onClick={() => { this.setState({ activeStory: 'user_groups' }) }} expandable before={<Icon24Users />}>Мои группы</Cell>
+                <Cell onClick={() => { this.setState({ activeStory: 'view4' }) }} before={<Icon24Poll />}>Мои конкурсы</Cell>
+                <Cell onClick={() => { this.setState({ activeStory: 'joined' }) }} before={<Icon24DoneOutline />}>Я участвую</Cell>
                 <Cell onClick={() => { this.setState({ activeStory: 'create' }) }} before={<Icon28AddOutline />}>Создать конкурс</Cell>
               </List>
             </Group>
