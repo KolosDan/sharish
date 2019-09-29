@@ -62,7 +62,7 @@ class ChallengeInfo extends React.Component {
           </Div>
           <Group title="Placeholder">
             <List>
-              {alert(this.state.one_challenge_obj.tasks)}
+              {/* {alert(this.state.one_challenge_obj.tasks)} */}
               pep
             </List>
             <Group>
