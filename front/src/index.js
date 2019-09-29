@@ -89,11 +89,11 @@ class ChallengeInfo extends React.Component {
       });
     }
     else if (type === "Подписка"){
-      alert(value.split("/")[0])
+      alert(value.split("/")[0])  
       connect.send("VKWebAppCallAPIMethod", {
         "method": "groups.getById",
         "request_id": "sub",
-        "params": { "group_id": value.split("/")[-1], "v": "5.101", "access_token": this.props.token }
+        "params": { "group_id": value.split("/")[value.split("/").length-1], "v": "5.101", "access_token": this.props.token }
       });
     }
     else if (type === "Лайк"){
