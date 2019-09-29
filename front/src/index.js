@@ -742,7 +742,7 @@ class VKchallenge extends React.Component {
               {this.state.edit &&
                 <Button onClick={() => { this.editChallenge(); this.setState({ edit: false }); this.setState({ activeStory: 'view1' }) }} size="xl">Изменить</Button>}
               {!this.state.edit &&
-                <Button onClick={() => { this.getGroupById(this.state.community); this.setState({ activeStory: 'view1' }) }} size="xl">Создать</Button>}
+                <Button onClick={() => {this.resetState(); this.getGroupById(this.state.community); this.setState({ activeStory: 'view1' }) }} size="xl">Создать</Button>}
             </FormLayout>
           </Panel>
         </View>
