@@ -97,7 +97,7 @@ class ChallengeInfo extends React.Component {
             <List>
               {this.props.tasks.map((task, index) =>
                 <Cell
-                  asideContent={<Button before={<Icon16Done />}>Add item</Button>}
+                  asideContent={<Button before={<Icon16Done />}>Я сделал</Button>}
                   description={task.description}
                 >
                   Задание {index}
