@@ -62,7 +62,7 @@ class ChallengeInfo extends React.Component {
           </Div>
           <Group title="Placeholder">
             <List>
-              {this.props.tasks[0]}
+            {this.props.tasks.map((item) => (item))}
             </List>
             <Group>
               <FormLayout>
