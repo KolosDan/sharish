@@ -62,18 +62,14 @@ class ChallengeInfo extends React.Component {
           </Div>
           <Group title="Placeholder">
             <List>
-                    <Cell
-                      asideContent={<Icon24DoneOutline fill="var(--accent)" />}
-                      description="Описание 1"
-                    >
-                      Задание 1
-                    </Cell>
-                    <Cell
-                      asideContent={<Icon24DoneOutline fill="var(--accent)" />}
-                      description="Описание 2"
-                    >
-                      Задание 2
-                    </Cell>
+              {this.props.tasks.map((item, index) => (
+                  <Cell
+                    asideContent={<Icon24DoneOutline fill="var(--accent)" />}
+                    description={item.description}
+                  >
+                    Задание {index}
+                  </Cell>
+              ))}
             </List>
             <Group>
               <FormLayout>
@@ -306,7 +302,7 @@ class VKchallenge extends React.Component {
   get_one_challenge(id) {
     instance.get(`http://192.168.43.150:5000/get_challenge_info?challenge_id=${id}`)
       .then((response) => {
-        alert(JSON.stringify(response.data))
+        // alert(JSON.stringify(response.data))
         this.setState({ one_challenge_obj: response.data.result });
       })
       .catch((error) => {
@@ -680,7 +676,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
-          <ChallengeInfo name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
+          <ChallengeInfo name={this.state.one_challenge_obj.name} tasks={this.state.one_challenge_obj.tasks} desc={this.state.one_challenge_obj.description}
               cover={this.state.one_challenge_obj.cover}/>
           </Panel>
         </View>
