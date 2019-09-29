@@ -81,7 +81,9 @@ class ChallengeInfo extends React.Component {
   }
 
   getApiData(type, value){
+    alert(type, value)
     if(type === "Хештег" || type === "Репост" || type === "Хештег и фото" || type === "Отметка пользователя"){
+      alert("peq")
       connect.send("VKWebAppCallAPIMethod", {
         "method": "wall.get",
         "request_id": "hashtag",
