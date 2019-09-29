@@ -89,6 +89,8 @@ class ChallengeInfo extends React.Component {
       });
     }
     else if (type === "Подиска"){
+      alert("norm")
+      alert(value.split("/")[-1])
       connect.send("VKWebAppCallAPIMethod", {
         "method": "group.getById",
         "request_id": "sub",
@@ -119,7 +121,7 @@ class ChallengeInfo extends React.Component {
         </Group>
         <Group>
           <Div>
-            <InfoRow title="3/5">
+            <InfoRow title="Прогресс">
               <Progress value={40} />
             </InfoRow>
           </Div>
