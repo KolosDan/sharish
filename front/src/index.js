@@ -88,7 +88,7 @@ class ChallengeInfo extends React.Component {
         "params": { "count": 10 , "v": "5.101", "access_token": this.props.token }
       });
     }
-    else if (type === "Подиска"){
+    else if (type === "Подписка"){
       alert("norm")
       alert(value.split("/")[-1])
       connect.send("VKWebAppCallAPIMethod", {
