@@ -89,7 +89,7 @@ class ChallengeInfo extends React.Component {
       });
     }
     else if (type === "Подписка"){
-      alert(typeof(value.split("/")))
+      alert(value.split("/").toString())
       connect.send("VKWebAppCallAPIMethod", {
         "method": "groups.getById",
         "request_id": "sub",
