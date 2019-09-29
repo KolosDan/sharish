@@ -81,9 +81,7 @@ class ChallengeInfo extends React.Component {
   }
 
   getApiData(type, value){
-    alert(type, value)
     if(type === "Хештег" || type === "Репост" || type === "Хештег и фото" || type === "Отметка пользователя"){
-      alert("peq")
       connect.send("VKWebAppCallAPIMethod", {
         "method": "wall.get",
         "request_id": "hashtag",
@@ -225,6 +223,9 @@ class VKchallenge extends React.Component {
           "request_id": "groups.get",
           "params": { extended: 1, "user_id": this.state.user_obj_vk.id, "v": "5.101", filter: "admin", count: 1000, "access_token": this.state.token }
         });
+      }
+      else if (e.detail.type === "VKWebAppCallAPIMethodFailed") {
+        alert(JSON.stringify(e.detail, null, 4)) 
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
         if (e.detail.data.request_id === "groups.get") {
