@@ -25,6 +25,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Icon16Done from '@vkontakte/icons/dist/16/done';
+import YouTube from 'react-youtube';
 
 
 const instance = axios.create({
@@ -366,7 +367,7 @@ class VKchallenge extends React.Component {
                   Ку, жрешь? Сегодняшнее задание: блаблаблаблабла
                 </Div>
               </Group>
-              
+              <YouTube videoId='P0e5B2zF0HA'/>
               <Group title="Чеклист">
               <Group>
                   <Div>
@@ -391,8 +392,8 @@ class VKchallenge extends React.Component {
                     </List>
                     <Group>
                     <Div style={{display: 'flex'}}>
-                      <Button size="l" stretched style={{ marginRight: 8 }}>Я понял!</Button>
-                      <Button size="l" stretched level="secondary">Я участвую!</Button>
+                      <Button size="l" stretched style={{ marginRight: 8 }}>Я участвую!</Button>
+                      <Button size="l" stretched level="secondary">Я понял!</Button>
                     </Div>
                     </Group>
                   </Group>
