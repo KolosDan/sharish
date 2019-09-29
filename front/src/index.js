@@ -356,10 +356,9 @@ class VKchallenge extends React.Component {
       }>
         <View activePanel="feed_panel" id="feed">
           <Panel id="feed_panel">
-            <PanelHeader>
+            <PanelHeader noShadow>
               Челлендж дня
               </PanelHeader>
-              <FixedLayout vertical="top">
               <Tabs theme="header" type="buttons">
                   <TabsItem
                     onClick={() => this.setState({ activeTab10: 'main_challenge' })}
@@ -374,7 +373,6 @@ class VKchallenge extends React.Component {
                     Лента
                   </TabsItem>
               </Tabs>
-            </FixedLayout>
               <Group>
                 <Cell
                   photo="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg"
