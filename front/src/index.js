@@ -387,6 +387,7 @@ class VKchallenge extends React.Component {
               <Group>
                   <Div>
                     <InfoRow title="3/5">
+                    {this.props.tasks.map((item) => (item))}
                       <Progress value={40} />
                     </InfoRow>
                   </Div>
