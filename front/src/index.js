@@ -54,6 +54,7 @@ class ChallengeInfo extends React.Component {
     instance.get(`http://192.168.43.150:5000/get_progress?challenge_id=${this.props.challenge._id}&user_id=${this.props.user_id}`)
       .then((response) => {
         this.setState({ progress: response.data.result });
+        alert(this.state.progress)
       })
       .catch((error) => {
         console.log(error);
