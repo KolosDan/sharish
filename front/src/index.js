@@ -53,7 +53,7 @@ class ChallengeInfo extends React.Component {
   }
 
   joinChallenge(id, ch_id) {
-    instance.post('http://192.168.43.150:5000/join_challenge', {
+    instance.post('http://127.0.0.1:5000/join_challenge', {
       user_id: id,
       challenge_id: ch_id
     })
@@ -68,7 +68,7 @@ class ChallengeInfo extends React.Component {
   }
 
   removeChallenge(id, ch_id) {
-    instance.post('http://192.168.43.150:5000/remove_challenge', {
+    instance.post('http://127.0.0.1:5000/remove_challenge', {
       user_id: id,
       challenge_id: ch_id
     })
@@ -235,7 +235,7 @@ class VKchallenge extends React.Component {
           this.postChallenge();
         }
         else if (e.detail.data.request_id === "hashtag" || e.detail.data.request_id === "sub" || e.detail.data.request_id === "like") {
-          instance.post('http://192.168.43.150:5000/check_task', {
+          instance.post('http://127.0.0.1:5000/check_task', {
             user_id: this.state.user_obj_vk.id.toString(),
             challenge_id: api_data.id,
             api_data: e.detail.data.response,
@@ -272,7 +272,7 @@ class VKchallenge extends React.Component {
   }
 
   getUser() {
-    instance.get(`http://192.168.43.150:5000/get_user_info?user_id=${this.state.user_obj_vk.id.toString()}`)
+    instance.get(`http://127.0.0.1:5000/get_user_info?user_id=${this.state.user_obj_vk.id.toString()}`)
       .then((response) => {
         this.setState({ user_obj: response.data.result });
       })
@@ -294,7 +294,7 @@ class VKchallenge extends React.Component {
   }
 
   getAllChallenges() {
-    instance.get(`http://192.168.43.150:5000/get_challenge_list?status=ALL`)
+    instance.get(`http://127.0.0.1:5000/get_challenge_list?status=ALL`)
       .then((response) => {
         response.data.result.sort((a, b) => (a.participants.length > b.participants.length) ? 1 : -1)
         this.setState({ all_challenges: response.data.result });
@@ -305,7 +305,7 @@ class VKchallenge extends React.Component {
   }
 
   getChallenges() {
-    instance.get(`http://192.168.43.150:5000/get_user_challenges?user_id=${this.state.user_obj_vk.id.toString()}`)
+    instance.get(`http://127.0.0.1:5000/get_user_challenges?user_id=${this.state.user_obj_vk.id.toString()}`)
       .then((response) => {
         this.setState({ challenge_obj: response.data.result });
       })
@@ -325,7 +325,7 @@ class VKchallenge extends React.Component {
       u_photo = this.state.posted_community[0].photo_100;
     }
 
-    instance.post('http://192.168.43.150:5000/create_challenge', {
+    instance.post('http://127.0.0.1:5000/create_challenge', {
       user_id: this.state.user_obj_vk.id.toString(),
       name: this.state.name,
       description: this.state.desc,
@@ -352,7 +352,7 @@ class VKchallenge extends React.Component {
 
 
   editChallenge() {
-    instance.post('http://192.168.43.150:5000/edit_challenge', {
+    instance.post('http://127.0.0.1:5000/edit_challenge', {
       challenge_id: this.state.edit_challenge_id,
       kwargs: {
         name: this.state.name,
@@ -376,7 +376,7 @@ class VKchallenge extends React.Component {
   }
 
   addGroup(id, name) {
-    instance.post('http://192.168.43.150:5000/connect_group', {
+    instance.post('http://127.0.0.1:5000/connect_group', {
       user_id: this.state.user_obj_vk.id.toString(),
       group_id: id,
       group_name: name
@@ -392,7 +392,7 @@ class VKchallenge extends React.Component {
   }
 
   get_one_challenge(id) {
-    instance.get(`http://192.168.43.150:5000/get_challenge_info?challenge_id=${id}`)
+    instance.get(`http://127.0.0.1:5000/get_challenge_info?challenge_id=${id}`)
       .then((response) => {
         alert(JSON.stringify(response.data))
         this.setState({ one_challenge_obj: response.data.result });
@@ -406,7 +406,7 @@ class VKchallenge extends React.Component {
   
 
   startChallenge(id) {
-    instance.post('http://192.168.43.150:5000/start_challenge', {
+    instance.post('http://127.0.0.1:5000/start_challenge', {
       challenge_id: id
     })
       .then(function (response) {
@@ -420,7 +420,7 @@ class VKchallenge extends React.Component {
   }
 
   stopChallenge(id) {
-    instance.post('http://192.168.43.150:5000/stop_challenge', {
+    instance.post('http://127.0.0.1:5000/stop_challenge', {
       challenge_id: id
     })
       .then(function (response) {
