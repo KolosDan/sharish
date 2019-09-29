@@ -62,7 +62,7 @@ class ChallengeInfo extends React.Component {
           </Div>
           <Group title="Placeholder">
             <List>
-              pep
+              {this.props.tasks[0]}
             </List>
             <Group>
               <FormLayout>
