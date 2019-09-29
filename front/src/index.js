@@ -30,6 +30,7 @@ import Icon16Done from '@vkontakte/icons/dist/16/done';
 import YouTube from 'react-youtube';
 
 let api_data = {}
+let main = {}
 
 const instance = axios.create({
   headers: { 'Access-Control-Allow-Origin': "*" }
@@ -39,6 +40,17 @@ const youtube_opts = {
   height: '210',
   width: '390'
 };
+
+function getMain() {
+  instance.get(`http://192.168.43.150:5000/get_main_challenge`)
+    .then((response) => {
+      main = response.data.result;
+      alert(main)
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
 
 const osname = platform();
 connect.send("VKWebAppInit", {});
@@ -399,16 +411,6 @@ class VKchallenge extends React.Component {
         alert(JSON.stringify(response.data))
         this.setState({ one_challenge_obj: response.data.result });
         this.setState({ activeStory: 'challenge_info' })
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  getMain() {
-    instance.get(`http://192.168.43.150:5000/get_main_challenge`)
-      .then((response) => {
-        this.setState({ main: response.data.result });
       })
       .catch((error) => {
         console.log(error);
