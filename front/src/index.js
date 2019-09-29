@@ -368,7 +368,7 @@ class VKchallenge extends React.Component {
                   </TabsItem>
                   <TabsItem
                     onClick={() => this.setState({ activeTab6: 'main_challenge_feed' })}
-                    selected={this.state.activeTab6 === 'main_challenge_feed'}
+                    selected={this.state.activeTab10 === 'main_challenge_feed'}
                   >
                     Лента
                   </TabsItem>
