@@ -624,7 +624,7 @@ class VKchallenge extends React.Component {
                       </Cell>
                       <Div style={{ display: 'flex' }}>
                         <Button size="l" level="commerce" stretched style={{ marginRight: 8 }}>Старт</Button>
-                        <Button size="l" level="destructive" stretched level="secondary">Стоп</Button>
+                        <Button size="l" level="destructive" stretched >Стоп</Button>
                       </Div>
                       <Card>
                         <CardActionArea>
