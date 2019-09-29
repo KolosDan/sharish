@@ -405,6 +405,34 @@ class VKchallenge extends React.Component {
       });
   }
 
+  startChallenge() {
+    instance.post('http://192.168.43.150:5000/start_challenge', {
+      challenge_id: this.state.one_challenge_obj._id
+    })
+      .then(function (response) {
+        if (response.data.error) {
+          alert(response.data.error);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  stopChallenge() {
+    instance.post('http://192.168.43.150:5000/stop_challenge', {
+      challenge_id: this.state.one_challenge_obj._id
+    })
+      .then(function (response) {
+        if (response.data.error) {
+          alert(response.data.error);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   restoreState(args) {
     this.setState({ name: args.name });
     this.setState({ desc: args.description });
@@ -623,8 +651,8 @@ class VKchallenge extends React.Component {
                         {item.first_name} {item.last_name}
                       </Cell>
                       <Div style={{ display: 'flex' }}>
-                        <Button size="l" level="commerce" stretched style={{ marginRight: 8 }}>Старт</Button>
-                        <Button size="l" level="destructive" stretched >Стоп</Button>
+                        <Button onClick={ () => {this.startChallenge()} } size="l" level="commerce" stretched style={{ marginRight: 8 }}>Старт</Button>
+                        <Button onClick={ () => {this.stopChallenge()} } size="l" level="destructive" stretched >Стоп</Button>
                       </Div>
                       <Card>
                         <CardActionArea>
