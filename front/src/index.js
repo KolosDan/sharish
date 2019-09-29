@@ -558,7 +558,7 @@ class VKchallenge extends React.Component {
                 </Div> */}
                 <Group title="Задания">
                   <List>
-                    {this.state.main.tasks.map((task, index) =>
+                    {/* {this.state.main.tasks.map((task, index) =>
                       <Cell
                         multiline
                         asideContent={<Button onClick={() => { this.getApiData(task.type, task.value); api_data.index = index; api_data.id = this.props.challenge._id }} before={<Icon16Done />}>Я сделал</Button>}
@@ -566,7 +566,7 @@ class VKchallenge extends React.Component {
                       >
                         Задание {index}
                       </Cell>
-                    )}
+                    )} */}
                   </List>
                   <Group>
                     <Div style={{ display: 'flex' }}>
