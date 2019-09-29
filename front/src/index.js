@@ -652,7 +652,9 @@ class VKchallenge extends React.Component {
                 <option value="Хештег">Хештег</option>
                 <option value="Репост">Репост</option>
                 <option value="Подписка">Подписка</option>
-                <option value="Отметка">Отметка в посте</option>
+                <option value="Хештег и фото">Хештег и фото</option>
+                <option value="Отметка пользователя">Отметка пользователя</option>
+                <option value="Лайк">Лайк</option>
               </Select>
               <Input top="Описание" name="desc_task" onChange={this.onChange} />
               <Input top="Значение" name="value_task" onChange={this.onChange} />
