@@ -124,16 +124,11 @@ class VKchallenge extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onStoryChange = this.onStoryChange.bind(this);
     this.select = this.select.bind(this);
-    this.getBack = this.getBack.bind(this);
   }
 
   onStoryChange(e) {
     this.setState({ activeStory: e.currentTarget.dataset.story })
   }
-
-  getBack() {
-    this.setState({ activeStory: "feed"});
- }
 
   select(e) {
     const mode = e.currentTarget.dataset.mode;
@@ -679,7 +674,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
-          <ChallengeInfo getback={this.getBack} tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
+          <ChallengeInfo tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
               cover={this.state.one_challenge_obj.cover}/>
           </Panel>
         </View>
