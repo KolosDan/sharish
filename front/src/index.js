@@ -622,6 +622,10 @@ class VKchallenge extends React.Component {
                       >
                         {item.first_name} {item.last_name}
                       </Cell>
+                      <Div style={{ display: 'flex' }}>
+                        <Button size="l" stretched style={{ marginRight: 8 }}>Stretched</Button>
+                        <Button size="l" stretched level="secondary">Stretched</Button>
+                      </Div>
                       <Card>
                         <CardActionArea>
                           <img style={{ maxWidth: "370px" }} src={item.cover} />
