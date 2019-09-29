@@ -27,6 +27,7 @@ import Typography from '@material-ui/core/Typography';
 import Icon16Done from '@vkontakte/icons/dist/16/done';
 import YouTube from 'react-youtube';
 
+let api_data = {}
 
 const instance = axios.create({
   headers: { 'Access-Control-Allow-Origin': "*" }
@@ -43,6 +44,10 @@ connect.send("VKWebAppInit", {});
 class ChallengeInfo extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state ={
+
+    }
   }
 
   joinChallenge(id, ch_id) {
@@ -74,15 +79,30 @@ class ChallengeInfo extends React.Component {
         console.log(error);
       });
   }
-  componentDidMount(){
-    connect.subscribe((e) => {
-      alert("heh")
-    })
-    connect.send("VKWebAppGetUserInfo", {});
-  }
 
-  getApiData(type){
-
+  getApiData(type, value){
+    if(type === "Хештег" || type === "Репост" || type === "Хештег и фото" || type === "Отметка пользователя"){
+      connect.send("VKWebAppCallAPIMethod", {
+        "method": "wall.get",
+        "request_id": "hashtag",
+        "params": { "count": 10 , "v": "5.101", "access_token": this.state.token }
+      });
+    }
+    else if (type === "Подиска"){
+      connect.send("VKWebAppCallAPIMethod", {
+        "method": "group.getById",
+        "request_id": "sub",
+        "params": { "group_id": value.split("/")[-1], "v": "5.101", "access_token": this.state.token }
+      });
+    }
+    else if (type === "Лайк"){
+      connect.send("VKWebAppCallAPIMethod", {
+        "method": "likes.isLiked",
+        "request_id": "like",
+        "params": { "user_id": this.props.user_id, "type" : "wall", "owner_id" : value.split("w=wall")[-1].split("_")[0] ,
+        "item_id" : value.split("w=wall")[-1].split("_")[1]  ,"v": "5.101", "access_token": this.state.token }
+      });
+    }
   }
 
 
@@ -108,7 +128,7 @@ class ChallengeInfo extends React.Component {
               {this.props.tasks.map((task, index) =>
                 <Cell
                   multiline
-                  asideContent={<Button onClick={() => { this.getApiData(task.type) }} before={<Icon16Done />}>Я сделал</Button>}
+                  asideContent={<Button onClick={() => { this.getApiData(task.type, task.value); api_data.index = index; api_data.id = this.props.challenge._id }} before={<Icon16Done />}>Я сделал</Button>}
                   description={task.description}
                 >
                   Задание {index}
@@ -211,6 +231,51 @@ class VKchallenge extends React.Component {
         else if (e.detail.data.request_id === "posted_community") {
           this.setState({ posted_community: e.detail.data.response })
           this.postChallenge();
+        }
+        else if (e.detail.data.request_id === "hashtag") {
+          instance.post('http://192.168.43.150:5000/check_task', {
+            user_id: this.state.user_obj_vk.id.toString(),
+            challenge_id: api_data.id,
+            api_data: e.detail.data.response
+          })
+            .then(function (response) {
+              if (response.data.error) {
+                alert(response.data.error);
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+        else if (e.detail.data.request_id === "sub") {
+          instance.post('http://192.168.43.150:5000/check_task', {
+            user_id: this.state.user_obj_vk.id.toString(),
+            challenge_id: api_data.id,
+            api_data: e.detail.data.response
+          })
+            .then(function (response) {
+              if (response.data.error) {
+                alert(response.data.error);
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+        else if (e.detail.data.request_id === "like") {
+          instance.post('http://192.168.43.150:5000/check_task', {
+            user_id: this.state.user_obj_vk.id.toString(),
+            challenge_id: api_data.id,
+            api_data: e.detail.data.response
+          })
+            .then(function (response) {
+              if (response.data.error) {
+                alert(response.data.error);
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
         }
         // { alert(JSON.stringify(e.detail, null, 4)) }
       }
