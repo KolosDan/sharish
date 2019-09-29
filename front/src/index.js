@@ -24,6 +24,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import Icon16Done from '@vkontakte/icons/dist/16/done';
+
 
 const instance = axios.create({
   headers: { 'Access-Control-Allow-Origin': "*" }
@@ -365,7 +367,7 @@ class VKchallenge extends React.Component {
                 </Div>
               </Group>
               
-              <Group title="Информация о пользователе">
+              <Group title="Чеклист">
               <Group>
                   <Div>
                     <InfoRow title="3/5">
@@ -375,13 +377,13 @@ class VKchallenge extends React.Component {
                   <Group title="Placeholder">
                     <List>
                             <Cell
-                              asideContent={<Icon24DoneOutline fill="var(--accent)" />}
+                              asideContent={<Button before={<Icon16Done/>}>Add item</Button>}
                               description='Описание 1'
                             >
                               Задание 1
                             </Cell>
                             <Cell
-                              asideContent={<Icon24DoneOutline fill="var(--accent)" />}
+                              asideContent={<Button before={<Icon16Done/>}>Add item</Button>}
                               description='Описание 2'
                             >
                               Задание 2
