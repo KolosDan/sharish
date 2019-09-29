@@ -46,7 +46,6 @@ class ChallengeInfo extends React.Component {
   render() {
     return (
       <React.Fragment>
-        { alert(JSON.stringify(this.props.tasks, null, 4)) }
         <PanelHeader left={<HeaderButton >{<Icon24Back />}</HeaderButton>}> {this.props.name}</PanelHeader>
         <img style={{ maxWidth: "370px" }} src={this.props.cover} />
         <Group title="Описание">
