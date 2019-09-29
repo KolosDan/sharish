@@ -351,9 +351,17 @@ class VKchallenge extends React.Component {
             <PanelHeader>
               Челлендж дня
               </PanelHeader>
-              <Cell>
-              <div style="margin: 0 auto;"><Avatar src="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg" size={80}/></div>
-              </Cell>
+              <Group>
+                <Cell
+                  photo="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg"
+                  description="VKontakte"
+                  bottomContent={<Button>Подписаться</Button>}
+                  before={<Avatar src="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg" size={80}/>}
+                  size="l"
+                >
+                  Автор Постерович  
+                </Cell>
+            </Group>
           </Panel>
         </View>
 
