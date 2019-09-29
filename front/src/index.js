@@ -45,7 +45,7 @@ class ChallengeInfo extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state ={
+    this.state = {
 
     }
   }
@@ -80,28 +80,30 @@ class ChallengeInfo extends React.Component {
       });
   }
 
-  getApiData(type, value){
-    if(type === "Хештег" || type === "Репост" || type === "Хештег и фото" || type === "Отметка пользователя"){
+  getApiData(type, value) {
+    if (type === "Хештег" || type === "Репост" || type === "Хештег и фото" || type === "Отметка пользователя") {
       connect.send("VKWebAppCallAPIMethod", {
         "method": "wall.get",
         "request_id": "hashtag",
-        "params": { "count": 10 , "v": "5.101", "access_token": this.props.token }
+        "params": { "count": 10, "v": "5.101", "access_token": this.props.token }
       });
     }
-    else if (type === "Подписка"){
-      alert(value.split("/")[0])  
+    else if (type === "Подписка") {
+      alert(value.split("/")[0])
       connect.send("VKWebAppCallAPIMethod", {
         "method": "groups.getById",
         "request_id": "sub",
-        "params": { "group_id": value.split("/")[value.split("/").length-1], "v": "5.101", "access_token": this.props.token }
+        "params": { "group_id": value.split("/")[value.split("/").length - 1], "v": "5.101", "access_token": this.props.token }
       });
     }
-    else if (type === "Лайк"){
+    else if (type === "Лайк") {
       connect.send("VKWebAppCallAPIMethod", {
         "method": "likes.isLiked",
         "request_id": "like",
-        "params": { "user_id": this.props.user_id, "type" : "post", "owner_id" : value.split("w=wall")[value.split("w=wall").length-1].split("_")[0] ,
-        "item_id" : value.split("w=wall")[value.split("w=wall").length-1].split("_")[1]  ,"v": "5.101", "access_token": this.props.token }
+        "params": {
+          "user_id": this.props.user_id, "type": "post", "owner_id": value.split("w=wall")[value.split("w=wall").length - 1].split("_")[0],
+          "item_id": value.split("w=wall")[value.split("w=wall").length - 1].split("_")[1], "v": "5.101", "access_token": this.props.token
+        }
       });
     }
   }
@@ -139,7 +141,7 @@ class ChallengeInfo extends React.Component {
             </List>
             <Group>
               <FormLayout>
-                <Button onClick={() => { this.joinChallenge(this.props.user_id,this.props.challenge._id) }}  size="xl">Участвую</Button> 
+                <Button onClick={() => { this.joinChallenge(this.props.user_id, this.props.challenge._id) }} size="xl">Участвую</Button>
               </FormLayout>
             </Group>
           </Group>
@@ -226,7 +228,7 @@ class VKchallenge extends React.Component {
         });
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodFailed") {
-        alert(JSON.stringify(e.detail, null, 4)) 
+        alert(JSON.stringify(e.detail, null, 4))
       }
       else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
         if (e.detail.data.request_id === "groups.get") {
@@ -236,18 +238,18 @@ class VKchallenge extends React.Component {
           this.setState({ posted_community: e.detail.data.response })
           this.postChallenge();
         }
-        else if (e.detail.data.request_id === "hashtag" || e.detail.data.request_id === "sub" || e.detail.data.request_id === "like" ) {
+        else if (e.detail.data.request_id === "hashtag" || e.detail.data.request_id === "sub" || e.detail.data.request_id === "like") {
           instance.post('http://192.168.43.150:5000/check_task', {
             user_id: this.state.user_obj_vk.id.toString(),
             challenge_id: api_data.id,
             api_data: e.detail.data.response,
-            task_index : api_data.index
+            task_index: api_data.index
           })
             .then(function (response) {
-              if (response.data.result){
+              if (response.data.result) {
                 alert("Задание пройдено")
               }
-              else{
+              else {
                 alert("Попробуйте еще раз")
               }
               if (response.data.error) {
@@ -772,8 +774,11 @@ class VKchallenge extends React.Component {
         </View>
 
         <View activePanel="join" id="joined">
+          <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'more' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>} >
+            Группы
+            </PanelHeader>
           <Panel id="join">
-           <Group>
+            <Group>
               {this.state.all_challenges.length > 0 &&
                 <List>
                   {this.state.all_challenges.map((item) => (
@@ -799,7 +804,7 @@ class VKchallenge extends React.Component {
                           </CardContent>
                         </CardActionArea>
                         <CardActions>
-                          <Button stretched onClick={() => { this.get_one_challenge(item._id)}} size="xl" color="primary">
+                          <Button stretched onClick={() => { this.get_one_challenge(item._id) }} size="xl" color="primary">
                             Подробно
                          </Button>
                         </CardActions>
@@ -808,14 +813,14 @@ class VKchallenge extends React.Component {
                   )
                   )}
                 </List>
-              } 
-              </Group>
+              }
+            </Group>
           </Panel>
         </View>
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
-            <ChallengeInfo token={this.state.token} challenge={this.state.one_challenge_obj} user_id={this.state.user_obj_vk.id}  tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
+            <ChallengeInfo token={this.state.token} challenge={this.state.one_challenge_obj} user_id={this.state.user_obj_vk.id} tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
               cover={this.state.one_challenge_obj.cover} />
           </Panel>
         </View>
