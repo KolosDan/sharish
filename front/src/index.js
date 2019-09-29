@@ -448,14 +448,14 @@ class VKchallenge extends React.Component {
       connect.send("VKWebAppCallAPIMethod", {
         "method": "wall.get",
         "request_id": "hashtag",
-        "params": { "count": 10, "v": "5.101", "access_token": this.props.token }
+        "params": { "count": 10, "v": "5.101", "access_token": this.state.token }
       });
     }
     else if (type === "Подписка") {
       connect.send("VKWebAppCallAPIMethod", {
         "method": "groups.getById",
         "request_id": "sub",
-        "params": { "group_id": value.split("/")[value.split("/").length - 1], "v": "5.101", "access_token": this.props.token }
+        "params": { "group_id": value.split("/")[value.split("/").length - 1], "v": "5.101", "access_token": this.state.token }
       });
     }
     else if (type === "Лайк") {
@@ -463,8 +463,8 @@ class VKchallenge extends React.Component {
         "method": "likes.isLiked",
         "request_id": "like",
         "params": {
-          "user_id": this.props.user_id, "type": "post", "owner_id": value.split("w=wall")[value.split("w=wall").length - 1].split("_")[0],
-          "item_id": value.split("w=wall")[value.split("w=wall").length - 1].split("_")[1], "v": "5.101", "access_token": this.props.token
+          "user_id": this.state.user_obj_vk.id, "type": "post", "owner_id": value.split("w=wall")[value.split("w=wall").length - 1].split("_")[0],
+          "item_id": value.split("w=wall")[value.split("w=wall").length - 1].split("_")[1], "v": "5.101", "access_token": this.state.token
         }
       });
     }
@@ -561,7 +561,7 @@ class VKchallenge extends React.Component {
                     {this.state.main.tasks.map((task, index) =>
                       <Cell
                         multiline
-                        asideContent={<Button onClick={() => {  api_data.index = index; api_data.id = "main" }} before={<Icon16Done />}>Я сделал</Button>}
+                        asideContent={<Button onClick={() => { }} before={<Icon16Done />}>Я сделал</Button>}
                         description={task.description}
                       >
                         Задание {index}
