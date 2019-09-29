@@ -4,7 +4,7 @@ import {
   View, Panel, PanelHeader, Group, List, Cell, Avatar, Footer,
   HeaderButton, CellButton, Root, PanelHeaderContent, Epic, platform,
   Tabbar, TabbarItem, Search, Input, FormLayout, Button, InfoRow,
-  Select, IOS, Tabs, TabsItem, Div, Progress, Checkbox
+  Select, IOS, Tabs, TabsItem, Div, Progress, Checkbox, FixedLayout
 } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
