@@ -43,7 +43,7 @@ connect.send("VKWebAppInit", {});
 
 class ChallengeInfo extends React.Component {
   constructor(props) {
-    alert(JSON.stringify(this.props.challenge, null, 4)) 
+    alert(JSON.stringify(this.props.challenge, null, 4))
     super(props);
 
     this.state = {
