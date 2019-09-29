@@ -62,14 +62,18 @@ class ChallengeInfo extends React.Component {
           </Div>
           <Group title="Placeholder">
             <List>
-              {this.props.tasks.map((task, index) => 
                     <Cell
                       asideContent={<Icon24DoneOutline fill="var(--accent)" />}
-                      description={task.description}
+                      description="Описание 1"
                     >
-                      Задание {index}
+                      Задание 1
                     </Cell>
-        )}
+                    <Cell
+                      asideContent={<Icon24DoneOutline fill="var(--accent)" />}
+                      description="Описание 2"
+                    >
+                      Задание 2
+                    </Cell>
             </List>
             <Group>
               <FormLayout>
@@ -677,7 +681,7 @@ class VKchallenge extends React.Component {
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
           <ChallengeInfo name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
-              cover={this.state.one_challenge_obj.cover} tasks={this.state.one_challenge_obj.tasks} />
+              cover={this.state.one_challenge_obj.cover}/>
           </Panel>
         </View>
 
