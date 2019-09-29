@@ -107,7 +107,7 @@ class ChallengeInfo extends React.Component {
             </List>
             <Group>
               <FormLayout>
-                <Button onClick={() => { this.joinChallenge(this.props.user_id,this.props.challenge._id);}}  size="xl">Участвую</Button> 
+                <Button onClick={() => { this.joinChallenge(this.props.user_id,this.props.challenge._id) }}  size="xl">Участвую</Button> 
               </FormLayout>
             </Group>
           </Group>
@@ -709,6 +709,49 @@ class VKchallenge extends React.Component {
                 ))
               }
             </Group>
+          </Panel>
+        </View>
+
+        <View activePanel="join" id="joined">
+          <Panel id="join">
+           <Group>
+              {this.state.all_challenges.length > 0 &&
+                <List>
+                  {this.state.all_challenges.map((item) => (
+                    item.participants.includes(this.state.user_obj._id.toString()) &&
+                    <Group>
+                      <Cell
+                        size="l"
+                        description={"#" + item.hashtag}
+                        asideContent={<Icon28Write onClick={() => { this.setState({ edit: true }); this.restoreState(item); this.setState({ activeStory: 'create' }) }} fill="var(--accent)" />}
+                        before={<Avatar src={item.user_photo} />}
+                      >
+                        {item.first_name} {item.last_name}
+                      </Cell>
+                      <Card>
+                        <CardActionArea>
+                          <img style={{ maxWidth: "370px" }} src={item.cover} />
+                          <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                              {item.name}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                              {item.description}
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                          <Button stretched onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="xl" color="primary">
+                            Подробно
+                         </Button>
+                        </CardActions>
+                      </Card>
+                    </Group>
+                  )
+                  )}
+                </List>
+              } 
+              </Group>
           </Panel>
         </View>
 
