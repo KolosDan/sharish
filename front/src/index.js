@@ -298,6 +298,7 @@ class VKchallenge extends React.Component {
       .then((response) => {
         // alert(JSON.stringify(response.data))
         this.setState({ one_challenge_obj: response.data.result });
+        this.setState({ activeStory: 'challenge_info' })
       })
       .catch((error) => {
         console.log(error);
@@ -465,7 +466,7 @@ class VKchallenge extends React.Component {
                           </CardContent>
                         </CardActionArea>
                         <CardActions>
-                          <Button onClick={() => { this.get_one_challenge(item._id); this.setState({ activeStory: 'challenge_info' }) }} size="xl" color="primary">
+                          <Button onClick={() => { this.get_one_challenge(item._id) }} size="xl" color="primary">
                             Подробно
                          </Button>
                         </CardActions>
