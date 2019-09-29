@@ -367,9 +367,9 @@ class VKchallenge extends React.Component {
                   Ку, жрешь? Сегодняшнее задание: блаблаблаблабла
                 </Div>
               </Group>
-              <Group title='Видео челленджа'>
+              <Div>
               <YouTube videoId='P0e5B2zF0HA'/>
-              </Group>
+              </Div>
               <Group title="Чеклист">
               <Group>
                   <Div>
