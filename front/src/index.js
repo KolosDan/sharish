@@ -92,7 +92,7 @@ class ChallengeInfo extends React.Component {
             </List>
             <Group>
               <FormLayout>
-                <Button onClick={this.joinChallenge(this.props.user_id, this.props.challenge_id)} size="xl">Участвую</Button>
+                <Button onClick={() => { this.joinChallenge(this.props.user_id,this.props.challenge_id) }}  size="xl">Участвую</Button>
               </FormLayout>
             </Group>
           </Group>
