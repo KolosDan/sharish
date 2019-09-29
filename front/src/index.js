@@ -339,7 +339,7 @@ class VKchallenge extends React.Component {
   get_one_challenge(id) {
     instance.get(`http://192.168.43.150:5000/get_challenge_info?challenge_id=${id}`)
       .then((response) => {
-        // alert(JSON.stringify(response.data))
+        alert(JSON.stringify(response.data))
         this.setState({ one_challenge_obj: response.data.result });
         this.setState({ activeStory: 'challenge_info' })
       })
