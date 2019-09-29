@@ -774,10 +774,10 @@ class VKchallenge extends React.Component {
         </View>
 
         <View activePanel="join" id="joined">
+          <Panel id="join">
           <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'more' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>} >
             Я участвую
             </PanelHeader>
-          <Panel id="join">
             <Group>
               {this.state.all_challenges.length > 0 &&
                 <List>
