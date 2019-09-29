@@ -49,15 +49,15 @@ class ChallengeInfo extends React.Component {
   getProgress(){
     let progress = 0;
     alert(JSON.stringify( this.props.user, null, 4)) 
-    // this.props.user.challenges.map( (item) => {
-    //   item.map( (task) => {
-    //     if(task.completed){
-    //       progress++;
-    //     }
-    //   })
-    // })
-    // alert(progress);
-    // return progress;
+    this.props.user.challenges.map( (item) => {
+      item.map( (task) => {
+        if(task.completed){
+          progress++;
+        }
+      })
+    })
+    alert(progress);
+    return progress;
   }
 
   joinChallenge(id, ch_id) {
@@ -831,7 +831,7 @@ class VKchallenge extends React.Component {
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
             <ChallengeInfo token={this.state.token} challenge={this.state.one_challenge_obj} 
-            user_id={this.state.user_obj_vk.id} user={this.state.user_obj_vk} tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
+            user_id={this.state.user_obj_vk.id} user={this.state.user_obj} tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
             cover={this.state.one_challenge_obj.cover} />
           </Panel>
         </View>
