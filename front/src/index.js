@@ -669,7 +669,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
-          {alert(this.state.one_challenge_obj.tasks)}
+          {alert(this.state.one_challenge_obj)}
           <ChallengeInfo name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
               cover={this.state.one_challenge_obj.cover}/>
           </Panel>
