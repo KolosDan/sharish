@@ -163,7 +163,6 @@ class VKchallenge extends React.Component {
       community: "My account",
       winner: "",
       cover: "",
-      category : "",
 
       activeStory: 'feed',
       activeView: "view1",
@@ -336,7 +335,6 @@ class VKchallenge extends React.Component {
       group_publisher: this.state.community,
       winner: this.state.winner,
       cover: this.state.cover,
-      category : this.state.category,
 
       first_name: f_name,
       last_name: l_name,
@@ -699,17 +697,7 @@ class VKchallenge extends React.Component {
                   </Select>
                 </Group>
               }
-              <Group title="Категория">
-                <Select value={this.state.category} name="category" onChange={this.onChange} >
-                  <option value="0">Нет победителя</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </Select>
-              </Group>
-
+              
               <Group title="Задания">
                 {this.state.task_list.length > 0 &&
                   <List>
