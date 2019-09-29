@@ -136,7 +136,7 @@ class ChallengeInfo extends React.Component {
                   Задание {index}
                 </Cell>
               )}
-              <Cell >{this.props.max}</Cell>
+              <Cell >{this.props.challenge.participants.length}</Cell>
             </List>
             <Group>
               <FormLayout>
