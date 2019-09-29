@@ -50,7 +50,7 @@ class ChallengeInfo extends React.Component {
     let progress = 0;
     alert(JSON.stringify( this.props.user, null, 4)) 
     this.props.user.challenges.map( (item) => {
-      alert(item)
+      alert(item.challenge_id === this.props.challenge._id)
     })
     alert(progress);
     return progress;
