@@ -551,7 +551,7 @@ class VKchallenge extends React.Component {
         <View activePanel="list" id="index">
           <Panel id="list">
             <PanelHeader noShadow>
-              Поиск челленджей
+              Список конкурсов
             </PanelHeader>
 
             <Group>
