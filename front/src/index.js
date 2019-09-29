@@ -63,7 +63,7 @@ class ChallengeInfo extends React.Component {
           </Div>
           <Group title="Placeholder">
             <List>
-            {this.state.all_challenges.map((item) => (
+            {this.props.tasks.map((item) => (
                     <Div>
                         {item.type}
                       </Div>))}
