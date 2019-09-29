@@ -390,9 +390,10 @@ class VKchallenge extends React.Component {
                             </Cell>
                     </List>
                     <Group>
-                      <FormLayout>
-                        <Button size="xl">Участвую</Button>
-                      </FormLayout>
+                    <Div style={{display: 'flex'}}>
+                      <Button size="l" stretched style={{ marginRight: 8 }}>Я понял!</Button>
+                      <Button size="l" stretched level="secondary">Я участвую!</Button>
+                    </Div>
                     </Group>
                   </Group>
                 </Group>
