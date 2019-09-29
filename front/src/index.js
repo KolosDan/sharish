@@ -55,6 +55,7 @@ class ChallengeInfo extends React.Component {
         }
       })
     })
+    alert(progress);
     return progress;
   }
 
@@ -131,7 +132,7 @@ class ChallengeInfo extends React.Component {
         <Group>
           <Div>
             <InfoRow title="Прогресс">
-              <Progress value={this.getProgress() } />
+              <Progress value={this.props.user} />
             </InfoRow>
           </Div>
           <Group title="Задания">
