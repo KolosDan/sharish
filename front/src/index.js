@@ -105,6 +105,7 @@ class VKchallenge extends React.Component {
       activeView: "view1",
       activeTab6: "active",
       activeTab5: "popular",
+      activeTab10: "main_challenge",
       challenge_obj: {},
       all_challenges: [],
       user_groups: [],
@@ -358,6 +359,22 @@ class VKchallenge extends React.Component {
             <PanelHeader>
               Челлендж дня
               </PanelHeader>
+              <FixedLayout vertical="top">
+              <Tabs theme="header" type="buttons">
+                  <TabsItem
+                    onClick={() => this.setState({ activeTab10: 'main_challenge' })}
+                    selected={this.state.activeTab10 === 'main_challenge'}
+                  >
+                    Задание дня
+                  </TabsItem>
+                  <TabsItem
+                    onClick={() => this.setState({ activeTab6: 'main_challenge_feed' })}
+                    selected={this.state.activeTab6 === 'main_challenge_feed'}
+                  >
+                    Лента
+                  </TabsItem>
+              </Tabs>
+            </FixedLayout>
               <Group>
                 <Cell
                   photo="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg"
