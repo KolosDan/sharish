@@ -123,7 +123,6 @@ class VKchallenge extends React.Component {
     };
     this.onChange = this.onChange.bind(this);
     this.onStoryChange = this.onStoryChange.bind(this);
-    this.toggleContext = this.toggleContext.bind(this);
     this.select = this.select.bind(this);
     this.getBack = this.getBack.bind(this);
   }
@@ -139,7 +138,7 @@ class VKchallenge extends React.Component {
   select(e) {
     const mode = e.currentTarget.dataset.mode;
     this.setState({ mode });
-    requestAnimationFrame(this.toggleContext);
+    // requestAnimationFrame(this.toggleContext);
   }
 
   componentDidMount() {
