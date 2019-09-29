@@ -64,7 +64,7 @@ class ChallengeInfo extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <PanelHeader left={<HeaderButton onClick={this.props.back()} >{<Icon24Back />}</HeaderButton>}> {this.props.name}</PanelHeader>
+        <PanelHeader left={<HeaderButton >{<Icon24Back />}</HeaderButton>}> {this.props.name}</PanelHeader>
         <img style={{ maxWidth: "370px" }} src={this.props.cover} />
         <Group title="Описание">
           <Cell multiline>{this.props.desc}</Cell>
@@ -699,7 +699,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
-            <ChallengeInfo challenge_id={this.state.one_challenge_obj._id} user_id={this.state.user_obj_vk.id} back={this.handleChange} tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
+            <ChallengeInfo challenge_id={this.state.one_challenge_obj._id} user_id={this.state.user_obj_vk.id}  tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
               cover={this.state.one_challenge_obj.cover} />
           </Panel>
         </View>
