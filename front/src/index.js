@@ -496,20 +496,6 @@ class VKchallenge extends React.Component {
             <PanelHeader noShadow>
               Челлендж дня
               </PanelHeader>
-            <Tabs theme="header" type="buttons">
-              <TabsItem
-                onClick={() => this.setState({ activeTab10: 'main_challenge' })}
-                selected={this.state.activeTab10 === 'main_challenge'}
-              >
-                Задание дня
-                  </TabsItem>
-              <TabsItem
-                onClick={() => this.setState({ activeTab6: 'main_challenge_feed' })}
-                selected={this.state.activeTab10 === 'main_challenge_feed'}
-              >
-                Лента
-                  </TabsItem>
-            </Tabs>
             <Group>
               <Cell
                 photo="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg"
