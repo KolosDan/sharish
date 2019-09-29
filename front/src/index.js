@@ -34,7 +34,8 @@ const instance = axios.create({
 
 const youtube_opts = {
   height: '210',
-  width: '390'};
+  width: '390'
+};
 
 const osname = platform();
 connect.send("VKWebAppInit", {});
@@ -43,6 +44,23 @@ class ChallengeInfo extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  joinChallenge(id, ch_id) {
+    instance.post('http://192.168.43.150:5000/join_challenge', {
+      user_id: id,
+      challenge_id: ch_id
+    })
+      .then(function (response) {
+        if (response.data.error) {
+          alert(response.data.error);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+
   render() {
     return (
       <React.Fragment>
@@ -62,19 +80,19 @@ class ChallengeInfo extends React.Component {
           </Div>
           <Group title="Задания">
             <List>
-            {this.props.tasks.map((task, index) => 
-                    <Cell
-                      asideContent={<Icon24DoneOutline fill="var(--accent)" />}
-                      description={task.description}
-                    >
-                      Задание {index}
-                    </Cell>
-        )}
-            <Cell >{this.props.max}</Cell>
+              {this.props.tasks.map((task, index) =>
+                <Cell
+                  asideContent={<Icon24DoneOutline fill="var(--accent)" />}
+                  description={task.description}
+                >
+                  Задание {index}
+                </Cell>
+              )}
+              <Cell >{this.props.max}</Cell>
             </List>
             <Group>
               <FormLayout>
-                <Button size="xl">Участвую</Button>
+                <Button onClick={this.joinChallenge(this.props.user_id, this.props.challenge_id)} size="xl">Участвую</Button>
               </FormLayout>
             </Group>
           </Group>
@@ -126,13 +144,12 @@ class VKchallenge extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(e){
+  handleChange(e) {
     e.preventDefault();
     this.setState({
       activeStory: "more"
     })
   }
-
 
   onStoryChange(e) {
     this.setState({ activeStory: e.currentTarget.dataset.story })
@@ -249,7 +266,7 @@ class VKchallenge extends React.Component {
       challenge_hashtag: this.state.hash,
       group_publisher: this.state.community,
       winner: this.state.winner,
-      cover : this.state.cover,
+      cover: this.state.cover,
 
       first_name: f_name,
       last_name: l_name,
@@ -275,7 +292,7 @@ class VKchallenge extends React.Component {
         max_participants: this.state.max,
         challenge_hashtag: this.state.hash,
         winner: this.state.winner,
-        cover : this.state.cover
+        cover: this.state.cover
       }
     })
       .then(function (response) {
@@ -365,67 +382,67 @@ class VKchallenge extends React.Component {
             <PanelHeader noShadow>
               Челлендж дня
               </PanelHeader>
-              <Tabs theme="header" type="buttons">
-                  <TabsItem
-                    onClick={() => this.setState({ activeTab10: 'main_challenge' })}
-                    selected={this.state.activeTab10 === 'main_challenge'}
-                  >
-                    Задание дня
+            <Tabs theme="header" type="buttons">
+              <TabsItem
+                onClick={() => this.setState({ activeTab10: 'main_challenge' })}
+                selected={this.state.activeTab10 === 'main_challenge'}
+              >
+                Задание дня
                   </TabsItem>
-                  <TabsItem
-                    onClick={() => this.setState({ activeTab6: 'main_challenge_feed' })}
-                    selected={this.state.activeTab10 === 'main_challenge_feed'}
-                  >
-                    Лента
+              <TabsItem
+                onClick={() => this.setState({ activeTab6: 'main_challenge_feed' })}
+                selected={this.state.activeTab10 === 'main_challenge_feed'}
+              >
+                Лента
                   </TabsItem>
-              </Tabs>
-              <Group>
-                <Cell
-                  photo="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg"
-                  description="VKontakte"
-                  before={<Avatar src="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg" size={80}/>}
-                  size="l"
-                >
-                  Автор Постерович  
+            </Tabs>
+            <Group>
+              <Cell
+                photo="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg"
+                description="VKontakte"
+                before={<Avatar src="https://pp.userapi.com/c841034/v841034569/3b8c1/pt3sOw_qhfg.jpg" size={80} />}
+                size="l"
+              >
+                Автор Постерович
                 </Cell>
-                <Div>
-                  Ку, жрешь? Сегодняшнее задание: блаблаблаблабла
+              <Div>
+                Ку, жрешь? Сегодняшнее задание: блаблаблаблабла
                 </Div>
-              </Group>
-              <Group title='Вступительное видео'>
-              <YouTube videoId='P0e5B2zF0HA' opts={youtube_opts}/>
-              </Group>
-              <Group title="Чеклист">
+            </Group>
+            <Group title='Вступительное видео'>
+              <YouTube videoId='P0e5B2zF0HA' opts={youtube_opts} />
+            </Group>
+            <Group title="Чеклист">
               <Group>
-                  <Div>
-                    <InfoRow title="3/5">
-                      <Progress value={40} />
-                    </InfoRow>
-                  </Div>
-                  <Group title="Placeholder">
-                    <List>
-                            <Cell
-                              asideContent={<Button before={<Icon16Done/>}>Add item</Button>}
-                              description='Описание 1'
-                            >
-                              Задание 1
+                <Div>
+                  <InfoRow title="3/5">
+                    <Progress value={40} />
+                  </InfoRow>
+                </Div>
+                <Group title="Placeholder">
+                  <List>
+                    <Cell
+                      asideContent={<Button before={<Icon16Done />}>Add item</Button>}
+                      description='Описание 1'
+                    >
+                      Задание 1
                             </Cell>
-                            <Cell
-                              asideContent={<Button before={<Icon16Done/>}>Add item</Button>}
-                              description='Описание 2'
-                            >
-                              Задание 2
+                    <Cell
+                      asideContent={<Button before={<Icon16Done />}>Add item</Button>}
+                      description='Описание 2'
+                    >
+                      Задание 2
                             </Cell>
-                    </List>
-                    <Group>
-                    <Div style={{display: 'flex'}}>
+                  </List>
+                  <Group>
+                    <Div style={{ display: 'flex' }}>
                       <Button size="l" stretched style={{ marginRight: 8 }}>Я участвую!</Button>
                       <Button size="l" stretched level="secondary">Я понял!</Button>
                     </Div>
-                    </Group>
                   </Group>
                 </Group>
               </Group>
+            </Group>
           </Panel>
         </View>
 
@@ -682,8 +699,8 @@ class VKchallenge extends React.Component {
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
-          <ChallengeInfo back={this.handleChange} tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
-              cover={this.state.one_challenge_obj.cover}/>
+            <ChallengeInfo challenge_id={this.state.one_challenge_obj._id} user_id={this.state.user_obj_vk.id} back={this.handleChange} tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
+              cover={this.state.one_challenge_obj.cover} />
           </Panel>
         </View>
 
