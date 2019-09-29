@@ -132,7 +132,7 @@ class ChallengeInfo extends React.Component {
         <Group>
           <Div>
             <InfoRow title="Прогресс">
-              <Progress value={this.props.user} />
+              <Progress value={this.getProgress()} />
             </InfoRow>
           </Div>
           <Group title="Задания">
