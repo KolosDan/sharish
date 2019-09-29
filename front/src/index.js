@@ -47,7 +47,7 @@ class ChallengeInfo extends React.Component {
     return (
       <React.Fragment>
         { alert(JSON.stringify(this.props.tasks, null, 4)) }
-        <PanelHeader left={<HeaderButton onClick={this.props.handler} >{<Icon24Back />}</HeaderButton>}> {this.props.name}</PanelHeader>
+        <PanelHeader left={<HeaderButton onClick={this.props.getBack} >{<Icon24Back />}</HeaderButton>}> {this.props.name}</PanelHeader>
         <img style={{ maxWidth: "370px" }} src={this.props.cover} />
         <Group title="Описание">
           <Cell multiline>{this.props.desc}</Cell>
@@ -61,7 +61,7 @@ class ChallengeInfo extends React.Component {
               <Progress value={40} />
             </InfoRow>
           </Div>
-          <Group title="=Задания">
+          <Group title="Задания">
             <List>
             {this.props.tasks.map((task, index) => 
                     <Cell
@@ -125,15 +125,16 @@ class VKchallenge extends React.Component {
     this.onStoryChange = this.onStoryChange.bind(this);
     this.toggleContext = this.toggleContext.bind(this);
     this.select = this.select.bind(this);
+    this.getBack = this.getBack.bind(this);
   }
 
   onStoryChange(e) {
     this.setState({ activeStory: e.currentTarget.dataset.story })
   }
 
-  toggleContext() {
-    this.setState({ contextOpened: !this.state.contextOpened });
-  }
+  getBack() {
+    this.setState({ activeStory: "feed"});
+ }
 
   select(e) {
     const mode = e.currentTarget.dataset.mode;
@@ -679,7 +680,7 @@ class VKchallenge extends React.Component {
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
-          <ChallengeInfo tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
+          <ChallengeInfo getback={this.getBack} tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
               cover={this.state.one_challenge_obj.cover}/>
           </Panel>
         </View>
