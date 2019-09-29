@@ -100,7 +100,7 @@ class ChallengeInfo extends React.Component {
       connect.send("VKWebAppCallAPIMethod", {
         "method": "likes.isLiked",
         "request_id": "like",
-        "params": { "user_id": this.props.user_id, "type" : "wall", "owner_id" : value.split("w=wall")[value.split("w=wall").length-1].split("_")[0] ,
+        "params": { "user_id": this.props.user_id, "type" : "post", "owner_id" : value.split("w=wall")[value.split("w=wall").length-1].split("_")[0] ,
         "item_id" : value.split("w=wall")[value.split("w=wall").length-1].split("_")[1]  ,"v": "5.101", "access_token": this.props.token }
       });
     }
