@@ -561,7 +561,7 @@ class VKchallenge extends React.Component {
                     {this.state.main.tasks.map((task, index) =>
                       <Cell
                         multiline
-                        asideContent={<Button onClick={() => { this.getApiData(task.type, task.value); api_data.index = index; api_data.id = "main" }} before={<Icon16Done />}>Я сделал</Button>}
+                        asideContent={<Button onClick={() => {  api_data.index = index; api_data.id = "main" }} before={<Icon16Done />}>Я сделал</Button>}
                         description={task.description}
                       >
                         Задание {index}
