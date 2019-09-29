@@ -46,12 +46,18 @@ class ChallengeInfo extends React.Component {
     super(props);
 
     this.state = {
-
+      progress: 0
     }
   }
 
-  getProgress(){
-
+  getProgress() {
+    instance.get(`http://192.168.43.150:5000/get_progress?challenge_id=${this.props.challenge._id}&user_id=${this.props.user_id}`)
+      .then((response) => {
+        this.setState({ progress: response.data.result });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   joinChallenge(id, ch_id) {
@@ -126,7 +132,7 @@ class ChallengeInfo extends React.Component {
         <Group>
           <Div>
             <InfoRow title="Прогресс">
-              <Progress value={this.getProgress()} />
+              <Progress value={this.state.getProgress} />
             </InfoRow>
           </Div>
           <Group title="Задания">
@@ -422,6 +428,20 @@ class VKchallenge extends React.Component {
     this.setState({ hash: args.hashtag });
     this.setState({ edit_challenge_id: args._id });
   }
+
+  // restoreState(args) {
+  //   this.setState({ name: args.name });
+  //   this.setState({ desc: args.description });
+  //   this.setState({ complete: args.complete_message });
+  //   this.setState({ task_list: args.tasks });
+  //   this.setState({ max: args.max_participants });
+  //   this.setState({ hash: args.hashtag });
+  //   this.setState({ community: args.group_publisher });
+  //   this.setState({ winner: args.winner });
+  //   this.setState({ cover: args.cover });
+  //   this.setState({ hash: args.hashtag });
+  //   this.setState({ edit_challenge_id: args._id });
+  // }
 
   onChange(e) {
     const { name, value } = e.currentTarget;
@@ -777,8 +797,8 @@ class VKchallenge extends React.Component {
 
         <View activePanel="join" id="joined">
           <Panel id="join">
-          <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'more' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>} >
-            Я участвую
+            <PanelHeader left={<HeaderButton onClick={() => { this.setState({ activeStory: 'more' }) }}>{osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}</HeaderButton>} >
+              Я участвую
             </PanelHeader>
             <Group>
               {this.state.all_challenges.length > 0 &&
@@ -822,9 +842,9 @@ class VKchallenge extends React.Component {
 
         <View activePanel="ch_info" id="challenge_info">
           <Panel id="ch_info">
-            <ChallengeInfo token={this.state.token} challenge={this.state.one_challenge_obj} 
-            user_id={this.state.user_obj_vk.id} user={this.state.user_obj} tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
-            cover={this.state.one_challenge_obj.cover} />
+            <ChallengeInfo token={this.state.token} challenge={this.state.one_challenge_obj}
+              user_id={this.state.user_obj_vk.id} user={this.state.user_obj} tasks={this.state.one_challenge_obj.tasks} name={this.state.one_challenge_obj.name} desc={this.state.one_challenge_obj.description}
+              cover={this.state.one_challenge_obj.cover} />
           </Panel>
         </View>
 
