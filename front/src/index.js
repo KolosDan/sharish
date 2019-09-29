@@ -149,8 +149,8 @@ class ChallengeInfo extends React.Component {
 
 class VKchallenge extends React.Component {
   constructor(props) {
-    this.getMain();
     super(props);
+    this.getMain();
 
     this.state = {
       name_task: "",
